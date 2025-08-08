@@ -366,3 +366,16 @@ footer {
   margin-top: 60px;
 }
 
+/* --- Style for Secondary Button in Project Detail --- */
+.cta-button.secondary {
+  background-color: #6c757d; /* A neutral grey color */
+}
+
+.cta-button.secondary:hover {
+  background-color: #5a6268;
+}
+
+/* --- Style for GitHub Icon in Button --- */
+.cta-button .fa-github {
+  margin-left: 8px; /* Adds some space between the icon and text */
+}
