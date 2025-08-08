@@ -282,3 +282,86 @@ footer {
   .hero-title { font-size: 2.5rem; }
   nav { flex-direction: column; gap: 10px; align-items: center; }
 }
+/* --- Project Detail Page Styles --- */
+.project-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+
+.project-detail-header {
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 30px;
+  margin-bottom: 40px;
+}
+
+.project-detail-title {
+  font-size: 2.8rem;
+  margin: 0;
+}
+
+.project-detail-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 15px 0 30px;
+}
+
+.project-detail-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.project-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  background-color: var(--bg-color);
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.overview-item h4 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.overview-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.project-content-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.project-content-section p, 
+.project-content-section li {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.project-content-section ol,
+.project-content-section ul {
+  padding-right: 20px;
+}
+
+.back-to-portfolio {
+  text-align: center;
+  margin-top: 60px;
+}
