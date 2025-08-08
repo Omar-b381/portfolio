@@ -4,63 +4,135 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>عمر بدر - محلل بيانات وخبير تعلم آلة</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons (stars, etc. ) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
   <header class="main-header">
     <div class="container">
       <nav>
-        <a href="index.html" class="active">الرئيسية</a>
-        <a href="portfolio.html">المشاريع</a>
-        <a href="about.html">عني</a>
-        <a href="contact.html">تواصل معي</a>
+        <a href="/" class="active">الرئيسية</a>
+        <a href="/portfolio/">المشاريع</a>
+        <a href="/about/">عني</a>
+        <a href="/contact/">تواصل معي</a>
       </nav>
       <div class="hero-content">
-        <img src="assets/images/profile.jpg" alt="صورة شخصية لـ عمر بدر" class="profile-picture">
+        <img src="/assets/images/profile.jpg" alt="صورة شخصية لـ عمر بدر" class="profile-picture">
         <h1 class="hero-title">عمر بدر</h1>
         <p class="hero-subtitle">محلل بيانات وخبير تعلم آلة، أحول البيانات إلى قرارات ذكية تقود النمو.</p>
-        <a href="portfolio.html" class="cta-button">شاهد أعمالي</a>
+        <a href="/portfolio/" class="cta-button">شاهد أعمالي</a>
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="featured-projects">
+  <main>
+    <!-- ==================== قسم المشاريع المميزة ==================== -->
+    <section class="featured-projects container">
       <h2 class="section-title">مشاريع مميزة</h2>
       <div class="portfolio-grid">
-        <!-- مشروع تعلم الآلة (الجديد ) -->
+        
+        <!-- مشروع تعلم الآلة -->
         <div class="project-card">
-          <img src="assets/images/heart-disease.jpg" alt="مشروع التنبؤ بأمراض القلب" class="project-image">
+          <img src="https://i.imgur.com/gC4gC7A.jpg" alt="مشروع التنبؤ بأمراض القلب" class="project-image">
           <div class="project-content">
-            <h3 class="project-title">التنبؤ بأمراض القلب (تعلم آلة)</h3>
+            <h3 class="project-title">التنبؤ بأمراض القلب (تعلم آلة )</h3>
             <p class="project-description">مشروع متكامل لبناء وتدريب نموذج تعلم آلة للتنبؤ باحتمالية الإصابة بأمراض القلب بدقة عالية.</p>
             <div class="project-tags"><span>Machine Learning</span><span>Python</span><span>Scikit-learn</span></div>
-            <a href="project-heart-disease.html" class="project-button">عرض تفاصيل المشروع</a>
+            <a href="/project-heart-disease/" class="project-button">عرض تفاصيل المشروع</a>
           </div>
         </div>
+
         <!-- مشروع هنداوي -->
         <div class="project-card">
-          <img src="assets/images/hendawe.jpg" alt="تحليل واستخراج بيانات مكتبة هنداوي" class="project-image">
+          <img src="/assets/images/hendawe.jpg" alt="تحليل واستخراج بيانات مكتبة هنداوي" class="project-image">
           <div class="project-content">
             <h3 class="project-title">تحليل بيانات مكتبة هنداوي</h3>
             <p class="project-description">استخراج وتحليل بيانات أكثر من 3444 كتابًا مجانيًا وقانونيًا باستخدام Python لتسهيل الوصول إلى المحتوى الثري.</p>
             <div class="project-tags"><span>Python</span><span>Web Scraping</span><span>تحليل بيانات</span></div>
-            <a href="project-hendawe.html" class="project-button">عرض تفاصيل المشروع</a>
+            <a href="/project-hendawe/" class="project-button">عرض تفاصيل المشروع</a>
           </div>
         </div>
+
         <!-- مشروع RFM -->
         <div class="project-card">
-          <img src="assets/images/Dashboard_page-0001.jpg" alt=" مشروع تحليل مبيعات تجارة إلكترونية" class="project-image">
+          <img src="/assets/images/Dashboard_page-0001.jpg" alt=" مشروع تحليل مبيعات تجارة إلكترونية" class="project-image">
           <div class="project-content">
             <h3 class="project-title">تحليل عملاء التجارة الإلكترونية (RFM)</h3>
             <p class="project-description">تحليل سلوك العملاء في متجر إلكتروني وتقسيمهم إلى شرائح استراتيجية بناءً على معاملاتهم الشرائية.</p>
             <div class="project-tags"><span>Power BI</span><span>RFM Analysis</span><span>تقسيم عملاء</span></div>
-            <a href="project-rfm.html" class="project-button">عرض تفاصيل المشروع</a>
+            <a href="/project-rfm/" class="project-button">عرض تفاصيل المشروع</a>
           </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== قسم آراء العملاء (النسخة المحسنة) ==================== -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title">ماذا يقول عملائي؟</h2>
+        <div class="testimonials-grid">
+          
+          <!-- التقييم الأول -->
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "الاستاذ عمر شاكر ومقدر لكم التعاون معه جدا سلسل والاحترفية عالية بادارة البيانات وتحليلها"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4 class="author-name">عميل من مستقل/h4>
+                <p class="author-project">:إعداد تقرير إحصائي لبيانات شهرية وتجميعها بتقرير شامل</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- التقييم الثاني -->
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "والله محترم ومميز..
+تأخرت عليه في التسليم ومع ذلك كان في غاية الاحترام والتعاون
+شاكر لك يا أ.عمر وبإذن الله ما يكون آخر تعامل"</p>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4 class="author-name">عميل من مستقل</h4>
+                <p class="author-project">مشروع: تجهيز ملف جداول قوقل وإضافة مخطط جانت وداش بورد</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- التقييم الثالث -->
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "عمر شخص محترف و سريع في العمل ومتعاون جدا
+انصح بالعمل معه
+شكراً عمر"</p>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4 class="author-name">عميل من مستقل</h4>
+                <p class="author-project">مشروع: متخصص في Power Bi لتصميم Dashboards و Charts</p>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+        <div class="testimonials-link">
+          <a href="https://mostaql.com/u/ENG_omar381/reviews" class="cta-button" target="_blank">
+            شاهد كل التقييمات على مستقل
+          </a>
         </div>
       </div>
     </section>

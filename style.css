@@ -379,3 +379,64 @@ footer {
 .cta-button .fa-github {
   margin-left: 8px; /* Adds some space between the icon and text */
 }
+/* --- Testimonials Section (Improved Version ) --- */
+.testimonials {
+  background-color: var(--bg-color); /* Changed to bg-color for contrast */
+  padding: 60px 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background-color: var(--card-bg); /* White background for cards */
+  padding: 30px;
+  border-radius: 15px;
+  border-top: 5px solid var(--accent-color); /* Accent color top border */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-rating {
+  margin-bottom: 15px;
+  color: #ffc107; /* Gold color for stars */
+}
+
+.testimonial-rating .fa-star {
+  margin: 0 1px;
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  color: #444;
+  flex-grow: 1;
+  margin: 0 0 25px;
+  line-height: 1.8;
+}
+
+.testimonial-author {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.author-name {
+  margin: 0 0 5px;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.author-project {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.testimonials-link {
+  text-align: center;
+  margin-top: 50px;
+}
