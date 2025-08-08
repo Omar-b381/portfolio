@@ -365,8 +365,8 @@ footer {
   text-align: center;
   margin-top: 60px;
 }
-/* --- Custom Change: Make Project Subtitle White --- */
-.project-detail-subtitle {
-  color: #ffffff; /*  هذا هو اللون الأبيض */
-  opacity: 0.9;   /*  أضفت شفافية بسيطة لجعله أسهل في القراءة على الخلفية الملونة */
+.project-detail-header .project-detail-subtitle {
+  color: #ffffff;
+  opacity: 0.9;
 }
+
