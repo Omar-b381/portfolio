@@ -440,3 +440,120 @@ footer {
   text-align: center;
   margin-top: 50px;
 }
+/* --- Services Page Styles --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background-color: var(--card-bg);
+  padding: 40px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  border-bottom: 5px solid transparent;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  border-bottom-color: var(--accent-color);
+}
+
+.service-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.service-title {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.service-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.service-outcomes {
+  list-style: none;
+  padding: 0;
+  text-align: right;
+  font-size: 1rem;
+  color: #333;
+}
+
+.service-outcomes li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.service-outcomes .fa-check-circle {
+  color: var(--accent-color);
+  margin-left: 10px;
+}
+
+/* --- How It Works Section --- */
+.how-it-works {
+    padding: 60px 0;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.step {
+    flex: 1;
+    padding: 20px;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin: 0 auto 20px;
+}
+
+.step-title {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* --- CTA Section --- */
+.cta-section {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 40px;
+}
+
+.cta-section h2 {
+  font-size: 2.2rem;
+  margin: 0 0 15px;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
