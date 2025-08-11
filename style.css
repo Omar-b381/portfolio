@@ -226,7 +226,7 @@ main {
   text-align: center;
 }
 .about-content p {
-  font-size: 1.1rem;
+  font-size: 2rem;
   margin-bottom: 20px;
 }
 .skills-grid {
@@ -842,4 +842,171 @@ footer {
   font-size: 1.1rem;
   line-height: 1.9;
   color: #333;
+}
+/* =================================== */
+/* === تعديلات الصفحة الرئيسية (بدون صورة ) === */
+/* =================================== */
+
+.hero-content {
+  /* زيادة الحشوة العلوية لتعويض المساحة الفارغة بعد حذف الصورة */
+  padding-top: 60px; 
+}
+
+/* =================================== */
+/* === تنسيقات صفحة "عني" الجديدة === */
+/* =================================== */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* تقسيم الشاشة لعمودين: ثلثين للنص وثلث للصورة */
+  gap: 50px; /* مسافة بين النص والصورة */
+  align-items: center; /* محاذاة رأسية في المنتصف */
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.about-text p {
+  font-size: 1.7rem;
+  line-height: 1.9;
+  color: #333;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 15px; /* زوايا دائرية للصورة */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* تعديلات للشاشات الصغيرة (الجوال) */
+@media (max-width: 768px) {
+  .about-layout {
+    grid-template-columns: 1fr; /* عرض عمود واحد فقط */
+    text-align: center;
+  }
+
+  .about-image {
+    /* تغيير ترتيب العناصر في الجوال لتظهر الصورة أولاً */
+    order: -1; 
+    margin-bottom: 30px;
+    max-width: 250px; /* تحديد عرض أقصى للصورة في الجوال */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* =================================== */
+/* === التصميم الجديد للصفحة الرئيسية === */
+/* =================================== */
+
+/* --- قسم الهيرو الجديد --- */
+.new-hero-section {
+  background: linear-gradient(135deg, #0d47a1, #1565c0); /* تدرج لوني أزرق احترافي */
+  color: white;
+  padding: 100px 0 80px 0; /* حشوة علوية وسفلية كبيرة */
+  text-align: center;
+}
+
+.new-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.new-hero-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.new-hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 650px;
+  margin: 0 auto 30px;
+  line-height: 1.7;
+}
+
+.new-hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+/* تعديل على الزر الثانوي ليتناسب مع الخلفية الداكنة */
+.new-hero-buttons .cta-button.secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid var(--accent-color);
+}
+.new-hero-buttons .cta-button.secondary:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+.hero-expertise-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.expertise-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+  transition: background 0.3s;
+}
+.expertise-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.expertise-card i {
+  margin-left: 8px;
+  color: var(--accent-color);
+}
+
+
+/* --- قسم "لماذا تختارني؟" --- */
+.why-me-section {
+  padding: 80px 0;
+}
+
+.why-me-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.why-me-card {
+  background-color: var(--card-bg);
+  padding: 40px 30px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-top: 4px solid var(--accent-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.why-me-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.why-me-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.why-me-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.why-me-card p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
 }

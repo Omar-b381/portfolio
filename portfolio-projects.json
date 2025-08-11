@@ -1,0 +1,34 @@
+[
+  {
+    "id": "heart-disease",
+    "title": "التنبؤ بأمراض القلب (تعلم آلة)",
+    "description": "مشروع متكامل لبناء وتدريب نموذج تعلم آلة للتنبؤ باحتمالية الإصابة بأمراض القلب بدقة عالية.",
+    "image": "assets/images/heart-disease.jpg",
+    "tags": ["Machine Learning", "Python", "Scikit-learn"],
+    "link": "project-heart-disease.html"
+  },
+  {
+    "id": "hendawe",
+    "title": "تحليل بيانات مكتبة هنداوي",
+    "description": "استخراج وتحليل بيانات أكثر من 3444 كتابًا مجانيًا وقانونيًا باستخدام Python لتسهيل الوصول للمحتوى.",
+    "image": "assets/images/hendawe.jpg",
+    "tags": ["Python", "Web Scraping", "تحليل بيانات"],
+    "link": "project-hendawe.html"
+  },
+  {
+    "id": "rfm-analysis",
+    "title": "تحليل عملاء التجارة الإلكترونية (RFM)",
+    "description": "تحليل سلوك العملاء في متجر إلكتروني وتقسيمهم إلى شرائح استراتيجية بناءً على معاملاتهم الشرائية.",
+    "image": "assets/images/Dashboard_page-0001.jpg",
+    "tags": ["Power BI", "RFM Analysis", "تقسيم عملاء"],
+    "link": "project-rfm.html"
+  },
+  {
+    "id": "cancer-prediction",
+    "title": "التنبؤ بسرطان الثدي (تعلم آلة)",
+    "description": "بناء نموذج لتصنيف أورام الثدي (خبيثة أو حميدة) بدقة 98% باستخدام خوارزميات تعلم الآلة.",
+    "image": "assets/images/breast.jpg",
+    "tags": ["Machine Learning", "Python", "SVM"],
+    "link": "Cancer-Prediction-with-Python.html"
+  }
+]
