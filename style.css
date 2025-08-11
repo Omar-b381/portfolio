@@ -796,7 +796,7 @@ footer {
   width: 100%;
   height: auto;
   max-height: 450px;
-  object-fit: cover;
+  object-fit: fit;
   border-radius: 12px;
   margin-bottom: 30px;
 }
