@@ -580,16 +580,19 @@ footer {
   box-shadow: 0 10px 28px rgba(0,0,0,0.12);
 }
 
+/* صورة المقال في البطاقة */
 .post-card-image-link {
   display: block;
-  height: 230px;
+  height: 200px; /* حجم جديد للصورة */
   overflow: hidden;
+  background: none; /* بدون خلفية */
 }
 
 .post-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 0; /* بدون زوايا */
   transition: transform 0.5s ease;
 }
 
@@ -605,6 +608,7 @@ footer {
   justify-content: space-between;
 }
 
+/* الوسوم */
 .post-card-tags {
   display: flex;
   flex-wrap: wrap;
@@ -613,7 +617,7 @@ footer {
 }
 
 .post-card-tags span {
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   color: #fff;
   padding: 5px 14px;
   border-radius: 50px;
@@ -627,9 +631,10 @@ footer {
   transform: translateY(-2px);
 }
 
+/* العناوين */
 .post-card-title a {
   font-size: 1.6rem;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-decoration: none;
   font-weight: 700;
   line-height: 1.4;
@@ -637,7 +642,7 @@ footer {
 }
 
 .post-card-title a:hover {
-  color: var(--secondary-color);
+  color: var(--accent-color);
 }
 
 .post-card-excerpt {
@@ -688,11 +693,14 @@ footer {
   margin-bottom: 30px;
 }
 
+/* صورة المقال الفردي */
 .post-featured-image {
   width: 100%;
-  border-radius: 15px;
+  height: auto;
+  border-radius: 12px;
+  background: none; /* بدون خلفية */
+  box-shadow: none; /* بدون ظل */
   margin-bottom: 40px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .post-content {
@@ -739,6 +747,7 @@ footer {
   color: var(--primary-color);
 }
 
+/* --- Responsive --- */
 @media (max-width: 768px) {
   .post-title {
     font-size: 2.2rem;
