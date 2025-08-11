@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- سيتم تغيير العنوان بواسطة JavaScript -->
+  <title>قراءة مقال - عمر بدر</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="services.html">الخدمات</a>
+        <a href="portfolio.html">المشاريع</a>
+        <a href="blog.html" class="active">المدونة</a>
+        <a href="about.html">عني</a>
+        <a href="contact.html">تواصل معي</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- سيتم ملء هذا القسم تلقائياً بواسطة JavaScript -->
+    <article class="blog-post" id="post-container">
+      <!-- مثال لشكل المقال (سيتم حذفه وإنشاؤه بواسطة الكود ) -->
+      <!-- 
+      <header class="post-header">
+        ...
+      </header>
+      <div class="post-content">
+        ...
+      </div>
+      -->
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 عمر بدر | جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+  <!-- ==== JavaScript Code to Load Single Post ==== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const postContainer = document.getElementById('post-container');
+      
+      // 1. الحصول على ID المقال من رابط الصفحة
+      const urlParams = new URLSearchParams(window.location.search);
+      const postId = urlParams.get('id');
+
+      if (!postId) {
+        postContainer.innerHTML = '<h1>خطأ: لم يتم تحديد مقال.</h1><p>يرجى العودة إلى <a href="blog.html">صفحة المدونة</a> واختيار مقال لعرضه.</p>';
+        return;
+      }
+
+      // 2. جلب كل المقالات من ملف JSON
+      fetch('blog-posts.json')
+        .then(response => response.json())
+        .then(posts => {
+          // 3. البحث عن المقال المطلوب باستخدام ID
+          const post = posts.find(p => p.id === postId);
+
+          if (post) {
+            // 4. تحديث عنوان الصفحة
+            document.title = post.title + ' - عمر بدر';
+
+            // 5. إنشاء محتوى HTML للمقال وعرضه
+            const tagsHTML = post.tags.map(tag => tag).join(', ');
+            const postHTML = `
+              <header class="post-header">
+                <h1 class="post-title">${post.title}</h1>
+                <div class="post-meta">
+                  <span><i class="fas fa-user"></i> بقلم: عمر بدر</span>
+                  <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
+                  <span><i class="fas fa-tag"></i> ${tagsHTML}</span>
+                </div>
+                <img src="${post.image}" alt="${post.title}" class="post-featured-image">
+              </header>
+              <div class="post-content">
+                ${post.content}
+              </div>
+            `;
+            postContainer.innerHTML = postHTML;
+          } else {
+            postContainer.innerHTML = '<h1>خطأ 404: المقال غير موجود.</h1><p>لم نتمكن من العثور على المقال الذي تبحث عنه. ربما تم حذفه أو تغيير رابطه. <a href="blog.html">العودة إلى المدونة</a>.</p>';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching post:', error);
+          postContainer.innerHTML = '<h1>حدث خطأ</h1><p>حدث خطأ أثناء تحميل المقال. يرجى المحاولة مرة أخرى لاحقاً.</p>';
+        });
+    });
+  </script>
+  <!-- ========================================== -->
+
+</body>
+</html>
