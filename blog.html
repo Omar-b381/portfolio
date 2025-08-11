@@ -32,12 +32,7 @@
       
       <!-- سيتم ملء هذا القسم تلقائياً بواسطة JavaScript -->
       <div class="blog-grid" id="blog-grid-container">
-        <!-- مثال لشكل البطاقة (سيتم حذفه وإنشاؤه بواسطة الكود ) -->
-        <!-- 
-        <div class="blog-post-card">
-          ...
-        </div>
-        -->
+        <!-- سيتم إنشاء بطاقات المقالات هنا -->
       </div>
     </section>
   </main>
@@ -50,11 +45,17 @@
 
   <!-- ==== JavaScript Code to Load Blog Posts ==== -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function( ) {
       const blogGridContainer = document.getElementById('blog-grid-container');
 
+      // تأكد من أن ملف 'blog-posts.json' موجود في نفس المجلد
       fetch('blog-posts.json')
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.json();
+        })
         .then(posts => {
           let allPostsHTML = '';
           posts.forEach(post => {

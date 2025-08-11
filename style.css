@@ -48,6 +48,21 @@ header {
   padding-bottom: 60px;
   text-align: center;
 }
+/* =================================== */
+/* === جعل شريط التنقل ثابتًا === */
+/* =================================== */
+
+/* استهداف الهيدر الرئيسي في كل الصفحات */
+body > header {
+  position: sticky; /* الخاصية الأساسية لجعل العنصر لزجًا */
+  top: 0; /* تحديد التصاقه بأعلى الشاشة */
+  z-index: 1000; /* ضمان بقائه فوق كل العناصر الأخرى */
+  background-color: var(--primary-color); /* تأكيد لون الخلفية عند التمرير */
+  
+  /* إضافة ظل خفيف ليظهر فوق المحتوى بشكل أفضل */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); 
+}
+
 nav {
   display: flex;
   justify-content: center;
@@ -752,4 +767,79 @@ footer {
   .post-title {
     font-size: 2.2rem;
   }
+}
+
+
+/* =================================== */
+/* === تنسيقات صفحة المقال الفردي (بدون خلفية للهيدر) === */
+/* =================================== */
+
+/* إزالة أي تنسيقات قديمة من حاوية المقال الرئيسية */
+.blog-post {
+  padding: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* الحاوية البيضاء الجديدة التي تحتوي على كل شيء */
+.post-container-white {
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  max-width: 850px;
+  margin: 0 auto; /* توسيط الحاوية */
+}
+
+/* الصورة الرئيسية في أعلى المقال */
+.post-featured-image {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+/* رأس المقال (الذي يحتوي على العنوان والتفاصيل) */
+.post-header {
+  padding: 0; /* لا حاجة لأي حشوة */
+  text-align: center;
+  margin-bottom: 40px;
+  color: inherit; /* يرث اللون من الأب */
+  background: none; /* الأهم: لا يوجد أي لون أو صورة خلفية */
+}
+
+/* عنوان المقال */
+.post-title {
+  color: var(--primary-color); /* لون أزرق داكن */
+  font-size: 2.8rem;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+/* تفاصيل المقال (الكاتب، التاريخ، إلخ) */
+.post-meta {
+  color: #555; /* لون رمادي داكن ليكون واضحاً */
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+/* الوسوم (Tags) فوق العنوان */
+.post-header .post-card-tags {
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.post-header .post-card-tags span {
+    background-color: #e9ecef;
+    color: #495057;
+    border: none;
+}
+
+/* تنسيق المحتوى النصي للمقال */
+.post-content {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #333;
 }

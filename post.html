@@ -29,16 +29,18 @@
   <main class="container">
     <!-- سيتم ملء هذا القسم تلقائياً بواسطة JavaScript -->
     <article class="blog-post" id="post-container">
-      <!-- مثال لشكل المقال (سيتم حذفه وإنشاؤه بواسطة الكود ) -->
-      <!-- 
-      <header class="post-header">
-        ...
-      </header>
-      <div class="post-content">
-        ...
-      </div>
-      -->
+      <!-- عرض مؤشر تحميل مبدئي -->
+      <p>جاري تحميل المقال...</p>
     </article>
+
+    <!-- ==== قسم المقالات الأخرى المقترحة ==== -->
+    <section class="related-posts-section">
+        <h2 class="section-title">مقالات أخرى قد تعجبك</h2>
+        <div class="blog-grid" id="related-posts-container">
+            <!-- سيتم ملء هذا القسم بواسطة JavaScript -->
+        </div>
+    </section>
+    <!-- ==================================== -->
   </main>
 
   <footer>
@@ -47,59 +49,119 @@
     </div>
   </footer>
 
-  <!-- ==== JavaScript Code to Load Single Post ==== -->
+  <!-- ==== JavaScript Code to Load Single Post and Related Posts ==== -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const postContainer = document.getElementById('post-container');
-      
-      // 1. الحصول على ID المقال من رابط الصفحة
-      const urlParams = new URLSearchParams(window.location.search);
-      const postId = urlParams.get('id');
+    // دالة لعرض رسالة خطأ موحدة
+    function displayError(container, title, message ) {
+        container.innerHTML = `<div class="error-message"><h1>${title}</h1><p>${message}</p></div>`;
+    }
 
-      if (!postId) {
-        postContainer.innerHTML = '<h1>خطأ: لم يتم تحديد مقال.</h1><p>يرجى العودة إلى <a href="blog.html">صفحة المدونة</a> واختيار مقال لعرضه.</p>';
-        return;
-      }
+    // دالة لجلب البيانات من ملف JSON
+    async function fetchPosts() {
+        try {
+            const response = await fetch('blog-posts.json');
+            if (!response.ok) {
+                throw new Error(`فشل تحميل الملف: ${response.statusText}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching blog posts:', error);
+            return null;
+        }
+    }
 
-      // 2. جلب كل المقالات من ملف JSON
-      fetch('blog-posts.json')
-        .then(response => response.json())
-        .then(posts => {
-          // 3. البحث عن المقال المطلوب باستخدام ID
-          const post = posts.find(p => p.id === postId);
-
-          if (post) {
-            // 4. تحديث عنوان الصفحة
-            document.title = post.title + ' - عمر بدر';
-
-            // 5. إنشاء محتوى HTML للمقال وعرضه
-            const tagsHTML = post.tags.map(tag => tag).join(', ');
-            const postHTML = `
-              <header class="post-header">
+    // دالة لعرض المقال الرئيسي
+    function renderPost(post, container) {
+        document.title = post.title + ' - عمر بدر'; // تحديث عنوان الصفحة
+        const tagsHTML = post.tags.map(tag => `<span>${tag}</span>`).join('');
+        const postHTML = `
+            <header class="post-header">
+                <div class="post-card-tags">${tagsHTML}</div>
                 <h1 class="post-title">${post.title}</h1>
                 <div class="post-meta">
-                  <span><i class="fas fa-user"></i> بقلم: عمر بدر</span>
-                  <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
-                  <span><i class="fas fa-tag"></i> ${tagsHTML}</span>
+                    <span><i class="fas fa-user"></i> بقلم: عمر بدر</span>
+                    <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
+                    <span><i class="fas fa-clock"></i> قراءة ${post.readTime}</span>
                 </div>
-                <img src="${post.image}" alt="${post.title}" class="post-featured-image">
-              </header>
-              <div class="post-content">
+            </header>
+            <img src="${post.image}" alt="${post.title}" class="post-featured-image">
+            <div class="post-content">
                 ${post.content}
-              </div>
+            </div>
+            <div class="back-to-portfolio">
+                 <a href="blog.html" class="cta-button secondary">العودة إلى كل المقالات</a>
+            </div>
+        `;
+        container.innerHTML = postHTML;
+    }
+
+    // دالة لعرض المقالات ذات الصلة
+    function renderRelatedPosts(allPosts, currentPostId, container) {
+        // تصفية المقالات لاستبعاد المقال الحالي وعرض 3 مقالات عشوائية أخرى
+        const related = allPosts.filter(p => p.id !== currentPostId && p.date !== 'قريباً');
+        const shuffled = related.sort(() => 0.5 - Math.random());
+        const selectedPosts = shuffled.slice(0, 3);
+
+        if (selectedPosts.length === 0) {
+            document.querySelector('.related-posts-section').style.display = 'none';
+            return;
+        }
+
+        let relatedHTML = '';
+        selectedPosts.forEach(post => {
+            const tagsHTML = post.tags.map(tag => `<span>${tag}</span>`).join('');
+            relatedHTML += `
+                <div class="blog-post-card">
+                    <a href="post.html?id=${post.id}" class="post-card-image-link">
+                        <img src="${post.image}" alt="${post.title}" class="post-card-image">
+                    </a>
+                    <div class="post-card-content">
+                        <div class="post-card-tags">${tagsHTML}</div>
+                        <h3 class="post-card-title"><a href="post.html?id=${post.id}">${post.title}</a></h3>
+                        <div class="post-card-meta">
+                            <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
+                        </div>
+                    </div>
+                </div>
             `;
-            postContainer.innerHTML = postHTML;
-          } else {
-            postContainer.innerHTML = '<h1>خطأ 404: المقال غير موجود.</h1><p>لم نتمكن من العثور على المقال الذي تبحث عنه. ربما تم حذفه أو تغيير رابطه. <a href="blog.html">العودة إلى المدونة</a>.</p>';
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching post:', error);
-          postContainer.innerHTML = '<h1>حدث خطأ</h1><p>حدث خطأ أثناء تحميل المقال. يرجى المحاولة مرة أخرى لاحقاً.</p>';
         });
+        container.innerHTML = relatedHTML;
+    }
+
+    // --- الكود الرئيسي الذي يتم تنفيذه عند تحميل الصفحة ---
+    document.addEventListener('DOMContentLoaded', async function() {
+        const postContainer = document.getElementById('post-container');
+        const relatedContainer = document.getElementById('related-posts-container');
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        if (!postId) {
+            displayError(postContainer, 'خطأ', 'لم يتم تحديد مقال. يرجى العودة إلى <a href="blog.html">صفحة المدونة</a> واختيار مقال.');
+            document.querySelector('.related-posts-section').style.display = 'none';
+            return;
+        }
+
+        const allPosts = await fetchPosts();
+
+        if (!allPosts) {
+            displayError(postContainer, 'خطأ في التحميل', 'حدث خطأ أثناء جلب بيانات المقالات. يرجى المحاولة مرة أخرى لاحقاً.');
+            document.querySelector('.related-posts-section').style.display = 'none';
+            return;
+        }
+
+        const post = allPosts.find(p => p.id === postId);
+
+        if (post) {
+            renderPost(post, postContainer);
+            renderRelatedPosts(allPosts, postId, relatedContainer);
+        } else {
+            displayError(postContainer, 'خطأ 404: المقال غير موجود', 'لم نتمكن من العثور على المقال الذي تبحث عنه. ربما تم حذفه أو تغيير رابطه. <a href="blog.html">العودة إلى المدونة</a>.');
+            document.querySelector('.related-posts-section').style.display = 'none';
+        }
     });
   </script>
-  <!-- ========================================== -->
+  <!-- ================================================================= -->
 
 </body>
 </html>
