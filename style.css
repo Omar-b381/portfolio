@@ -3188,7 +3188,7 @@ body {
   padding: 0 var(--spacing-4);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .container {
     padding: 0 var(--spacing-6);
   }
