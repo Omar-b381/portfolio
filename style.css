@@ -2067,7 +2067,6 @@ header {
 .fixed-header-in-hero nav {
   display: flex;
   justify-content: center;
-  gap: 25px;
 }
 
 .fixed-header-in-hero nav a {
@@ -3776,7 +3775,7 @@ footer p {
   }
   
   .nav-list {
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--spacing-2);
   }
   
