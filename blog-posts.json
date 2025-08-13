@@ -61,7 +61,7 @@
   "date": "13 أغسطس 2025",
   "readTime": "8 دقائق",
   "tags": ["SQL", "MySQL", "قواعد البيانات"],
-  "image": "assets/images/mysql_queries.png",
+  "image": "assets/images/mysql_queries.jpg",
   "excerpt": "تعرّف على مكوّنات استعلامات SQL في MySQL، من ميكانيكا الاستعلامات وبند SELECT إلى الفرز والتجميع، مع شرح عملي ومفصل لكل جزء.",
   "author": {
     "name": "عمر بدر",
