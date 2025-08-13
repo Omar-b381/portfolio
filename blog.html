@@ -63,6 +63,20 @@
             if (post.date === 'قريباً') return;
 
             const tagsHTML = post.tags.map(tag => `<span>${tag}</span>`).join('');
+            
+            // إنشاء معلومات الكاتب مع دعم الحالات القديمة
+            let authorHTML = '';
+            if (post.author && post.author.name) {
+              if (post.author.linkedin) {
+                authorHTML = `<span><i class="fas fa-user"></i> بقلم: <a href="${post.author.linkedin}" target="_blank" class="author-link">${post.author.name} <i class="fab fa-linkedin"></i></a></span>`;
+              } else {
+                authorHTML = `<span><i class="fas fa-user"></i> بقلم: ${post.author.name}</span>`;
+              }
+            } else {
+              // الافتراضي للمقالات القديمة
+              authorHTML = `<span><i class="fas fa-user"></i> بقلم: عمر بدر</span>`;
+            }
+
             const postHTML = `
               <div class="blog-post-card">
                 <a href="post.html?id=${post.id}" class="post-card-image-link">
@@ -75,6 +89,7 @@
                   </h3>
                   <p class="post-card-excerpt">${post.excerpt}</p>
                   <div class="post-card-meta">
+                    ${authorHTML}
                     <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
                     <span><i class="fas fa-clock"></i> قراءة ${post.readTime}</span>
                   </div>
@@ -95,3 +110,4 @@
 
 </body>
 </html>
+

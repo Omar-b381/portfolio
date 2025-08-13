@@ -74,12 +74,26 @@
     function renderPost(post, container) {
         document.title = post.title + ' - عمر بدر'; // تحديث عنوان الصفحة
         const tagsHTML = post.tags.map(tag => `<span>${tag}</span>`).join('');
+        
+        // إنشاء معلومات الكاتب مع دعم الحالات القديمة
+        let authorHTML = '';
+        if (post.author && post.author.name) {
+          if (post.author.linkedin) {
+            authorHTML = `<span class="post-author"><i class="fas fa-user"></i> بقلم: <a href="${post.author.linkedin}" target="_blank" class="author-link">${post.author.name} <i class="fab fa-linkedin"></i></a></span>`;
+          } else {
+            authorHTML = `<span class="post-author"><i class="fas fa-user"></i> بقلم: ${post.author.name}</span>`;
+          }
+        } else {
+          // الافتراضي للمقالات القديمة
+          authorHTML = `<span class="post-author"><i class="fas fa-user"></i> بقلم: عمر بدر</span>`;
+        }
+
         const postHTML = `
             <header class="post-header">
                 <div class="post-card-tags">${tagsHTML}</div>
                 <h1 class="post-title">${post.title}</h1>
                 <div class="post-meta">
-                    <span><i class="fas fa-user"></i> بقلم: عمر بدر</span>
+                    ${authorHTML}
                     <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
                     <span><i class="fas fa-clock"></i> قراءة ${post.readTime}</span>
                 </div>
@@ -165,3 +179,4 @@
 
 </body>
 </html>
+
