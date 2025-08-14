@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breast Cancer Prediction Project Details - Omar Badr</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q56ET619WZ');
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html" class="active">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Me</a>
+        <a href="../ar/Cancer-Prediction-with-Python.html" class="language-switcher">العربية</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="project-detail">
+      <header class="project-detail-header">
+        <h1 class="project-detail-title">Machine Learning Project: Breast Cancer Prediction</h1>
+        <p class="project-detail-subtitle">Building a machine learning model to classify breast tumors (malignant or benign) with high accuracy using the Wisconsin Cancer dataset.</p>
+        <div class="project-tags">
+          <span>Machine Learning</span>
+          <span>Python</span>
+          <span>Scikit-learn</span>
+          <span>Classification</span>
+          <span>EDA</span>
+        </div>
+      </header>
+
+      <img src="../assets/images/breast.jpg" alt="Illustrative image for the breast cancer prediction project" class="project-detail-image">
+
+      <section class="project-overview">
+        <div class="overview-item">
+          <h4>Task</h4>
+          <p>Develop a classification model capable of distinguishing between malignant and benign tumors with an accuracy exceeding 95% to aid in early diagnosis.</p>
+        </div>
+        <div class="overview-item">
+          <h4>Tools Used</h4>
+          <p>Python, Scikit-learn, Pandas, Seaborn, Matplotlib</p>
+        </div>
+        <div class="overview-item">
+          <h4>Key Result</h4>
+          <p>A Support Vector Classifier model was built that achieved an impressive accuracy of 98% on the test dataset.</p>
+        </div>
+      </section>
+
+      <section class="project-content-section">
+        <h2>🎯 Situation</h2>
+        <p>
+          Accurate and rapid diagnosis of breast cancer is crucial for increasing the chances of recovery. Doctors rely on numerous tests, and data modeling can be a powerful tool to automatically and accurately analyze the cellular characteristics of tumors and classify them.
+        </p>
+        
+        <h2>📝 Task</h2>
+        <p>
+          The goal was to use the "Breast Cancer Wisconsin" dataset to build an integrated machine learning model that performs the following tasks:
+        </p>
+        <ol>
+          <li><strong>Exploratory Data Analysis (EDA):</strong> Understand the data characteristics, distribution, and identify the most influential factors for classification.</li>
+          <li><strong>Data Preprocessing:</strong> Process and prepare the data for model training, including handling any missing data and scaling the data.</li>
+          <li><strong>Model Building and Evaluation:</strong> Train a robust classification model and test it using precise metrics such as the Confusion Matrix and Classification Report.</li>
+        </ol>
+
+        <h2>🛠️ Action</h2>
+        <p>
+          The project was implemented using Python and specialized scientific libraries:
+        </p>
+        <ul>
+          <li><strong>Data Loading:</strong> The dataset was loaded directly from the Scikit-learn library.</li>
+          <li><strong>Visual Analysis:</strong> Using Seaborn and Matplotlib, visualizations (like Pairplots and Countplots) were created to understand the relationships between variables and the distribution of classes (benign/malignant).</li>
+          <li><strong>Data Splitting:</strong> The data was split into Training and Test sets to ensure an objective evaluation of the model's performance.</li>
+          <li><strong>Model Building:</strong> A **Support Vector Machine (SVM)** model, specifically the Support Vector Classifier, was chosen and trained due to its high capability in handling complex classification tasks.</li>
+        </ul>
+
+        <h2>📈 Result</h2>
+        <p>
+          The project achieved excellent results and demonstrated the power of machine learning in the medical field:
+        </p>
+        <ul>
+          <li><strong>Superior Accuracy:</strong> The model achieved an accuracy of up to **98%** on the test data, making it a highly reliable tool for classification.</li>
+          <li><strong>Clear Insights:</strong> The Classification Report showed that the model performed excellently on both Precision and Recall metrics for both classes.</li>
+          <li><strong>Applicable Model:</strong> This project serves as a strong foundation that can be developed into a diagnostic support tool for doctors, accelerating the decision-making process and reducing the likelihood of human error.</li>
+        </ul>
+      </section>
+
+      <div class="back-to-portfolio">
+        <a href="https://github.com/Omar-b381/Cancer-Prediction-with-Python" class="cta-button" target="_blank"><i class="fab fa-github"></i> View Code on GitHub</a>
+        <a href="portfolio.html" class="cta-button secondary">Back to All Projects</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Omar Badr | All Rights Reserved</p>
+    </div>
+  </footer>
+
+</body>
+</html>

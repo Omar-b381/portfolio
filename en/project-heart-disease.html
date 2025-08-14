@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Prediction Project Details - Omar Badr</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q56ET619WZ');
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html" class="active">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Me</a>
+        <a href="../ar/project-heart-disease.html" class="language-switcher">العربية</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="project-detail">
+      <header class="project-detail-header">
+        <h1 class="project-detail-title">End-to-End Machine Learning Project: Predicting Heart Disease</h1>
+        <p class="project-detail-subtitle">Building and training a machine learning model to predict the likelihood of a person having heart disease based on a set of medical factors.</p>
+        <div class="project-tags">
+          <span>Machine Learning</span>
+          <span>Python</span>
+          <span>Scikit-learn</span>
+          <span>Pandas</span>
+          <span>Matplotlib</span>
+        </div>
+      </header>
+
+      <img src="../assets/images/heart-disease.jpg" alt="Illustrative image for the heart disease project" class="project-detail-image">
+
+      <section class="project-overview">
+        <div class="overview-item">
+          <h4>Task</h4>
+          <p>Build a classification model capable of predicting the presence of heart disease with an accuracy of up to 85%.</p>
+        </div>
+        <div class="overview-item">
+          <h4>Tools Used</h4>
+          <p>Python, Jupyter Notebook, Scikit-learn, Pandas, NumPy, Matplotlib</p>
+        </div>
+        <div class="overview-item">
+          <h4>Key Result</h4>
+          <p>A Logistic Regression model was developed and proved to be the best model for the task, with a simple application interface for prediction.</p>
+        </div>
+      </section>
+
+      <section class="project-content-section">
+        <h2>🎯 Situation</h2>
+        <p>
+          Heart disease is one of the leading causes of death worldwide. The ability to predict the likelihood of affliction early can help doctors take preventive measures and save patients' lives. The challenge was to use available medical data to build an accurate predictive model.
+        </p>
+        
+        <h2>📝 Task</h2>
+        <p>
+          The goal was to build an end-to-end machine learning project covering all essential stages:
+        </p>
+        <ol>
+          <li><strong>Data Exploration (EDA):</strong> Analyzing data to understand the relationships between various factors (like age, blood pressure, cholesterol) and heart disease.</li>
+          <li><strong>Feature Engineering and Data Preprocessing:</strong> Preparing the data to be suitable for training machine learning models.</li>
+          <li><strong>Model Building and Evaluation:</strong> Training several different classification models (like Logistic Regression, K-Nearest Neighbors, RandomForest) and selecting the best performer.</li>
+          <li><strong>Model Tuning:</strong> Using techniques like Hyperparameter Tuning to increase the accuracy of the selected model.</li>
+        </ol>
+
+        <h2>🛠️ Action</h2>
+        <p>
+          The project was implemented entirely within a Jupyter Notebook environment using Python and specialized scientific libraries:
+        </p>
+        <ul>
+          <li><strong>Pandas & NumPy:</strong> Used to load, clean, and process the data.</li>
+          <li><strong>Matplotlib & Seaborn:</strong> Used to create exploratory visualizations to understand data distribution and correlations between variables.</li>
+          <li><strong>Scikit-learn:</strong> The core library for building all machine learning models, splitting data, evaluating model performance (using metrics like Accuracy, Precision, Recall, F1-score), and performing hyperparameter tuning.</li>
+          <li><strong>Model Comparison:</strong> 5 different models were trained and their performance was systematically compared to choose the model that offered the best balance between accuracy and interpretability.</li>
+        </ul>
+
+        <h2>📈 Result</h2>
+        <p>
+          The project successfully achieved its objectives:
+        </p>
+        <ul>
+          <li><strong>High-Accuracy Model:</strong> The **Logistic Regression** model was identified as the best for this task, achieving balanced accuracy across various evaluation metrics.</li>
+          <li><strong>Interpretable Insights:</strong> The Confusion Matrix analysis demonstrated the model's ability to effectively distinguish between positive and negative cases.</li>
+          <li><strong>Complete Project:</strong> All steps were documented in the Jupyter Notebook, making it a complete practical example of how to build a machine learning project from start to finish.</li>
+          <li><strong>Applicability:</strong> The final model can serve as a basis for building a simple web application that doctors can use as a diagnostic aid.</li>
+        </ul>
+      </section>
+
+      <div class="back-to-portfolio">
+        <a href="https://github.com/Omar-b381/End-to-End-Machine-Learning-Predicting-Heart-Disease" class="cta-button" target="_blank"><i class="fab fa-github"></i> View Code on GitHub</a>
+        <a href="portfolio.html" class="cta-button secondary">Back to All Projects</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Omar Badr | All Rights Reserved</p>
+    </div>
+  </footer>
+
+</body>
+</html>

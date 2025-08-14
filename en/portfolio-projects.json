@@ -1,0 +1,34 @@
+[
+  {
+    "id": "heart-disease",
+    "title": "Heart Disease Prediction (Machine Learning)",
+    "description": "A complete project to build and train a machine learning model to predict the likelihood of heart disease with high accuracy.",
+    "image": "../assets/images/heart-disease.jpg",
+    "tags": ["Machine Learning", "Python", "Scikit-learn"],
+    "link": "project-heart-disease.html"
+  },
+  {
+    "id": "hendawe",
+    "title": "Hindawi Library Data Analysis",
+    "description": "Extracting and analyzing data from over 3,444 free and legal books using Python to facilitate access to rich content.",
+    "image": "../assets/images/hendawe.jpg",
+    "tags": ["Python", "Web Scraping", "Data Analysis"],
+    "link": "project-hendawe.html"
+  },
+  {
+    "id": "rfm-analysis",
+    "title": "E-commerce Customer Analysis (RFM)",
+    "description": "Analyzing customer behavior in an online store and segmenting them into strategic groups based on their purchasing transactions.",
+    "image": "../assets/images/Dashboard_page-0001.jpg",
+    "tags": ["Power BI", "RFM Analysis", "Customer Segmentation"],
+    "link": "project-rfm.html"
+  },
+  {
+    "id": "cancer-prediction",
+    "title": "Breast Cancer Prediction (Machine Learning)",
+    "description": "Building a model to classify breast tumors (malignant or benign) with 98% accuracy using machine learning algorithms.",
+    "image": "../assets/images/breast.jpg",
+    "tags": ["Machine Learning", "Python", "SVM"],
+    "link": "Cancer-Prediction-with-Python.html"
+  }
+]
