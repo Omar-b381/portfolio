@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Omar Badr - Data Analyst & Machine Learning Expert</title>
+  
+  <!-- Correct Path to the single CSS file in the root directory -->
   <link rel="stylesheet" href="../style.css">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
@@ -20,40 +23,39 @@
 </head>
 <body>
 
-<section class="new-hero-section">
-    <div class="hero-overlay"></div>
-    
-    <!-- Header/Navigation now inside the hero section -->
-    <header class="fixed-header-in-hero">
-      <div class="container">
-        <nav>
-          <a href="index.html" class="active">Home</a>
-          <a href="services.html">Services</a>
-          <a href="portfolio.html">Projects</a>
-          <a href="blog.html">Blog</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact Me</a>
-          <a href="../ar/index.html" class="language-switcher">العربية</a>
-        </nav>
-      </div>
-    </header>
-
-    <div class="container hero-content-wrapper">
-        <div class="new-hero-content">
-            <h1 class="new-hero-title">Transforming Your Data into Smart Decisions that Drive Growth</h1>
-            <p class="new-hero-subtitle">I'm Omar Badr, helping companies unlock their data treasures through advanced analysis and effective machine learning models.</p>
-            <div class="new-hero-buttons">
-                <a href="portfolio.html" class="cta-button">View My Work</a>
-                <a href="contact.html" class="cta-button secondary">Contact Me</a>
-            </div>
-            <div class="hero-expertise-cards">
-                <div class="expertise-card"><span><i class="fas fa-chart-pie"></i> Data Analysis</span></div>
-                <div class="expertise-card"><span><i class="fas fa-brain"></i> Machine Learning</span></div>
-                <div class="expertise-card"><span><i class="fas fa-tachometer-alt"></i> Power BI Dashboards</span></div>
-            </div>
-        </div>
+  <header>
+    <div class="container">
+      <!-- All navigation links corrected for the clean URL structure -->
+      <nav>
+        <a href="/en/" class="active">Home</a>
+        <a href="/en/services/">Services</a>
+        <a href="/en/portfolio/">Projects</a>
+        <a href="/en/blog/">Blog</a>
+        <a href="/en/about/">About</a>
+        <a href="/en/contact/">Contact Me</a>
+        <a href="/ar/" class="language-switcher">العربية</a>
+      </nav>
     </div>
-  </section>
+  </header>
+
+  <main>
+    <section class="new-hero-section">
+      <div class="container hero-content-wrapper">
+          <div class="new-hero-content">
+              <h1 class="new-hero-title">Transforming Your Data into Smart Decisions that Drive Growth</h1>
+              <p class="new-hero-subtitle">I'm Omar Badr, helping companies unlock their data treasures through advanced analysis and effective machine learning models.</p>
+              <div class="new-hero-buttons">
+                  <a href="/en/portfolio/" class="cta-button">View My Work</a>
+                  <a href="/en/contact/" class="cta-button secondary">Contact Me</a>
+              </div>
+              <div class="hero-expertise-cards">
+                  <div class="expertise-card"><span><i class="fas fa-chart-pie"></i> Data Analysis</span></div>
+                  <div class="expertise-card"><span><i class="fas fa-brain"></i> Machine Learning</span></div>
+                  <div class="expertise-card"><span><i class="fas fa-tachometer-alt"></i> Power BI Dashboards</span></div>
+              </div>
+          </div>
+      </div>
+    </section>
 
     <section class="why-me-section container">
         <h2 class="section-title">Why We Can Succeed Together?</h2>
@@ -85,7 +87,7 @@
 
     <section class="testimonials">
       <div class="container">
-        <h2 class="section-title">What My Clients Say?</h2>
+        <h2 class="section-title">What My Clients Say</h2>
         <div class="testimonials-grid">
           <div class="testimonial-card">
             <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -94,7 +96,7 @@
           </div>
           <div class="testimonial-card">
             <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="testimonial-text">"By God, he is respectable and outstanding... I was late in delivering to him, yet he was extremely respectful and cooperative. Thank you, Mr. Omar."</p>
+            <p class="testimonial-text">"Truly respectable and outstanding... I was late in delivering to him, yet he was extremely respectful and cooperative. Thank you, Mr. Omar."</p>
             <div class="testimonial-author"><h4 class="author-name">Client from Mostaql</h4><p class="author-project">Project: Google Sheets and Dashboard Setup</p></div>
           </div>
           <div class="testimonial-card">
@@ -110,7 +112,7 @@
         <div class="container">
           <h2>Ready to turn your data into valuable assets?</h2>
           <p>Let's talk about your project and how I can help you achieve your goals.</p>
-          <a href="contact.html" class="cta-button">Contact Me Now</a>
+          <a href="/en/contact/" class="cta-button">Contact Me Now</a>
         </div>
     </section>
   </main>
@@ -125,6 +127,7 @@
     async function loadFeaturedProjects() {
         const container = document.getElementById("featured-projects-grid");
         try {
+            // Correct path to the English JSON file
             const response = await fetch("portfolio-projects.json"); 
             if (!response.ok) throw new Error("Failed to load projects");
             const allProjects = await response.json();
@@ -136,12 +139,14 @@
                 const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join("");
                 projectsHTML += `
                     <div class="project-card">
+                        <!-- Image path is relative to /en/ which is correct -->
                         <img src="${project.image}" alt="${project.title}" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">${project.title}</h3>
                             <p class="project-description">${project.description}</p>
                             <div class="project-tags">${tagsHTML}</div>
-                            <a href="${project.link}" class="project-button">View Project Details</a>
+                            <!-- Corrected link construction for English projects -->
+                            <a href="/en/${project.link}" class="project-button">View Project Details</a>
                         </div>
                     </div>
                 `;

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hindawi Library Analysis Project Details - Omar Badr</title>
+  
+  <!-- Corrected CSS Path (3 steps back to root) -->
+  <link rel="stylesheet" href="../../../style.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q56ET619WZ');
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <!-- Corrected all navigation links -->
+      <nav>
+        <a href="/en/">Home</a>
+        <a href="/en/services/">Services</a>
+        <a href="/en/portfolio/" class="active">Projects</a>
+        <a href="/en/blog/">Blog</a>
+        <a href="/en/about/">About</a>
+        <a href="/en/contact/">Contact Me</a>
+        <a href="/ar/portfolio/project-hendawe/" class="language-switcher">العربية</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="project-detail">
+      <header class="project-detail-header">
+        <h1 class="project-detail-title">Hindawi Library Data Analysis and Scraping</h1>
+        <p class="project-detail-subtitle">A case study on using Python and Power BI to explore and analyze over 3,444 free and legal books.</p>
+        <div class="project-tags">
+          <span>Python</span>
+          <span>Web Scraping</span>
+          <span>Power BI</span>
+          <span>Data Analysis</span>
+        </div>
+      </header>
+
+      <!-- Corrected Image Path (2 steps back to /en/assets) -->
+      <img src="../../assets/images/hendawe.jpg" alt="Hindawi Library Analysis Project Dashboard" class="project-detail-image">
+
+      <section class="project-overview">
+        <div class="overview-item">
+          <h4>Task</h4>
+          <p>Scrape data for all books from the Hindawi library website and analyze it to uncover key publishing trends.</p>
+        </div>
+        <div class="overview-item">
+          <h4>Tools Used</h4>
+          <p>Python (BeautifulSoup), Power BI</p>
+        </div>
+        <div class="overview-item">
+          <h4>Key Result</h4>
+          <p>Created a comprehensive database and an interactive dashboard that allows exploration by author, category, and page count.</p>
+        </div>
+      </section>
+
+      <section class="project-content-section">
+        <h2>🎯 Situation</h2>
+        <p>
+          The Hindawi Foundation offers an immense wealth of knowledge by providing thousands of translated and original books for free and legally. However, users might find it difficult to explore the full extent of this library or understand its general trends, such as identifying the most prolific authors or the most common categories.
+        </p>
+        
+        <h2>📝 Task</h2>
+        <p>
+          The goal of this project was to build an integrated solution that would:
+        </p>
+        <ol>
+          <li><strong>Web Scraping:</strong> Extract data for all books from the site, including title, author, category, page count, and publication year.</li>
+          <li><strong>Data Analysis:</strong> Examine the extracted data to identify patterns and trends.</li>
+          <li><strong>Data Visualization:</strong> Design an interactive Power BI dashboard to present the findings in a visually appealing and engaging way.</li>
+        </ol>
+
+        <h2>🛠️ Action</h2>
+        <p>
+          To achieve these goals, I followed these steps:
+        </p>
+        <ul>
+          <li><strong>Using Python:</strong> I wrote a script using Python and the popular BeautifulSoup library to browse the site pages and extract the required data from each book in an organized manner.</li>
+          <li><strong>Data Cleaning:</strong> After collecting the data, I cleaned and processed it to ensure accuracy and standardize formats, such as converting text to numbers where needed.</li>
+          <li><strong>Analysis and Visualization in Power BI:</strong> I imported the clean data into Power BI and built an interactive dashboard containing charts that show:
+            <ul>
+              <li>Distribution of books by category.</li>
+              <li>Most published authors in the library.</li>
+              <li>The relationship between the number of pages and the publication year.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>📈 Result</h2>
+        <p>
+          The project resulted in a powerful analytical tool that provided the following benefits:
+        </p>
+        <ul>
+          <li><strong>Usable Database:</strong> A structured data file containing comprehensive information on 3,444 books was created, which can be used for future analyses.</li>
+          <li><strong>New Insights:</strong> The analysis revealed that "Naguib Mahfouz" and "Taha Hussein" are among the most featured authors, and categories like "Novels" and "Philosophy" dominate the library.</li>
+          <li><strong>Exploratory Tool:</strong> The dashboard allowed users to explore the library in new ways not possible through the traditional site interface, making it easier for them to find books of interest.</li>
+        </ul>
+      </section>
+
+      <div class="back-to-portfolio">
+        <!-- Corrected "Back to" link -->
+        <a href="/en/portfolio/" class="cta-button secondary">Back to All Projects</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Omar Badr | All Rights Reserved</p>
+    </div>
+  </footer>
+
+</body>
+</html>

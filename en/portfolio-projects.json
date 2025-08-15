@@ -2,33 +2,65 @@
   {
     "id": "heart-disease",
     "title": "Heart Disease Prediction (Machine Learning)",
-    "description": "A complete project to build and train a machine learning model to predict the likelihood of heart disease with high accuracy.",
-    "image": "../assets/images/heart-disease.jpg",
+    "description": "An end-to-end project to build and train a machine learning model to predict the probability of heart disease with high accuracy.",
+    "image": "assets/images/heart-disease.jpg",
     "tags": ["Machine Learning", "Python", "Scikit-learn"],
-    "link": "project-heart-disease.html"
-  },
-  {
-    "id": "hendawe",
-    "title": "Hindawi Library Data Analysis",
-    "description": "Extracting and analyzing data from over 3,444 free and legal books using Python to facilitate access to rich content.",
-    "image": "../assets/images/hendawe.jpg",
-    "tags": ["Python", "Web Scraping", "Data Analysis"],
-    "link": "project-hendawe.html"
-  },
-  {
-    "id": "rfm-analysis",
-    "title": "E-commerce Customer Analysis (RFM)",
-    "description": "Analyzing customer behavior in an online store and segmenting them into strategic groups based on their purchasing transactions.",
-    "image": "../assets/images/Dashboard_page-0001.jpg",
-    "tags": ["Power BI", "RFM Analysis", "Customer Segmentation"],
-    "link": "project-rfm.html"
+    "link": "portfolio/project-heart-disease/"
   },
   {
     "id": "cancer-prediction",
     "title": "Breast Cancer Prediction (Machine Learning)",
     "description": "Building a model to classify breast tumors (malignant or benign) with 98% accuracy using machine learning algorithms.",
-    "image": "../assets/images/breast.jpg",
+    "image": "assets/images/breast.jpg",
     "tags": ["Machine Learning", "Python", "SVM"],
-    "link": "Cancer-Prediction-with-Python.html"
+    "link": "portfolio/Cancer-Prediction-with-Python/"
+  },
+  {
+    "id": "hendawe",
+    "title": "Hindawi Library Data Analysis",
+    "description": "Scraping and analyzing data from over 3,444 free and legal books using Python to facilitate access to rich content.",
+    "image": "assets/images/hendawe.jpg",
+    "tags": ["Python", "Web Scraping", "Data Analysis"],
+    "link": "portfolio/project-hendawe/"
+  },
+  {
+    "id": "adidas",
+    "title": "Adidas Sales Analysis",
+    "description": "A comprehensive analysis of sales data to provide integrated reports that help achieve outstanding sales success.",
+    "image": "assets/images/adidas.jpg",
+    "tags": ["Power BI", "EDA", "Sales Analysis"],
+    "link": "portfolio/project-adidas/"
+  },
+  {
+    "id": "rfm-analysis",
+    "title": "E-commerce Customer Analysis (RFM)",
+    "description": "Analyzing customer behavior in an e-commerce store and segmenting them into strategic groups based on their purchasing transactions.",
+    "image": "assets/images/Dashboard_page-0001.jpg",
+    "tags": ["Power BI", "RFM Analysis", "Customer Segmentation"],
+    "link": "portfolio/project-rfm/"
+  },
+  {
+    "id": "saudi-records",
+    "title": "Saudi Commercial Records Analysis",
+    "description": "Measuring and tracking the growth of new businesses, their geographical distribution, and sectoral diversity to evaluate investment levels.",
+    "image": "assets/images/sa.jpg",
+    "tags": ["Power BI", "Performance Analysis", "KPI"],
+    "link": "portfolio/project-sa/"
+  },
+  {
+    "id": "dubizzle-scraper",
+    "title": "Dubizzle Data Scraping Tool",
+    "description": "Building a web tool using Python and Selenium to automatically collect car ad data from the Dubizzle website.",
+    "image": "assets/images/web.png",
+    "tags": ["Web Scraping", "Python", "Selenium"],
+    "link": "portfolio/project-dubizzle/"
+  },
+  {
+    "id": "amazon-scraper",
+    "title": "Amazon Data Scraping Tool",
+    "description": "Developing a tool to extract product information (title, price, rating) from Amazon search result pages.",
+    "image": "assets/images/amazon.jpg",
+    "tags": ["Web Scraping", "Python", "BeautifulSoup"],
+    "link": "portfolio/project-amazon/"
   }
 ]

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Portfolio - Omar Badr</title>
+  
+  <!-- Corrected CSS Path (two steps back) -->
+  <link rel="stylesheet" href="../../style.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q56ET619WZ');
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <!-- Corrected all navigation links -->
+      <nav>
+        <a href="/en/">Home</a>
+        <a href="/en/services/">Services</a>
+        <a href="/en/portfolio/" class="active">Projects</a>
+        <a href="/en/blog/">Blog</a>
+        <a href="/en/about/">About</a>
+        <a href="/en/contact/">Contact Me</a>
+        <a href="/ar/portfolio/" class="language-switcher">العربية</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h1 class="page-title">Project Portfolio</h1>
+      <p class="page-subtitle">Here you can browse a collection of projects I have completed, which demonstrate my ability to turn data into valuable insights.</p>
+      
+      <!-- This div will be filled dynamically by JavaScript -->
+      <div class="portfolio-grid" id="portfolio-grid-container">
+        <p>Loading projects...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Omar Badr | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript to dynamically load projects -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const portfolioContainer = document.getElementById('portfolio-grid-container');
+
+        // Correct path to the JSON file (one step back)
+        fetch('../portfolio-projects.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(projects => {
+                let allProjectsHTML = '';
+                projects.forEach(project => {
+                    const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join('');
+                    const projectHTML = `
+                        <div class="project-card">
+                            <!-- Correct image path (one step back, then path from JSON) -->
+                            <img src="../${project.image}" alt="${project.title}" class="project-image">
+                            <div class="project-content">
+                                <h3 class="project-title">${project.title}</h3>
+                                <p class="project-description">${project.description}</p>
+                                <div class="project-tags">${tagsHTML}</div>
+                                <!-- Correct project link (builds from /en/ base) -->
+                                <a href="/en/${project.link}" class="project-button">View Project Details</a>
+                            </div>
+                        </div>
+                    `;
+                    allProjectsHTML += projectHTML;
+                });
+                portfolioContainer.innerHTML = allProjectsHTML;
+            })
+            .catch(error => {
+                console.error('Error fetching portfolio projects:', error);
+                portfolioContainer.innerHTML = '<p>An error occurred while loading the projects. Please try again later.</p>';
+            });
+    });
+  </script>
+
+</body>
+</html>

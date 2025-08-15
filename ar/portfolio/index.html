@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معرض المشاريع - عمر بدر</title>
+  
+  <link rel="stylesheet" href="../../style.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q56ET619WZ');
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/ar/">الرئيسية</a>
+        <a href="/ar/services/">الخدمات</a>
+        <a href="/ar/portfolio/" class="active">المشاريع</a>
+        <a href="/ar/blog/">المدونة</a>
+        <a href="/ar/about/">عني</a>
+        <a href="/ar/contact/">تواصل معي</a>
+        <a href="/en/portfolio/" class="language-switcher">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h1 class="page-title">معرض المشاريع</h1>
+      <p class="page-subtitle">هنا يمكنك تصفح مجموعة من المشاريع التي قمت بتنفيذها، والتي تظهر قدرتي على تحويل البيانات إلى رؤى قيمة.</p>
+      
+      <div class="portfolio-grid" id="portfolio-grid-container">
+        <p>جاري تحميل المشاريع...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 عمر بدر | جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const portfolioContainer = document.getElementById('portfolio-grid-container');
+
+        // المسار للوصول لملف JSON هو الآن ../portfolio-projects.json
+        fetch('../portfolio-projects.json')
+            .then(response => response.json())
+            .then(projects => {
+                let allProjectsHTML = '';
+                projects.forEach(project => {
+                    const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join('');
+                    const projectHTML = `
+                        <div class="project-card">
+                            <!-- المسار للصور الآن ../ متبوعًا بمسار الصورة من JSON -->
+                            <img src="../${project.image}" alt="${project.title}" class="project-image">
+                            <div class="project-content">
+                                <h3 class="project-title">${project.title}</h3>
+                                <p class="project-description">${project.description}</p>
+                                <div class="project-tags">${tagsHTML}</div>
+                                <!-- الرابط الآن يتم بناؤه من /ar/ متبوعًا بالرابط من JSON -->
+                                <a href="/ar/${project.link}" class="project-button">عرض تفاصيل المشروع</a>
+                            </div>
+                        </div>
+                    `;
+                    allProjectsHTML += projectHTML;
+                });
+                portfolioContainer.innerHTML = allProjectsHTML;
+            })
+            .catch(error => {
+                console.error('Error fetching portfolio projects:', error);
+                portfolioContainer.innerHTML = '<p>حدث خطأ أثناء تحميل المشاريع.</p>';
+            });
+    });
+  </script>
+
+</body>
+</html>
