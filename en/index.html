@@ -5,33 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Omar Badr - Data Analyst & Machine Learning Expert</title>
   
-  <!-- Correct Path to the single CSS file in the root directory -->
+  <!-- Path to the main CSS file -->
   <link rel="stylesheet" href="../style.css">
   
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google tag (gtag.js) -->
+  
+  <!-- Google tag (gtag.js ) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag( ){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-Q56ET619WZ');
   </script>
 </head>
 <body>
 
+  <!-- ======================= -->
+  <!-- ======== Header ========= -->
+  <!-- ======================= -->
   <header>
     <div class="container">
-      <!-- All navigation links corrected for the clean URL structure -->
       <nav>
         <a href="/en/" class="active">Home</a>
         <a href="/en/services/">Services</a>
         <a href="/en/portfolio/">Projects</a>
         <a href="/en/blog/">Blog</a>
-        <a href="/en/about/">About</a>
+        <a href="/en/about/">About Me</a>
         <a href="/en/contact/">Contact Me</a>
         <a href="/ar/" class="language-switcher">العربية</a>
       </nav>
@@ -39,7 +45,11 @@
   </header>
 
   <main>
+    <!-- ======================= -->
+    <!-- ====== Hero Section ====== -->
+    <!-- ======================= -->
     <section class="new-hero-section">
+      <div class="hero-overlay"></div> <!-- Overlay for better text readability -->
       <div class="container hero-content-wrapper">
           <div class="new-hero-content">
               <h1 class="new-hero-title">Transforming Your Data into Smart Decisions that Drive Growth</h1>
@@ -57,6 +67,9 @@
       </div>
     </section>
 
+    <!-- ======================= -->
+    <!-- "Why We Can Succeed" Section -->
+    <!-- ======================= -->
     <section class="why-me-section container">
         <h2 class="section-title">Why We Can Succeed Together?</h2>
         <div class="why-me-grid">
@@ -78,6 +91,9 @@
         </div>
     </section>
 
+    <!-- ======================= -->
+    <!-- Featured Projects Section -->
+    <!-- ======================= -->
     <section class="featured-projects container">
       <h2 class="section-title">Featured Projects</h2>
       <div class="portfolio-grid" id="featured-projects-grid">
@@ -85,6 +101,9 @@
       </div>
     </section>
 
+    <!-- ======================= -->
+    <!-- Testimonials Section -->
+    <!-- ======================= -->
     <section class="testimonials">
       <div class="container">
         <h2 class="section-title">What My Clients Say</h2>
@@ -108,6 +127,9 @@
       </div>
     </section>
     
+    <!-- ======================= -->
+    <!-- Call to Action Section -->
+    <!-- ======================= -->
     <section class="cta-section">
         <div class="container">
           <h2>Ready to turn your data into valuable assets?</h2>
@@ -117,35 +139,40 @@
     </section>
   </main>
 
+  <!-- ======================= -->
+  <!-- ======== Footer ========= -->
+  <!-- ======================= -->
   <footer>
     <div class="container">
       <p>© 2025 Omar Badr | All Rights Reserved</p>
     </div>
   </footer>
 
+  <!-- ======================= -->
+  <!-- ======== Scripts ======== -->
+  <!-- ======================= -->
   <script>
+    // Function to load featured projects from a JSON file
     async function loadFeaturedProjects() {
         const container = document.getElementById("featured-projects-grid");
         try {
-            // Correct path to the English JSON file
+            // Path to the English JSON file from within the /en/ directory
             const response = await fetch("portfolio-projects.json"); 
             if (!response.ok) throw new Error("Failed to load projects");
-            const allProjects = await response.json();
             
-            const featured = allProjects.slice(0, 3);
+            const allProjects = await response.json();
+            const featured = allProjects.slice(0, 3); // Display only the first 3 projects
             
             let projectsHTML = "";
             featured.forEach(project => {
                 const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join("");
                 projectsHTML += `
                     <div class="project-card">
-                        <!-- Image path is relative to /en/ which is correct -->
                         <img src="${project.image}" alt="${project.title}" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">${project.title}</h3>
                             <p class="project-description">${project.description}</p>
                             <div class="project-tags">${tagsHTML}</div>
-                            <!-- Corrected link construction for English projects -->
                             <a href="/en/${project.link}" class="project-button">View Project Details</a>
                         </div>
                     </div>
@@ -153,10 +180,11 @@
             });
             container.innerHTML = projectsHTML;
         } catch (error) {
-            container.innerHTML = `<p>Error loading projects. ${error.message}</p>`;
+            container.innerHTML = `<p style="text-align: center;">Error loading projects. ${error.message}</p>`;
         }
     }
 
+    // Call the function when the page is fully loaded
     document.addEventListener("DOMContentLoaded", () => {
         loadFeaturedProjects();
     });

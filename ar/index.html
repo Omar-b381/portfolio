@@ -5,28 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>عمر بدر - محلل بيانات وخبير تعلم آلة</title>
   
-  <!-- Correct Path to CSS file -->
+  <!-- المسار الصحيح لملف CSS الرئيسي -->
   <link rel="stylesheet" href="../style.css">
   
+  <!-- استدعاء الخطوط من Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- استدعاء مكتبة الأيقونات Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google tag (gtag.js) -->
+  
+  <!-- Google tag (gtag.js ) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag( ){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-Q56ET619WZ');
   </script>
 </head>
 <body>
 
-  <!-- Header is now a separate, sticky element -->
+  <!-- ======================= -->
+  <!-- ========= الهيدر ======== -->
+  <!-- ======================= -->
   <header>
     <div class="container">
-      <!-- All links are corrected to the new structure -->
       <nav>
         <a href="/ar/" class="active">الرئيسية</a>
         <a href="/ar/services/">الخدمات</a>
@@ -40,7 +45,11 @@
   </header>
 
   <main>
+    <!-- ======================= -->
+    <!-- ====== قسم الهيرو ====== -->
+    <!-- ======================= -->
     <section class="new-hero-section">
+      <div class="hero-overlay"></div> <!-- طبقة لونية شفافة فوق الصورة -->
       <div class="container hero-content-wrapper">
           <div class="new-hero-content">
               <h1 class="new-hero-title">تحويل بياناتك إلى قرارات ذكية تقود النمو</h1>
@@ -58,6 +67,9 @@
       </div>
     </section>
 
+    <!-- ======================= -->
+    <!-- قسم "لماذا يمكننا النجاح معاً؟" -->
+    <!-- ======================= -->
     <section class="why-me-section container">
         <h2 class="section-title">لماذا يمكننا النجاح معاً؟</h2>
         <div class="why-me-grid">
@@ -79,12 +91,19 @@
         </div>
     </section>
 
+    <!-- ======================= -->
+    <!-- ==== المشاريع المميزة ==== -->
+    <!-- ======================= -->
     <section class="featured-projects container">
       <h2 class="section-title">مشاريع مميزة</h2>
       <div class="portfolio-grid" id="featured-projects-grid">
         <p>جاري تحميل المشاريع...</p>
+      </div>
     </section>
 
+    <!-- ======================= -->
+    <!-- ====== آراء العملاء ====== -->
+    <!-- ======================= -->
     <section class="testimonials">
       <div class="container">
         <h2 class="section-title">ماذا يقول عملائي؟</h2>
@@ -108,6 +127,9 @@
       </div>
     </section>
     
+    <!-- ======================= -->
+    <!-- ==== الدعوة للتواصل ==== -->
+    <!-- ======================= -->
     <section class="cta-section">
         <div class="container">
           <h2>هل أنت مستعد لتحويل بياناتك إلى أصول قيمة؟</h2>
@@ -117,35 +139,40 @@
     </section>
   </main>
 
+  <!-- ======================= -->
+  <!-- ========= الفوتر ======== -->
+  <!-- ======================= -->
   <footer>
     <div class="container">
       <p>© 2025 عمر بدر | جميع الحقوق محفوظة</p>
     </div>
   </footer>
 
+  <!-- ======================= -->
+  <!-- ====== السكريبتات ====== -->
+  <!-- ======================= -->
   <script>
+    // دالة لتحميل المشاريع المميزة من ملف JSON
     async function loadFeaturedProjects() {
         const container = document.getElementById("featured-projects-grid");
         try {
-            // Correct path to JSON file from within the /ar/ directory
+            // المسار الصحيح لملف JSON من داخل مجلد /ar/
             const response = await fetch("portfolio-projects.json"); 
             if (!response.ok) throw new Error("فشل تحميل المشاريع");
-            const allProjects = await response.json();
             
-            const featured = allProjects.slice(0, 3);
+            const allProjects = await response.json();
+            const featured = allProjects.slice(0, 3); // عرض أول 3 مشاريع فقط
             
             let projectsHTML = "";
             featured.forEach(project => {
                 const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join("");
                 projectsHTML += `
                     <div class="project-card">
-                        <!-- Path to image is now correct as it's relative to /ar/ -->
                         <img src="${project.image}" alt="${project.title}" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">${project.title}</h3>
                             <p class="project-description">${project.description}</p>
                             <div class="project-tags">${tagsHTML}</div>
-                            <!-- Corrected link construction -->
                             <a href="/ar/${project.link}" class="project-button">عرض تفاصيل المشروع</a>
                         </div>
                     </div>
@@ -153,10 +180,11 @@
             });
             container.innerHTML = projectsHTML;
         } catch (error) {
-            container.innerHTML = `<p>حدث خطأ أثناء تحميل المشاريع. ${error.message}</p>`;
+            container.innerHTML = `<p style="text-align: center;">حدث خطأ أثناء تحميل المشاريع. ${error.message}</p>`;
         }
     }
 
+    // استدعاء الدالة عند تحميل الصفحة بالكامل
     document.addEventListener("DOMContentLoaded", () => {
         loadFeaturedProjects();
     });
