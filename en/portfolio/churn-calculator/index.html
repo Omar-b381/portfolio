@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive RFM Analysis - Omar Badr</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../../../offer-page.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <style>
+    .calculator-container { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem; }
+    .controls, .chart-container, .table-container { background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow-md); }
+    #simulation-result-text { background: #eef2ff; padding: 1rem; margin-top: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary-color); }
+    @media (min-width: 1024px) { .calculator-container { grid-template-columns: 1fr 2fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/en/">Home</a>
+        <a href="/en/services/">Services</a>
+        <a href="/en/portfolio/" class="active">Projects</a>
+        <a href="/en/blog/">Blog</a>
+        <a href="/en/about/">About</a>
+        <a href="/en/contact/">Contact Me</a>
+        <a href="/ar/portfolio/project-adidas/" class="language-switcher">العربية</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Interactive RFM Analysis: Discover Your Customer Value</h1>
+    <p>Upload a CSV file with your customers’ data (CustomerID, InvoiceDate, TotalAmount)</p>
+
+    <div class="calculator-container">
+      <div class="controls">
+        <h3>Upload Data</h3>
+        <input type="file" id="upload" class="form-input" accept=".csv">
+        <div id="simulation-result-text"><p>Upload a CSV file to view the results here.</p></div>
+      </div>
+
+      <div class="chart-container">
+        <h3>Customer Segmentation Distribution (RFM)</h3>
+        <div id="chart"></div>
+      </div>
+    </div>
+
+    <div class="table-container" style="margin-top:2rem;">
+      <h3>Detailed Customer Table by RFM</h3>
+      <table id="rfmTable" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>CustomerID</th>
+            <th>Recency</th>
+            <th>Frequency</th>
+            <th>Monetary</th>
+            <th>Segment</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('upload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      Papa.parse(file, {
+        header: true,
+        dynamicTyping: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+          runRFM(results.data);
+        }
+      });
+    });
+
+    function runRFM(data) {
+      const today = new Date(Math.max(...data.map(d => new Date(d.InvoiceDate))));
+      const customers = {};
+
+      data.forEach(row => {
+        if (!row.CustomerID) return;
+        const id = row.CustomerID;
+        const date = new Date(row.InvoiceDate);
+        if (!customers[id]) {
+          customers[id] = { lastPurchase: date, freq: 0, total: 0 };
+        }
+        customers[id].freq += 1;
+        customers[id].total += row.TotalAmount;
+        if (date > customers[id].lastPurchase) customers[id].lastPurchase = date;
+      });
+
+      const rfm = Object.entries(customers).map(([id, c]) => {
+        const recency = Math.floor((today - c.lastPurchase) / (1000*60*60*24));
+        return { CustomerID: id, Recency: recency, Frequency: c.freq, Monetary: c.total };
+      });
+
+      // Quartiles
+      const rQ = getQuartiles(rfm.map(c => c.Recency));
+      const fQ = getQuartiles(rfm.map(c => c.Frequency));
+      const mQ = getQuartiles(rfm.map(c => c.Monetary));
+
+      const segmented = rfm.map(c => {
+        const r = score(c.Recency, rQ); // lower is better
+        const f = score(c.Frequency, fQ, true);
+        const m = score(c.Monetary, mQ, true);
+        return { ...c, segmentName: mapSegment(r,f,m) };
+      });
+
+      // Count segments
+      const counts = {};
+      segmented.forEach(c => counts[c.segmentName] = (counts[c.segmentName]||0)+1);
+
+      // Chart
+      const trace = { x: Object.keys(counts), y: Object.values(counts), type: 'bar', marker:{color:'steelblue'} };
+      Plotly.newPlot('chart', [trace], { title:'Segmentation Distribution', xaxis:{title:'Segment'}, yaxis:{title:'Number of Customers'} });
+
+      // Insight
+      const top = Object.entries(counts).sort((a,b)=>b[1]-a[1])[0];
+      document.getElementById('simulation-result-text').innerHTML = `<p>Your largest segment is: <strong>${top[0]}</strong> with ${top[1]} customers.</p>`;
+
+      // Fill Table
+      const tableData = segmented.map(c => [c.CustomerID, c.Recency, c.Frequency, c.Monetary.toFixed(2), c.segmentName]);
+      if ($.fn.DataTable.isDataTable('#rfmTable')) {
+        $('#rfmTable').DataTable().clear().rows.add(tableData).draw();
+      } else {
+        $('#rfmTable').DataTable({
+          data: tableData,
+          columns: [
+            { title: "CustomerID" },
+            { title: "Recency" },
+            { title: "Frequency" },
+            { title: "Monetary" },
+            { title: "Segment" }
+          ],
+          pageLength: 10
+        });
+      }
+    }
+
+    function getQuartiles(arr) {
+      arr = arr.filter(v => !isNaN(v)).sort((a,b)=>a-b);
+      return {Q1: arr[Math.floor(arr.length*0.25)], Q2: arr[Math.floor(arr.length*0.5)], Q3: arr[Math.floor(arr.length*0.75)]};
+    }
+
+    function score(val, q, reverse=false) {
+      if(reverse){ if(val<=q.Q1) return 1; if(val<=q.Q2) return 2; if(val<=q.Q3) return 3; return 4; }
+      else { if(val<=q.Q1) return 4; if(val<=q.Q2) return 3; if(val<=q.Q3) return 2; return 1; }
+    }
+
+    // Simple mapping for demo
+    function mapSegment(r,f,m){
+      const code = `${r}${f}${m}`;
+      if(code==='444') return "Champions";
+      if(r>=3 && f>=3) return "Loyal";
+      if(r<=2 && f<=2) return "At Risk";
+      if(r>=3 && f==1) return "New Customers";
+      return "Others";
+    }
+  </script>
+</body>
+</html>
