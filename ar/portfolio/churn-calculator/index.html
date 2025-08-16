@@ -4,91 +4,467 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تحليل RFM التفاعلي - عمر بدر</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../../../offer-page.css">
+  
+  <!-- المكتبات الأساسية -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  
+  <!-- خط Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
   <style>
-    .calculator-container { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem; }
-    .controls, .chart-container, .table-container { background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow-md); }
-    #simulation-result-text { background: #eef2ff; padding: 1rem; margin-top: 1rem; border-radius: 8px; border-right: 4px solid var(--secondary-color); }
-    @media (min-width: 1024px) { .calculator-container { grid-template-columns: 1fr 2fr; } }
+    /* --- General Setup from your CSS --- */
+    :root {
+      --primary-color: #171c24; /* أزرق داكن */
+      --secondary-color: #1976d2; /* أزرق أفتح */
+      --accent-color: #ffab40; /* برتقالي للتمييز */
+      --text-color: #333;
+      --bg-color: #f4f7f9;
+      --card-bg: #ffffff;
+      --header-text: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--bg-color );
+      color: var(--text-color);
+      direction: rtl;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1, h2, h3 {
+      font-weight: 900;
+      color: var(--primary-color);
+    }
+
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: var(--accent-color);
+    }
+
+    /* --- Header & Navigation --- */
+    header {
+      background-color: var(--primary-color);
+      color: var(--header-text);
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      gap: 25px;
+    }
+    nav a {
+      color: var(--header-text);
+      font-weight: 700;
+      padding: 5px 10px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav a:hover, nav a.active {
+      border-bottom-color: var(--accent-color);
+    }
+    .language-switcher {
+        background-color: var(--accent-color);
+        color: var(--primary-color) !important;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 700;
+    }
+    .language-switcher:hover {
+        background-color: #fff;
+        border-bottom-color: transparent;
+    }
+
+    /* --- Main Content & Titles --- */
+    main {
+      padding: 40px 0;
+    }
+    .page-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .page-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent-color);
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+    .page-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    /* --- Layout and Cards --- */
+    .layout-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    @media (min-width: 1024px) {
+        .layout-grid {
+            grid-template-columns: 1fr 2fr;
+        }
+    }
+    
+    .custom-card {
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .custom-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+    .custom-card h3 {
+        margin-top: 0;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+    /* --- Form Elements & Buttons --- */
+    .file-upload-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        width: 100%;
+    }
+    .cta-button {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+    }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      color: var(--text-color);
+    }
+    #upload {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+    #file-name {
+        margin-top: 10px;
+        font-style: italic;
+        color: var(--secondary-color);
+    }
+
+    /* --- Loader & Messages --- */
+    #loader { display: none; text-align: center; padding: 2rem; }
+    .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border-left-color: var(--secondary-color);
+        animation: spin 1s ease infinite;
+        margin: 0 auto 10px;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    .alert {
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 8px;
+        border-right: 4px solid;
+    }
+    .alert-info {
+        background-color: #eef2ff;
+        border-color: var(--secondary-color);
+    }
+    .alert-danger {
+        background-color: #fee2e2;
+        border-color: #ef4444;
+        color: #991b1b;
+    }
+
+    /* --- Tables --- */
+    .table-container {
+        margin-top: 30px;
+    }
+    table.dataTable {
+        border-collapse: collapse !important;
+        width: 100%;
+        box-shadow: none;
+    }
+    table.dataTable thead th {
+        background-color: var(--primary-color);
+        color: var(--header-text);
+        font-weight: 700;
+        border: none;
+    }
+    table.dataTable tbody tr {
+        transition: background-color 0.3s;
+    }
+    table.dataTable tbody tr:nth-of-type(even) {
+        background-color: var(--bg-color);
+    }
+    table.dataTable tbody tr:hover {
+        background-color: #e0e6ef;
+    }
+    table.dataTable tbody td {
+        padding: 12px 10px;
+        border-top: 1px solid #ddd;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        background-color: var(--secondary-color) !important;
+        color: white !important;
+        border-radius: 5px !important;
+        border: none !important;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: var(--accent-color) !important;
+        color: var(--text-color) !important;
+    }
+    .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+        margin-bottom: 20px;
+    }
+
+    /* --- CTA Section --- */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 50px 40px;
+      text-align: center;
+      border-radius: 15px;
+      margin-top: 60px;
+    }
+    .cta-section h2 {
+      font-size: 2.2rem;
+      margin: 0 0 15px;
+      color: var(--header-text);
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+    .cta-button-main {
+        display: inline-block;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--header-text);
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: background-color 0.3s, transform 0.3s;
+        width: 80%;
+        max-width: 400px;
+    }
+    .cta-button-main:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+        color: white;
+    }
+
+    /* --- Footer --- */
+    footer {
+      background-color: #333;
+      color: #eee;
+      text-align: center;
+      padding: 25px 0;
+      margin-top: 60px;
+    }
   </style>
 </head>
 <body>
     <header>
+        <div class="container">
+          <nav>
+            <a href="/ar/">الرئيسية</a>
+            <a href="/ar/services/">الخدمات</a>
+            <a href="/ar/portfolio/" class="active">المشاريع</a>
+            <a href="/ar/blog/">المدونة</a>
+            <a href="/ar/about/">عني</a>
+            <a href="/ar/contact/">تواصل معي</a>
+            <a href="rfm-analysis-en.html" class="language-switcher">English</a>
+          </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">تحليل RFM التفاعلي المطور</h1>
+        <p class="page-subtitle">ارفع ملف CSV يحتوي على بيانات عملائك (CustomerID, InvoiceDate, TotalAmount) واكتشف رؤى عميقة حول سلوكهم.</p>
+
+        <div class="layout-grid">
+            <!-- Controls Column -->
+            <div class="custom-card">
+                <h3>تحميل البيانات</h3>
+                <div class="file-upload-wrapper">
+                    <button class="cta-button">اختر ملف CSV</button>
+                    <input type="file" id="upload" accept=".csv">
+                </div>
+                <div id="file-name">لم يتم اختيار ملف.</div>
+
+                <div id="loader">
+                    <div class="spinner"></div>
+                    <p>جاري التحليل، يرجى الانتظار...</p>
+                </div>
+                <div id="error-message" class="alert alert-danger" style="display:none;"></div>
+                <div id="insight-summary" class="alert alert-info" style="display:none;"></div>
+            </div>
+
+            <!-- Chart Column -->
+            <div class="custom-card">
+                <h3>توزيع شرائح العملاء</h3>
+                <div id="chart" style="min-height: 400px;">
+                    <p style="text-align: center; padding-top: 50px; color: #888;">سيظهر المخطط البياني هنا بعد رفع البيانات.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segments Insights Table -->
+        <div class="custom-card table-container" id="segments-insights-container" style="display:none;">
+            <h3>رؤى ونصائح حول شرائح العملاء</h3>
+            <table id="segmentsTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>الشريحة</th>
+                        <th>عدد العملاء</th>
+                        <th>متوسط الحداثة (يوم)</th>
+                        <th>متوسط التكرار</th>
+                        <th>متوسط القيمة (مالي)</th>
+                        <th>نصيحة تسويقية</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Detailed RFM Table -->
+        <div class="custom-card table-container" id="rfm-table-container" style="display:none;">
+            <h3>جدول تفصيلي للعملاء حسب RFM</h3>
+            <table id="rfmTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>CustomerID</th>
+                        <th>Recency</th>
+                        <th>Frequency</th>
+                        <th>Monetary</th>
+                        <th>Segment</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- CTA Section -->
     <div class="container">
-      <!-- تم تصحيح جميع الروابط هنا -->
-      <nav>
-        <a href="/ar/">الرئيسية</a>
-        <a href="/ar/services/">الخدمات</a>
-        <a href="/ar/portfolio/" class="active">المشاريع</a>
-        <a href="/ar/blog/">المدونة</a>
-        <a href="/ar/about/">عني</a>
-        <a href="/ar/contact/">تواصل معي</a>
-        <a href="/en/portfolio/project-adidas/" class="language-switcher">English</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <h1>تحليل RFM تفاعلي: اكتشف قيمة عملائك</h1>
-    <p>ارفع ملف CSV يحتوي على بيانات عملائك (CustomerID, InvoiceDate, TotalAmount)</p>
-
-    <div class="calculator-container">
-      <div class="controls">
-        <h3>تحميل البيانات</h3>
-        <input type="file" id="upload" class="form-input" accept=".csv">
-        <div id="simulation-result-text"><p>ارفع ملف CSV لعرض النتائج هنا.</p></div>
-      </div>
-
-      <div class="chart-container">
-        <h3>توزيع شرائح العملاء (RFM)</h3>
-        <div id="chart"></div>
-      </div>
+        <section class="cta-section">
+            <h2>هل أنت مستعد لتحويل بياناتك إلى أصول قيمة؟</h2>
+            <p>دعنا نتحدث عن مشروعك وكيف يمكنني مساعدتك في تحقيق أهدافك.</p>
+            <a href="/ar/contact/" class="cta-button-main">تواصل معي الآن</a>
+        </section>
     </div>
 
-    <div class="table-container" style="margin-top:2rem;">
-      <h3>جدول تفصيلي للعملاء حسب RFM</h3>
-      <table id="rfmTable" class="display" style="width:100%">
-        <thead>
-          <tr>
-            <th>CustomerID</th>
-            <th>Recency</th>
-            <th>Frequency</th>
-            <th>Monetary</th>
-            <th>Segment</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - عمر بدر. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
 
   <script>
     document.getElementById('upload').addEventListener('change', function(e) {
       const file = e.target.files[0];
+      if (!file) return;
+
+      document.getElementById('file-name').textContent = `الملف المختار: ${file.name}`;
+      document.getElementById('loader').style.display = 'block';
+      document.getElementById('error-message').style.display = 'none';
+      document.getElementById('insight-summary').style.display = 'none';
+      document.getElementById('chart').innerHTML = '<p style="text-align: center; padding-top: 50px; color: #888;">جاري توليد المخطط...</p>';
+      $('#rfm-table-container').slideUp();
+      $('#segments-insights-container').slideUp();
+
       Papa.parse(file, {
         header: true,
         dynamicTyping: true,
         skipEmptyLines: true,
         complete: function(results) {
-          runRFM(results.data);
+          setTimeout(() => {
+            runRFM(results.data);
+            document.getElementById('loader').style.display = 'none';
+          }, 50);
+        },
+        error: function(err) {
+            document.getElementById('loader').style.display = 'none';
+            showError('حدث خطأ أثناء قراءة الملف. يرجى التأكد من أنه ملف CSV صالح.');
         }
       });
     });
 
+    function showError(message) {
+        const errorDiv = document.getElementById('error-message');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+    }
+
     function runRFM(data) {
-      const today = new Date(Math.max(...data.map(d => new Date(d.InvoiceDate))));
+      if (!data.length || !data[0].hasOwnProperty('CustomerID') || !data[0].hasOwnProperty('InvoiceDate') || !data[0].hasOwnProperty('TotalAmount')) {
+        showError('خطأ: الملف يجب أن يحتوي على الأعمدة التالية: CustomerID, InvoiceDate, TotalAmount');
+        return;
+      }
+
+      const today = new Date(Math.max(...data.filter(d => d.InvoiceDate).map(d => new Date(d.InvoiceDate))));
       const customers = {};
 
       data.forEach(row => {
-        if (!row.CustomerID) return;
+        if (!row.CustomerID || !row.InvoiceDate || typeof row.TotalAmount !== 'number') return;
         const id = row.CustomerID;
         const date = new Date(row.InvoiceDate);
+        if (isNaN(date.getTime())) return;
+
         if (!customers[id]) {
           customers[id] = { lastPurchase: date, freq: 0, total: 0 };
         }
@@ -102,67 +478,161 @@
         return { CustomerID: id, Recency: recency, Frequency: c.freq, Monetary: c.total };
       });
 
-      // Quartiles
       const rQ = getQuartiles(rfm.map(c => c.Recency));
       const fQ = getQuartiles(rfm.map(c => c.Frequency));
       const mQ = getQuartiles(rfm.map(c => c.Monetary));
 
       const segmented = rfm.map(c => {
-        const r = score(c.Recency, rQ); // lower is better
+        const r = score(c.Recency, rQ, false);
         const f = score(c.Frequency, fQ, true);
         const m = score(c.Monetary, mQ, true);
-        return { ...c, segmentName: mapSegment(r,f,m) };
+        return { ...c, Segment: mapSegment(r, f, m) };
       });
 
-      // Count segments
-      const counts = {};
-      segmented.forEach(c => counts[c.segmentName] = (counts[c.segmentName]||0)+1);
+      updateChart(segmented);
+      updateInsightSummary(segmented);
+      updateRfmTable(segmented);
+      updateSegmentsInsightsTable(segmented);
 
-      // Chart
-      const trace = { x: Object.keys(counts), y: Object.values(counts), type: 'bar', marker:{color:'steelblue'} };
-      Plotly.newPlot('chart', [trace], { title:'توزيع الشرائح', xaxis:{title:'الشريحة'}, yaxis:{title:'عدد العملاء'} });
+      $('#rfm-table-container').slideDown();
+      $('#segments-insights-container').slideDown();
+    }
 
-      // Insight
-      const top = Object.entries(counts).sort((a,b)=>b[1]-a[1])[0];
-      document.getElementById('simulation-result-text').innerHTML = `<p>أكثر شريحة عندك هي: <strong>${top[0]}</strong> بعدد ${top[1]} عميل.</p>`;
+    function getQuartiles(arr) {
+      const sortedArr = arr.filter(v => !isNaN(v)).sort((a, b) => a - b);
+      const q1 = sortedArr[Math.floor(sortedArr.length * 0.25)];
+      const q2 = sortedArr[Math.floor(sortedArr.length * 0.5)];
+      const q3 = sortedArr[Math.floor(sortedArr.length * 0.75)];
+      return { Q1: q1, Q2: q2, Q3: q3 };
+    }
 
-      // Fill Table
-      const tableData = segmented.map(c => [c.CustomerID, c.Recency, c.Frequency, c.Monetary.toFixed(2), c.segmentName]);
+    function score(val, q, reverse = false) {
+      const scores = reverse ? [1, 2, 3, 4] : [4, 3, 2, 1];
+      if (val <= q.Q1) return scores[0];
+      if (val <= q.Q2) return scores[1];
+      if (val <= q.Q3) return scores[2];
+      return scores[3];
+    }
+
+    function mapSegment(r, f, m) {
+        if (r === 4 && f === 4 && m === 4) return 'الأبطال (Champions)';
+        if (r >= 3 && f >= 3) return 'العملاء المخلصون (Loyal)';
+        if (m === 4) return 'الحيتان (Whales)';
+        if (r === 4 && f >= 2) return 'العملاء الواعدون (Potential Loyalists)';
+        if (r === 4 && f === 1) return 'العملاء الجدد (New Customers)';
+        if (r === 3 && f < 2) return 'بحاجة للاهتمام (Need Attention)';
+        if (r <= 2 && f > 2) return 'العملاء في خطر (At Risk)';
+        if (r <= 2 && f <= 2) return 'على وشك النوم (About to Sleep)';
+        if (r === 1) return 'العملاء المفقودون (Lost)';
+        return 'آخرون (Others)';
+    }
+
+    function updateChart(segmentedData) {
+      const counts = segmentedData.reduce((acc, c) => {
+        acc[c.Segment] = (acc[c.Segment] || 0) + 1;
+        return acc;
+      }, {});
+      
+      const sortedSegments = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+      const trace = {
+        x: sortedSegments.map(s => s[0]),
+        y: sortedSegments.map(s => s[1]),
+        type: 'bar',
+        marker: { color: 'var(--secondary-color)' }
+      };
+      const layout = {
+        title: { text: 'توزيع العملاء على الشرائح', font: { family: 'Cairo', size: 20, color: 'var(--primary-color)' } },
+        xaxis: { title: 'شريحة العميل', tickangle: -45, font: { family: 'Cairo' } },
+        yaxis: { title: 'عدد العملاء', font: { family: 'Cairo' } },
+        margin: { t: 50, b: 150, l: 60, r: 30 },
+        paper_bgcolor: 'transparent',
+        plot_bgcolor: 'transparent'
+      };
+      Plotly.newPlot('chart', [trace], layout, {responsive: true});
+    }
+
+    function updateInsightSummary(segmentedData) {
+        const counts = segmentedData.reduce((acc, c) => {
+            acc[c.Segment] = (acc[c.Segment] || 0) + 1;
+            return acc;
+        }, {});
+        const topSegment = Object.entries(counts).sort((a,b) => b[1] - a[1])[0];
+        const summaryDiv = document.getElementById('insight-summary');
+        summaryDiv.innerHTML = `<p><strong>أكبر شريحة لديك هي: ${topSegment[0]}</strong>، وتضم ${topSegment[1]} عميلًا.</p>`;
+        summaryDiv.style.display = 'block';
+    }
+
+    function updateRfmTable(segmentedData) {
+      const tableData = segmentedData.map(c => [c.CustomerID, c.Recency, c.Frequency, c.Monetary.toFixed(2), c.Segment]);
       if ($.fn.DataTable.isDataTable('#rfmTable')) {
         $('#rfmTable').DataTable().clear().rows.add(tableData).draw();
       } else {
         $('#rfmTable').DataTable({
           data: tableData,
           columns: [
-            { title: "CustomerID" },
-            { title: "Recency" },
-            { title: "Frequency" },
-            { title: "Monetary" },
-            { title: "Segment" }
+            { title: "رقم العميل" }, { title: "الحداثة (يوم)" }, { title: "التكرار" },
+            { title: "القيمة المالية" }, { title: "الشريحة" }
           ],
-          pageLength: 10
+          pageLength: 10,
+          responsive: true,
+          language: { "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Arabic.json" }
         });
       }
     }
 
-    function getQuartiles(arr) {
-      arr = arr.filter(v => !isNaN(v)).sort((a,b)=>a-b);
-      return {Q1: arr[Math.floor(arr.length*0.25)], Q2: arr[Math.floor(arr.length*0.5)], Q3: arr[Math.floor(arr.length*0.75)]};
-    }
+    function updateSegmentsInsightsTable(segmentedData) {
+        const marketingTips = {
+            'الأبطال (Champions)': 'كافئهم ببرنامج ولاء أو وصول حصري للمنتجات الجديدة.',
+            'العملاء المخلصون (Loyal)': 'شجعهم على ترك تقييمات أو دعوة أصدقائهم عبر برامج الإحالة.',
+            'الحيتان (Whales)': 'قدم لهم خدمة عملاء شخصية وعروضاً تتناسب مع قوتهم الشرائية العالية.',
+            'العملاء الواعدون (Potential Loyalists)': 'قدم لهم عروضاً تشجع على الشراء المتكرر لتحويلهم لعملاء مخلصين.',
+            'العملاء الجدد (New Customers)': 'أرسل لهم رسائل ترحيبية ودليل استخدام للمنتج لضمان تجربة أولى ممتازة.',
+            'بحاجة للاهتمام (Need Attention)': 'تواصل معهم بعروض محدودة الوقت لإعادة جذب انتباههم.',
+            'العملاء في خطر (At Risk)': 'أرسل لهم حملات "نحن نفتقدك" مع كوبونات خصم قوية.',
+            'على وشك النوم (About to Sleep)': 'هذه آخر فرصة لإعادة تنشيطهم قبل أن يصبحوا عملاء مفقودين.',
+            'العملاء المفقودون (Lost)': 'حاول استعادتهم بحملة قوية جداً، أو استبعدهم من الحملات المكلفة.',
+            'آخرون (Others)': 'حلل هذه المجموعة بشكل أعمق لفهم سلوكهم بشكل أفضل.'
+        };
 
-    function score(val, q, reverse=false) {
-      if(reverse){ if(val<=q.Q1) return 1; if(val<=q.Q2) return 2; if(val<=q.Q3) return 3; return 4; }
-      else { if(val<=q.Q1) return 4; if(val<=q.Q2) return 3; if(val<=q.Q3) return 2; return 1; }
-    }
+        const segmentsSummary = {};
+        segmentedData.forEach(c => {
+            if (!segmentsSummary[c.Segment]) {
+                segmentsSummary[c.Segment] = { count: 0, totalR: 0, totalF: 0, totalM: 0 };
+            }
+            segmentsSummary[c.Segment].count++;
+            segmentsSummary[c.Segment].totalR += c.Recency;
+            segmentsSummary[c.Segment].totalF += c.Frequency;
+            segmentsSummary[c.Segment].totalM += c.Monetary;
+        });
 
-    // Simple mapping for demo
-    function mapSegment(r,f,m){
-      const code = `${r}${f}${m}`;
-      if(code==='444') return "Champions";
-      if(r>=3 && f>=3) return "Loyal";
-      if(r<=2 && f<=2) return "At Risk";
-      if(r>=3 && f==1) return "New Customers";
-      return "Others";
+        let tableBodyContent = '';
+        for (const segmentName in segmentsSummary) {
+            const summary = segmentsSummary[segmentName];
+            const avgR = (summary.totalR / summary.count).toFixed(1);
+            const avgF = (summary.totalF / summary.count).toFixed(1);
+            const avgM = (summary.totalM / summary.count).toFixed(2);
+            const tip = marketingTips[segmentName] || 'لا توجد نصيحة محددة.';
+
+            tableBodyContent += `<tr>
+                <td>${segmentName}</td>
+                <td>${summary.count}</td>
+                <td>${avgR}</td>
+                <td>${avgF}</td>
+                <td>${avgM}</td>
+                <td>${tip}</td>
+            </tr>`;
+        }
+        
+        if ($.fn.DataTable.isDataTable('#segmentsTable')) {
+            $('#segmentsTable').DataTable().destroy();
+        }
+        $('#segmentsTable tbody').html(tableBodyContent);
+        $('#segmentsTable').DataTable({
+            pageLength: 5,
+            responsive: true,
+            language: { "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Arabic.json" }
+        });
     }
   </script>
 </body>
