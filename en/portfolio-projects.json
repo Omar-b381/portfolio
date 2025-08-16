@@ -67,7 +67,7 @@
   "id": "rfm-analysis",
   "title": "RFM Customer Segmentation",
   "description": "Building an analytical model using RFM (Recency, Frequency, Monetary) to segment customers based on purchasing behavior and identify high-value customers.",
-  "image": "../../assets/images/rfm.jpg",
+  "image": "../../assets/images/rfm.png",
   "tags": ["Data Analysis", "Python", "Customer Segmentation"],
   "link": "portfolio/churn-calculator/"
 }

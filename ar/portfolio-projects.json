@@ -68,7 +68,7 @@
   "id": "rfm-analysis",
   "title": "تحليل RFM لتجزئة العملاء",
   "description": "بناء نموذج تحليلي باستخدام منهجية RFM (الحداثة، التكرار، القيمة المالية) لتقسيم العملاء وفق سلوك الشراء وتحديد العملاء الأكثر قيمة.",
-  "image": "../../assets/images/rfm.jpg",
+  "image": "../../assets/images/rfm.png",
   "tags": ["تحليل بيانات", "Python", "تجزئة العملاء"],
   "link": "portfolio/churn-calculator/"
 }
