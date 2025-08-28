@@ -116,6 +116,7 @@ img, video, svg {
   display: block;
 }
 
+
 :focus-visible {
   outline: 3px solid var(--color-secondary);
   outline-offset: 3px;
@@ -1681,4 +1682,645 @@ body.en-version h6 {
 .view-all-link i {
     margin-right: 0;
     margin-left: var(--spacing-xs);
+}
+/*
+  ========================================
+  BLOG-PAGE.CSS
+  Styles for the innovative blog listing page.
+  ========================================
+*/
+
+/* --- Blog Hero Section --- */
+.blog-hero {
+  text-align: center;
+  padding-bottom: var(--spacing-xl);
+}
+
+/* --- Blog Controls (Search & Filter) --- */
+.blog-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 3.5rem; /* Space for icon on the right */
+    border-radius: 50px;
+    border: 1px solid var(--color-border);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+}
+.search-bar input:focus {
+    outline: 2px solid var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.search-bar i {
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    color: var(--color-text-light);
+}
+
+.tags-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    justify-content: center;
+}
+
+.tag-button {
+    font-family: var(--font-primary);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.tag-button:hover {
+    background-color: var(--color-bg);
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+.tag-button.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+/* --- Section Titles --- */
+.section-title-alt {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: var(--spacing-sm);
+}
+.featured-post-section, .all-posts-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+/* --- Featured Post Card --- */
+.featured-post-card {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    display: flex; /* Default for mobile is column */
+    flex-direction: column;
+}
+.featured-post-image-link {
+    display: block;
+}
+.featured-post-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.featured-post-content {
+    padding: var(--spacing-lg);
+}
+.featured-post-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-block: var(--spacing-sm);
+}
+.featured-post-title a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* --- Newsletter CTA --- */
+.newsletter-cta {
+    background-color: var(--color-bg);
+    padding: var(--spacing-xl) var(--spacing-md);
+    text-align: center;
+    border-radius: var(--radius-lg);
+}
+.newsletter-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-sm);
+}
+.newsletter-content p {
+    max-width: 500px;
+    margin-inline: auto;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+}
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    max-width: 500px;
+    margin: 0 auto;
+}
+.newsletter-form input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid var(--color-border);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+}
+
+/* --- Responsive Design --- */
+@media (min-width: 768px) {
+    .blog-controls {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .search-bar {
+        flex-grow: 1;
+        max-width: 400px;
+    }
+    .tags-filter {
+        justify-content: flex-end;
+    }
+    .featured-post-card {
+        flex-direction: row;
+        align-items: center;
+    }
+    .featured-post-image-link {
+        flex: 1 1 50%;
+    }
+    .featured-post-image {
+        aspect-ratio: 4 / 3;
+        height: 100%;
+    }
+    .featured-post-content {
+        flex: 1 1 50%;
+    }
+    .newsletter-form {
+        flex-direction: row;
+    }
+}
+/*
+  ========================================
+  BLOG-PAGE-EN.CSS
+  LTR Overrides for the Blog Page.
+  ========================================
+*/
+
+/* Use Poppins font for the English version */
+body.en-version {
+  font-family: 'Poppins', sans-serif;
+}
+
+body.en-version h1,
+body.en-version h2,
+body.en-version h3,
+body.en-version h4,
+body.en-version h5,
+body.en-version h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- Search Bar LTR Adjustments --- */
+.search-bar input {
+    /* Space for icon on the left */
+    padding-left: 3.5rem; 
+    padding-right: 1.5rem;
+}
+
+.search-bar i {
+    right: auto;
+    left: 1.5rem;
+}
+
+/*
+  ========================================
+  POST-PAGE.CSS
+  Styles for the innovative single post page.
+  ========================================
+*/
+
+/* --- Progress Bar --- */
+.progress-bar {
+    height: 5px;
+    background: var(--color-accent);
+    width: 0%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    transition: width 0.1s linear;
+}
+
+/* --- Main Layout Grid --- */
+.post-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+/* --- Post Sidebar --- */
+.post-sidebar {
+    order: -1; /* Show sidebar first on mobile */
+}
+.sidebar-sticky-content {
+    position: sticky;
+    top: 100px;
+}
+.post-sidebar h4 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: 1rem;
+}
+
+/* Table of Contents */
+.table-of-contents ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-right: 2px solid var(--color-border);
+}
+.table-of-contents li a {
+    display: block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-right: 2px solid transparent;
+    margin-right: -2px;
+    transition: all 0.2s ease;
+}
+.table-of-contents li a:hover {
+    color: var(--color-secondary);
+    background-color: var(--color-bg);
+}
+.table-of-contents li a.active {
+    color: var(--color-secondary);
+    border-right-color: var(--color-secondary);
+    transform: translateX(2px);
+}
+.table-of-contents li a.level-h3 {
+    padding-right: var(--spacing-lg); /* Indent subheadings */
+}
+
+/* Share Buttons */
+.share-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+}
+.share-buttons a {
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.share-buttons a:hover {
+    color: var(--color-secondary);
+    transform: scale(1.1);
+}
+
+/* --- Main Blog Post Content --- */
+.blog-post {
+    padding: 0;
+    box-shadow: none;
+}
+.post-content {
+    max-width: 100%;
+}
+.post-author {
+    font-weight: 700;
+}
+.post-author a {
+    color: var(--color-primary);
+}
+.post-author a:hover {
+    color: var(--color-secondary);
+}
+.post-body {
+    line-height: 1.8;
+}
+.post-body h2, .post-body h3 {
+    scroll-margin-top: 100px;
+}
+
+/* Author Box */
+.author-box {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-md);
+}
+.author-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: var(--shadow-md);
+}
+.author-name {
+    margin: 0;
+}
+.author-bio {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+.author-socials {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+/* --- Related Posts Section --- */
+.related-posts-section {
+    background-color: var(--color-bg);
+    margin: var(--spacing-xl) calc(var(--container-padding) * -1);
+    padding: var(--spacing-xl) var(--container-padding);
+}
+
+/* --- Responsive Design --- */
+@media (min-width: 1024px) {
+    .post-layout-grid {
+        grid-template-columns: 250px 1fr; /* Sidebar and main content */
+    }
+    .post-sidebar {
+        order: 0; /* Sidebar on the left in LTR, will be on right in RTL */
+    }
+    .author-box {
+        flex-direction: row;
+        text-align: right;
+    }
+}
+body.en-version {
+  font-family: 'Poppins', sans-serif;
+}
+body.en-version h1,
+body.en-version h2,
+body.en-version h3,
+body.en-version h4,
+body.en-version h5,
+body.en-version h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- Table of Contents LTR Adjustments --- */
+.table-of-contents ul {
+    border-right: none;
+    border-left: 2px solid var(--color-border);
+}
+.table-of-contents li a {
+    border-right: none;
+    margin-right: 0;
+    border-left: 2px solid transparent;
+    margin-left: -2px;
+}
+.table-of-contents li a.active {
+    border-right-color: transparent;
+    border-left-color: var(--color-secondary);
+    transform: translateX(-2px);
+}
+.table-of-contents li a.level-h3 {
+    padding-right: var(--spacing-sm); /* Reset RTL padding */
+    padding-left: var(--spacing-lg); /* Indent for LTR */
+}
+
+/* --- Responsive Design LTR Adjustments --- */
+@media (min-width: 1024px) {
+    .post-layout-grid {
+        grid-template-columns: 1fr 250px; /* Main content on left, sidebar on right */
+    }
+    .post-sidebar {
+        order: 1; /* Move sidebar to the right */
+    }
+    .author-box {
+        text-align: left;
+    }
+}
+/*
+  ========================================
+  POST-PAGE.CSS
+  Styles for the innovative single post page.
+  ========================================
+*/
+
+/* --- Progress Bar --- */
+.progress-bar {
+    height: 5px;
+    background: var(--color-accent);
+    width: 0%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    transition: width 0.1s linear;
+}
+
+/* --- Main Layout Grid --- */
+.post-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+/* --- Post Sidebar --- */
+.post-sidebar {
+    order: -1;
+}
+.sidebar-sticky-content {
+    position: sticky;
+    top: 100px;
+}
+.post-sidebar h4 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Table of Contents */
+.table-of-contents ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-right: 2px solid var(--color-border);
+}
+.table-of-contents li a {
+    display: block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-right: 2px solid transparent;
+    margin-right: -2px;
+    transition: all 0.2s ease;
+}
+.table-of-contents li a:hover {
+    color: var(--color-secondary);
+    background-color: var(--color-bg);
+}
+.table-of-contents li a.active {
+    color: var(--color-secondary);
+    border-right-color: var(--color-secondary);
+    transform: translateX(2px);
+}
+.table-of-contents li a.level-h3 {
+    padding-right: var(--spacing-lg);
+}
+
+/* Share Buttons */
+.share-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+}
+.share-buttons a {
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.share-buttons a:hover {
+    color: var(--color-secondary);
+    transform: scale(1.1);
+}
+
+/* --- Main Blog Post Content --- */
+.blog-post {
+    padding: 0;
+    box-shadow: none;
+    background: none;
+}
+
+/* === MODIFICATION START: Professional Post Header === */
+.post-header {
+    background-color: var(--color-primary);
+    color: var(--color-header-text);
+    padding: var(--spacing-xl) var(--spacing-md);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.post-header .post-card-tags span {
+    background-color: hsla(0, 0%, 100%, 0.1);
+    color: white;
+}
+
+.post-title {
+    color: white; /* This makes the title white */
+    margin-block: var(--spacing-sm);
+}
+
+.post-meta {
+    color: var(--color-header-text);
+    opacity: 0.8;
+}
+
+.post-meta a {
+    color: var(--color-accent); /* Make author link stand out */
+}
+/* === MODIFICATION END === */
+
+
+.post-content {
+    max-width: 100%;
+    background-color: var(--color-card-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+.post-author a {
+    color: var(--color-primary);
+}
+.post-author a:hover {
+    color: var(--color-secondary);
+}
+.post-body {
+    line-height: 1.8;
+}
+.post-body h2, .post-body h3 {
+    scroll-margin-top: 100px;
+}
+
+/* Author Box */
+.author-box {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-md);
+}
+.author-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: var(--shadow-md);
+}
+.author-name {
+    margin: 0;
+}
+.author-bio {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+.author-socials {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+/* --- Related Posts Section --- */
+.related-posts-section {
+    background-color: var(--color-bg);
+    margin: var(--spacing-xl) calc(var(--container-padding) * -1) 0;
+    padding: var(--spacing-xl) var(--container-padding);
+    border-top: 1px solid var(--color-border);
+}
+
+/* --- Responsive Design --- */
+@media (min-width: 1024px) {
+    .post-layout-grid {
+        grid-template-columns: 250px 1fr;
+    }
+    .post-sidebar {
+        order: 0;
+    }
+    .author-box {
+        flex-direction: row;
+        text-align: right;
+    }
+}
+/* === MODIFICATION: Light Author Text in Header === */
+.post-header .post-author {
+    color: var(--color-header-text); /* Light color for the "By:" text */
+}
+
+.post-header .post-author a {
+    color: var(--color-accent); /* Make the author's name stand out with the accent color */
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-accent);
+    transition: color 0.2s ease;
+}
+
+.post-header .post-author a:hover {
+    color: white;
 }

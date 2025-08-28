@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>قراءة مقال - عمر بدر</title>
-
-  <!-- المسار الصحيح: العودة ثلاث خطوات للخلف للوصول للمجلد الرئيسي -->
-  <link rel="stylesheet" href="/../../../style.css">
+  
+  <link rel="stylesheet" href="../../../style.css">
+  <!-- المسار الصحيح لملف الصفحة الجديد -->
+  <link rel="stylesheet" href="../../post-page.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -21,6 +23,9 @@
   </script>
 </head>
 <body>
+  <!-- شريط التقدم -->
+  <div class="progress-bar" id="progress-bar"></div>
+
   <header>
     <div class="container">
       <nav>
@@ -34,137 +39,44 @@
       </nav>
     </div>
   </header>
+  
   <main class="container">
-    <article class="blog-post" id="post-container"><p>جاري تحميل المقال...</p></article>
+    <div class="post-layout-grid">
+      <!-- ===== الشريط الجانبي الذكي ===== -->
+      <aside class="post-sidebar">
+        <div class="sidebar-sticky-content">
+          <h4>في هذا المقال</h4>
+          <nav id="toc-container" class="table-of-contents"></nav>
+          
+          <h4>شارك المقال</h4>
+          <div class="share-buttons">
+            <a href="#" id="share-twitter" target="_blank" aria-label="شارك على تويتر"><i class="fab fa-twitter"></i></a>
+            <a href="#" id="share-linkedin" target="_blank" aria-label="شارك على لينكدإن"><i class="fab fa-linkedin"></i></a>
+            <a href="#" id="share-whatsapp" target="_blank" aria-label="شارك على واتساب"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" id="share-copy" aria-label="نسخ الرابط"><i class="fas fa-copy"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ===== محتوى المقال الرئيسي ===== -->
+      <article class="blog-post" id="post-container">
+        <p>جاري تحميل المقال...</p>
+      </article>
+    </div>
+
+    <!-- ===== المقالات ذات الصلة ===== -->
     <section class="related-posts-section">
         <h2 class="section-title">مقالات أخرى قد تعجبك</h2>
         <div class="blog-grid" id="related-posts-container"></div>
     </section>
   </main>
+  
   <footer>
     <div class="container">
       <p>© 2025 عمر بدر | جميع الحقوق محفوظة</p>
     </div>
   </footer>
 
-  <!-- ==================== كود JavaScript محدث وذكي ==================== -->
-  <script>
-    function displayError(container, title, message) {
-        container.innerHTML = `<div class="error-message"><h1>${title}</h1><p>${message}</p></div>`;
-    }
-
-    async function fetchPosts() {
-        try {
-            // المسار للوصول لملف JSON من داخل مجلد المقال
-            const response = await fetch('../../blog-posts.json');
-            if (!response.ok) throw new Error(`Network error: ${response.statusText}`);
-            return await response.json();
-        } catch (error) {
-            console.error('Error fetching blog posts:', error);
-            return null;
-        }
-    }
-
-    function renderPost(post, container) {
-        document.title = post.title + ' - عمر بدر';
-        const tagsHTML = post.tags.map(tag => `<span>${tag}</span>`).join('');
-        let authorHTML = '';
-        if (post.author && post.author.name) {
-          if (post.author.linkedin) {
-            authorHTML = `<span class="post-author"><i class="fas fa-user"></i> بقلم: <a href="${post.author.linkedin}" target="_blank" class="author-link">${post.author.name} <i class="fab fa-linkedin"></i></a></span>`;
-          } else {
-            authorHTML = `<span class="post-author"><i class="fas fa-user"></i> بقلم: ${post.author.name}</span>`;
-          }
-        } else {
-          authorHTML = `<span class="post-author"><i class="fas fa-user"></i> بقلم: عمر بدر</span>`;
-        }
-        const postHTML = `
-            <header class="post-header">
-                <div class="post-card-tags">${tagsHTML}</div>
-                <h1 class="post-title">${post.title}</h1>
-                <div class="post-meta">
-                    ${authorHTML}
-                    <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
-                    <span><i class="fas fa-clock"></i> قراءة ${post.readTime}</span>
-                </div>
-            </header>
-            <img src="../../${post.image}" alt="${post.title}" class="post-featured-image">
-            <div class="post-content">${post.content}</div>
-            <div class="back-to-portfolio">
-                 <a href="/ar/blog/" class="cta-button secondary">العودة إلى كل المقالات</a>
-            </div>
-        `;
-        container.innerHTML = postHTML;
-    }
-
-    function renderRelatedPosts(allPosts, currentPostId, container) {
-        const related = allPosts.filter(p => p.id !== currentPostId && p.date !== 'قريباً');
-        const shuffled = related.sort(() => 0.5 - Math.random());
-        const selectedPosts = shuffled.slice(0, 3);
-        if (selectedPosts.length === 0) {
-            document.querySelector('.related-posts-section').style.display = 'none';
-            return;
-        }
-        let relatedHTML = '';
-        selectedPosts.forEach(post => {
-            const tagsHTML = post.tags.map(tag => `<span>${tag}</span>`).join('');
-            relatedHTML += `
-                <div class="blog-post-card">
-                    <a href="/ar/${post.link}" class="post-card-image-link">
-                        <img src="../../${post.image}" alt="${post.title}" class="post-card-image">
-                    </a>
-                    <div class="post-card-content">
-                        <div class="post-card-tags">${tagsHTML}</div>
-                        <h3 class="post-card-title"><a href="/ar/${post.link}">${post.title}</a></h3>
-                        <div class="post-card-meta"><span><i class="fas fa-calendar-alt"></i> ${post.date}</span></div>
-                    </div>
-                </div>
-            `;
-        });
-        container.innerHTML = relatedHTML;
-    }
-
-    document.addEventListener('DOMContentLoaded', async function() {
-        const postContainer = document.getElementById('post-container');
-        const relatedContainer = document.getElementById('related-posts-container');
-        
-        // --- الطريقة الجديدة لتحديد المقال من الرابط ---
-        // 1. احصل على مسار الرابط الحالي
-        const path = window.location.pathname; // مثال: /ar/posts/ecommerce-growth/
-        // 2. قسّم المسار للحصول على الأجزاء
-        const pathSegments = path.split('/').filter(segment => segment.length > 0); // ["ar", "posts", "ecommerce-growth"]
-        // 3. احصل على الجزء الأخير، وهو معرّف المقال
-        const postId = pathSegments[pathSegments.length - 1];
-
-        // تحديث رابط اللغة
-        const langSwitcher = document.getElementById('language-switcher-link');
-        if(langSwitcher) {
-            langSwitcher.href = `/en/posts/${postId}/`;
-        }
-
-        if (!postId || pathSegments.indexOf('posts') === -1) {
-            displayError(postContainer, 'خطأ', `لم يتم تحديد مقال. يرجى العودة إلى <a href="/ar/blog/">صفحة المدونة</a> واختيار مقال.`);
-            document.querySelector('.related-posts-section').style.display = 'none';
-            return;
-        }
-
-        const allPosts = await fetchPosts();
-        if (!allPosts) {
-            displayError(postContainer, 'خطأ في التحميل', 'حدث خطأ أثناء جلب بيانات المقالات.');
-            document.querySelector('.related-posts-section').style.display = 'none';
-            return;
-        }
-
-        const post = allPosts.find(p => p.id === postId);
-
-        if (post) {
-            renderPost(post, postContainer);
-            renderRelatedPosts(allPosts, postId, relatedContainer);
-        } else {
-            displayError(postContainer, 'خطأ 404: المقال غير موجود', `لم نتمكن من العثور على المقال الذي تبحث عنه. <a href="/ar/blog/">العودة إلى المدونة</a>.`);
-            document.querySelector('.related-posts-section').style.display = 'none';
-        }
-    });
-  </script>
+  <script src="../post-page.js"></script>
 </body>
 </html>

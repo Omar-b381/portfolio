@@ -6,19 +6,21 @@
   <title>المدونة - عمر بدر</title>
   
   <link rel="stylesheet" href="../../style.css">
+  <!-- المسار الصحيح لملف الصفحة الجديد -->
+  <link rel="stylesheet" href="blog-page.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google tag (gtag.js) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Q56ET619WZ');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q56ET619WZ');
   </script>
 </head>
 <body>
@@ -38,14 +40,50 @@
   </header>
 
   <main class="container">
-    <section>
-      <h1 class="page-title">المدونة</h1>
-      <p class="page-subtitle">هنا أشارك أفكاري، تحليلاتي، وشروحاتي في عالم البيانات وتعلم الآلة. مكان لنتعلم وننمو معاً.</p>
-      
-      <div class="blog-grid" id="blog-grid-container">
-        <!-- سيتم إنشاء بطاقات المقالات هنا -->
-      </div>
+    <section class="blog-hero">
+      <h1 class="page-title">مركز رؤى البيانات</h1>
+      <p class="page-subtitle">أشارك هنا أفكاري وتحليلاتي وشروحاتي في عالم البيانات. مكان لنتعلم وننمو معًا.</p>
     </section>
+
+    <!-- ===== أدوات التحكم (بحث وفلترة) ===== -->
+    <div class="blog-controls">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="ابحث عن مقال...">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="tags-filter" id="tags-filter-container">
+            <!-- سيتم إنشاء الوسوم هنا بواسطة JavaScript -->
+        </div>
+    </div>
+
+    <!-- ===== المقال المميز ===== -->
+    <section class="featured-post-section">
+        <h2 class="section-title-alt">أحدث المقالات</h2>
+        <div id="featured-post-container">
+            <!-- سيتم وضع المقال المميز هنا -->
+        </div>
+    </section>
+    
+    <!-- ===== بقية المقالات ===== -->
+    <section class="all-posts-section">
+        <h2 class="section-title-alt">كل المقالات</h2>
+        <div class="blog-grid" id="other-posts-container">
+            <!-- سيتم إنشاء بطاقات المقالات هنا -->
+        </div>
+    </section>
+
+    <!-- ===== النشرة الإخبارية ===== -->
+    <section class="newsletter-cta">
+        <div class="newsletter-content">
+            <h3>ابق على اطلاع</h3>
+            <p>اشترك في النشرة الإخبارية الشهرية للحصول على أحدث المقالات والرؤى مباشرة في بريدك الإلكتروني.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+                <button type="submit" class="cta-button">اشترك الآن</button>
+            </form>
+        </div>
+    </section>
+
   </main>
 
   <footer>
@@ -54,60 +92,143 @@
     </div>
   </footer>
 
-  <!-- ==== JavaScript Code to Load Blog Posts - Fully Corrected ==== -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const blogGridContainer = document.getElementById('blog-grid-container');
-      fetch('../blog-posts.json')
-        .then(response => response.json())
-        .then(posts => {
-          let allPostsHTML = '';
-          posts.forEach(post => {
-            if (post.date === 'قريباً') return;
-            
+    document.addEventListener('DOMContentLoaded', async () => {
+        const featuredContainer = document.getElementById('featured-post-container');
+        const othersContainer = document.getElementById('other-posts-container');
+        const tagsContainer = document.getElementById('tags-filter-container');
+        const searchInput = document.getElementById('search-input');
+        let allPosts = [];
+
+        // Fetch all posts from the JSON file
+        try {
+            const response = await fetch('../blog-posts.json');
+            if (!response.ok) throw new Error('Network response was not ok');
+            allPosts = await response.json();
+        } catch (error) {
+            console.error('Error fetching blog posts:', error);
+            othersContainer.innerHTML = '<p>حدث خطأ أثناء تحميل المقالات.</p>';
+            return;
+        }
+
+        // --- Helper function to create post HTML ---
+        const createPostHTML = (post, isFeatured = false) => {
             const tagsHTML = post.tags.map(tag => `<span>${tag}</span>`).join('');
-            
-            // --- ✅ تم إضافة منطق الكاتب هنا ---
-            let authorHTML = '';
+            let authorHTML = `<span><i class="fas fa-user"></i> بقلم: عمر بدر</span>`;
             if (post.author && post.author.name) {
-              if (post.author.linkedin) {
-                authorHTML = `<span><i class="fas fa-user"></i> بقلم: <a href="${post.author.linkedin}" target="_blank" class="author-link">${post.author.name} <i class="fab fa-linkedin"></i></a></span>`;
-              } else {
-                authorHTML = `<span><i class="fas fa-user"></i> بقلم: ${post.author.name}</span>`;
-              }
-            } else {
-              // Fallback default author
-              authorHTML = `<span><i class="fas fa-user"></i> بقلم: عمر بدر</span>`;
+              authorHTML = `<span><i class="fas fa-user"></i> بقلم: <a href="${post.author.linkedin}" target="_blank" rel="noopener noreferrer" class="author-link">${post.author.name}</a></span>`;
             }
 
-            const postHTML = `
-              <div class="blog-post-card">
-                <a href="/ar/${post.link}" class="post-card-image-link">
-                  <img src="../${post.image}" alt="${post.title}" class="post-card-image">
-                </a>
-                <div class="post-card-content">
-                  <div class="post-card-tags">${tagsHTML}</div>
-                  <h3 class="post-card-title">
-                    <a href="/ar/${post.link}">${post.title}</a>
-                  </h3>
-                  <p class="post-card-excerpt">${post.excerpt}</p>
-                  
-                  <!-- ✅ تم ملء هذا الجزء الآن -->
-                  <div class="post-card-meta">
-                    ${authorHTML}
-                    <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
-                    <span><i class="fas fa-clock"></i> ${post.readTime}</span>
-                  </div>
-                </div>
-              </div>
-            `;
-            allPostsHTML += postHTML;
-          });
-          blogGridContainer.innerHTML = allPostsHTML;
-        })
-        .catch(error => {
-          console.error('Error fetching blog posts:', error);
-          blogGridContainer.innerHTML = '<p>حدث خطأ أثناء تحميل المقالات.</p>';
+            if (isFeatured) {
+                return `
+                <div class="featured-post-card">
+                    <a href="/ar/${post.link}" class="featured-post-image-link">
+                        <img src="../${post.image}" alt="${post.title}" class="featured-post-image">
+                    </a>
+                    <div class="featured-post-content">
+                        <div class="post-card-tags">${tagsHTML}</div>
+                        <h3 class="featured-post-title"><a href="/ar/${post.link}">${post.title}</a></h3>
+                        <p class="post-card-excerpt">${post.excerpt}</p>
+                        <div class="post-card-meta">
+                            ${authorHTML}
+                            <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
+                            <span><i class="fas fa-clock"></i> ${post.readTime}</span>
+                        </div>
+                    </div>
+                </div>`;
+            } else {
+                return `
+                <div class="blog-post-card">
+                    <a href="/ar/${post.link}" class="post-card-image-link">
+                        <img src="../${post.image}" alt="${post.title}" class="post-card-image">
+                    </a>
+                    <div class="post-card-content">
+                        <div class="post-card-tags">${tagsHTML}</div>
+                        <h3 class="post-card-title"><a href="/ar/${post.link}">${post.title}</a></h3>
+                        <div class="post-card-meta">
+                            <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
+                            <span><i class="fas fa-clock"></i> ${post.readTime}</span>
+                        </div>
+                    </div>
+                </div>`;
+            }
+        };
+
+        // --- Function to display posts ---
+        const displayPosts = (postsToDisplay) => {
+            if (postsToDisplay.length === 0) {
+                othersContainer.innerHTML = '<p>لا توجد مقالات تطابق بحثك.</p>';
+                featuredContainer.innerHTML = '';
+                document.querySelector('.featured-post-section').style.display = 'none';
+                return;
+            }
+
+            // Separate the first post as featured, rest in the grid
+            const [latestPost, ...otherPosts] = postsToDisplay;
+            
+            featuredContainer.innerHTML = createPostHTML(latestPost, true);
+            othersContainer.innerHTML = otherPosts.map(post => createPostHTML(post, false)).join('');
+            document.querySelector('.featured-post-section').style.display = 'block';
+        };
+        
+        // --- Function to populate tags filter ---
+        const populateTags = () => {
+            const allTags = new Set(allPosts.flatMap(post => post.tags));
+            let tagsHTML = '<button class="tag-button active" data-tag="all">كل المواضيع</button>';
+            allTags.forEach(tag => {
+                tagsHTML += `<button class="tag-button" data-tag="${tag}">${tag}</button>`;
+            });
+            tagsContainer.innerHTML = tagsHTML;
+        };
+
+        // --- Initial Load ---
+        displayPosts(allPosts);
+        populateTags();
+
+        // --- Event Listener for Tags Filter ---
+        tagsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('tag-button')) {
+                // Update active state
+                document.querySelectorAll('.tag-button').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+
+                const selectedTag = e.target.getAttribute('data-tag');
+                searchInput.value = ''; // Clear search
+
+                if (selectedTag === 'all') {
+                    displayPosts(allPosts);
+                } else {
+                    const filteredPosts = allPosts.filter(post => post.tags.includes(selectedTag));
+                    // For filtered view, we will put all results in the main grid
+                    featuredContainer.innerHTML = '';
+                    document.querySelector('.featured-post-section').style.display = 'none';
+                    othersContainer.innerHTML = filteredPosts.map(post => createPostHTML(post, false)).join('');
+                }
+            }
+        });
+        
+        // --- Event Listener for Search Input ---
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Deactivate all tag buttons
+            document.querySelectorAll('.tag-button').forEach(btn => btn.classList.remove('active'));
+
+            if (!searchTerm) {
+                displayPosts(allPosts);
+                document.querySelector('.tag-button[data-tag="all"]').classList.add('active');
+                return;
+            }
+            
+            const filteredPosts = allPosts.filter(post => 
+                post.title.toLowerCase().includes(searchTerm) || 
+                post.excerpt.toLowerCase().includes(searchTerm)
+            );
+            
+            // For search view, we put all results in the main grid
+            featuredContainer.innerHTML = '';
+            document.querySelector('.featured-post-section').style.display = 'none';
+            othersContainer.innerHTML = filteredPosts.map(post => createPostHTML(post, false)).join('');
         });
     });
   </script>
