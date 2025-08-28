@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Services - Omar Badr</title>
   
-  <!-- Corrected CSS Path (two steps back) -->
   <link rel="stylesheet" href="../../style.css">
-  
+  <!-- Path to the original Arabic styles -->
+  <link rel="stylesheet" href="../../ar/services/services-page.css">
+  <!-- Path to the NEW English override styles -->
+  <link rel="stylesheet" href="services-page-en.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Added Poppins font for English text -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
   <script>
@@ -21,138 +26,176 @@
     gtag('config', 'G-Q56ET619WZ');
   </script>
 </head>
-<body>
+<body class="en-version"> <!-- Added a class for easier font targeting -->
 
   <header>
     <div class="container">
-      <!-- Corrected all navigation links -->
       <nav>
         <a href="/en/">Home</a>
         <a href="/en/services/" class="active">Services</a>
-        <a href="/en/portfolio/">Projects</a>
+        <a href="/en/portfolio/">Portfolio</a>
         <a href="/en/blog/">Blog</a>
         <a href="/en/about/">About</a>
-        <a href="/en/contact/">Contact Me</a>
+        <a href="/en/contact/">Contact</a>
         <a href="/ar/services/" class="language-switcher">العربية</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section>
-      <h1 class="page-title">My Services</h1>
-      <p class="page-subtitle">I provide integrated data solutions to help companies grow and make smarter decisions. Whether you need to understand your current data, collect new data, or visualize it interactively, I can help.</p>
-      
-      <div class="services-grid">
+    <section class="services-hero">
+      <h1 class="page-title">From Raw Data to Winning Decisions</h1>
+      <p class="page-subtitle">I offer a suite of specialized solutions designed to help you harness the power of your data, transforming it from mere numbers into a core driver of your business growth.</p>
+    </section>
+    
+    <div class="services-layout-grid">
+      <!-- ===== Services Navigation Panel ===== -->
+      <aside class="services-nav-panel">
+        <h3>Services at a Glance</h3>
+        <nav>
+          <a href="#service-analysis" class="nav-link active"><i class="fas fa-search-plus"></i> Strategic Data Analysis</a>
+          <a href="#service-dashboard" class="nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard Design</a>
+          <a href="#service-scraping" class="nav-link"><i class="fas fa-cloud-download-alt"></i> Web Scraping</a>
+          <a href="#service-ml" class="nav-link"><i class="fas fa-brain"></i> Machine Learning Models</a>
+          <a href="#offer-package" class="nav-link offer-link"><i class="fas fa-star"></i> Starter Package</a>
+        </nav>
+      </aside>
+
+      <!-- ===== Services Content Details ===== -->
+      <div class="services-content-panel">
         
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
-          <h3 class="service-title">Comprehensive Data Analysis</h3>
-          <p class="service-description">I analyze your data in-depth to uncover hidden patterns, identify strengths and weaknesses, and provide actionable insights that help you understand your business performance and identify future growth opportunities.</p>
-          <ul class="service-outcomes">
-            <li><i class="fas fa-check-circle"></i> Understand customer behavior.</li>
-            <li><i class="fas fa-check-circle"></i> Identify the most profitable products.</li>
-            <li><i class="fas fa-check-circle"></i> Detailed reports and strategic recommendations.</li>
-          </ul>
-        </div>
+        <article id="service-analysis" class="service-detail-card">
+          <div class="service-header">
+            <i class="service-icon fas fa-search-plus"></i>
+            <h2>Strategic Data Analysis</h2>
+          </div>
+          <p>This service is the foundation for discovering the "why" behind your numbers. I dive deep into your data to uncover hidden patterns, identify strengths and weaknesses, and provide actionable insights that help you understand your business performance and pinpoint future growth opportunities.</p>
+          <div class="service-deliverables">
+            <h4>What you'll get:</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> A comprehensive analytical report highlighting key findings.</li>
+              <li><i class="fas fa-check-circle"></i> Identification of the most critical KPIs for your business.</li>
+              <li><i class="fas fa-check-circle"></i> Clear, data-driven strategic recommendations.</li>
+              <li><i class="fas fa-check-circle"></i> A one-hour presentation and discussion of the results.</li>
+            </ul>
+          </div>
+        </article>
 
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
-          <h3 class="service-title">Dashboard Design</h3>
-          <p class="service-description">I design and build interactive dashboards using Power BI. I transform your complex data into easy-to-understand visualizations that allow you to track Key Performance Indicators (KPIs) in real-time and make quick, evidence-based decisions.</p>
-          <ul class="service-outcomes">
-            <li><i class="fas fa-check-circle"></i> Real-time performance tracking.</li>
-            <li><i class="fas fa-check-circle"></i> Attractive and interactive data visualization.</li>
-            <li><i class="fas fa-check-circle"></i> Faster decision-making support.</li>
-          </ul>
-        </div>
+        <article id="service-dashboard" class="service-detail-card">
+          <div class="service-header">
+            <i class="service-icon fas fa-tachometer-alt"></i>
+            <h2>Interactive Dashboard Design</h2>
+          </div>
+          <p>I transform your complex datasets into an easy-to-understand visual story. Using Power BI, I design and build interactive dashboards that allow you to monitor Key Performance Indicators (KPIs) in real-time, enabling you to make fast, evidence-based decisions.</p>
+           <div class="service-deliverables">
+            <h4>What you'll get:</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> A custom, interactive dashboard on Power BI.</li>
+              <li><i class="fas fa-check-circle"></i> Connection to your data sources (up to 3).</li>
+              <li><i class="fas fa-check-circle"></i> A responsive design for both desktop and mobile.</li>
+              <li><i class="fas fa-check-circle"></i> Basic training on how to use and interpret the dashboard.</li>
+            </ul>
+          </div>
+        </article>
+        
+        <article id="service-scraping" class="service-detail-card">
+           <div class="service-header">
+            <i class="service-icon fas fa-cloud-download-alt"></i>
+            <h2>Web Scraping Solutions</h2>
+          </div>
+          <p>Need data from competitor websites, e-commerce marketplaces, or any other online source? I build custom scrapers using Python to automatically collect the data you need, organizing it into structured, analysis-ready files.</p>
+           <div class="service-deliverables">
+            <h4>What you'll get:</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> A custom Python script tailored to your needs.</li>
+              <li><i class="fas fa-check-circle"></i> Extracted data in a structured format (CSV, Excel, JSON).</li>
+              <li><i class="fas fa-check-circle"></i> Clear documentation on how to run the tool.</li>
+              <li><i class="fas fa-check-circle"></i> A 99% accuracy guarantee for the extracted data.</li>
+            </ul>
+          </div>
+        </article>
 
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-cloud-download-alt"></i></div>
-          <h3 class="service-title">Web Scraping</h3>
-          <p class="service-description">Do you need data from competitors' websites, e-commerce markets, or any other source on the internet? I build custom scrapers to automatically collect the data you need and organize it into analysis-ready files.</p>
-          <ul class="service-outcomes">
-            <li><i class="fas fa-check-circle"></i> Collect competitor and pricing data.</li>
-            <li><i class="fas fa-check-circle"></i> Build databases from web sources.</li>
-            <li><i class="fas fa-check-circle"></i> Automate the data collection process.</li>
-          </ul>
-        </div>
+        <article id="service-ml" class="service-detail-card">
+          <div class="service-header">
+            <i class="service-icon fas fa-brain"></i>
+            <h2>Machine Learning Models (Coming Soon)</h2>
+          </div>
+          <p>I take your data to the next level by building custom predictive and classification models. Whether you want to predict customer churn, forecast future sales, or automate data classification, I can build the right solution for you.</p>
+           <div class="service-deliverables">
+            <h4>What you'll get:</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> A trained and ready-to-use machine learning model.</li>
+              <li><i class="fas fa-check-circle"></i> A detailed report on the model's performance and accuracy.</li>
+              <li><i class="fas fa-check-circle"></i> The complete source code for the model.</li>
+            </ul>
+          </div>
+        </article>
 
+        <!-- ===== Starter Package (Special Offer) ===== -->
+        <div id="offer-package" class="offer-package-card">
+            <div class="offer-tag">Special Offer</div>
+            <h2>Starter Package</h2>
+            <p>Ideal for small businesses and startups looking for quick insights at an affordable cost. Includes basic data analysis and a mini-dashboard.</p>
+            <div class="offer-price">
+                <span class="current-price">600 EGP </span>
+                <span class="original-price">1000 EGP</span>
+            </div>
+            <a href="/en/contact/?subject=Starter%20Package%20Inquiry" class="cta-button">Claim This Offer</a>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <section class="how-it-works">
-        <h2 class="section-title">How We Work Together</h2>
-        <div class="steps-container">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h4 class="step-title">Discussion & Understanding</h4>
-                <p>We start with a session to understand your goals, the challenges you face, and the data you have.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h4 class="step-title">Analysis & Implementation</h4>
-                <p>I analyze your data or build the required tools, keeping you updated on the progress along the way.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h4 class="step-title">Delivery & Support</h4>
-                <p>I deliver the final product (reports, dashboard, data) with a full explanation of the results and provide necessary support.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="container">
-        <h2>Ready to turn your data into valuable assets?</h2>
-        <p>Let's talk about your project and how I can help you achieve your goals.</p>
-        <!-- Corrected CTA link -->
-        <a href="/en/contact/" class="cta-button">Contact Me Now</a>
+    <!-- ===== FAQ Section ===== -->
+    <section class="faq-section">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-accordion">
+        <details class="faq-item">
+          <summary class="faq-question">What kind of data can you analyze?</summary>
+          <p class="faq-answer">I can work with various types of data, including sales data, customer data (CRM), website user behavior, financial data, and more. As long as the data is available digitally, it can be analyzed.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How long does a project take?</summary>
+          <p class="faq-answer">The timeline depends on the project's scope and complexity. A small dashboard project might take a few days, while an in-depth strategic analysis could take a week or more. I will provide a clear timeline after discussing your project details.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Is my data confidential?</summary>
+          <p class="faq-answer">Absolutely. Your data's confidentiality is my top priority. I am fully prepared to sign a Non-Disclosure Agreement (NDA) before starting any project to ensure your data is completely protected.</p>
+        </details>
       </div>
     </section>
 
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="container">
       <p>© 2025 Omar Badr | All Rights Reserved</p>
     </div>
   </footer>
-<!-- Offer Button -->
-<button onclick="document.getElementById('offerModal').style.display='block'" 
-        style="padding:12px 20px; background:#e63946; color:#fff; border:none; border-radius:8px; font-size:16px; cursor:pointer;">
-  🎉 Special Offer
-</button>
+  
+  <script>
+    // JavaScript for active state on scroll (works for both LTR/RTL)
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.service-detail-card, .offer-package-card');
+        const navLinks = document.querySelectorAll('.services-nav-panel .nav-link');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
 
-<!-- Popup Modal -->
-<div id="offerModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
-  <div style="background:#fff; width:90%; max-width:500px; margin:10% auto; padding:30px; border-radius:15px; text-align:center; position:relative;">
-    
-    <!-- Close Button -->
-    <span onclick="document.getElementById('offerModal').style.display='none'" 
-          style="position:absolute; top:15px; right:20px; font-size:22px; cursor:pointer;">&times;</span>
-    
-    <h2 style="color:#2c3e50;">🔥 Limited Time Offer 🔥</h2>
-    <p style="font-size:18px; color:#555;">Get your data analysis + professional dashboard with <strong>40% OFF</strong>.</p>
-    
-    <div style="margin:20px 0;">
-      <p style="font-size:20px; color:#999; text-decoration:line-through;">1000 EGP</p>
-      <p style="font-size:28px; font-weight:bold; color:#e63946;">600 EGP</p>
-    </div>
-    
-    <a href="/en/contact/" 
-       style="display:inline-block; margin-top:15px; padding:12px 25px; background:#2ecc71; color:#fff; text-decoration:none; border-radius:8px; font-size:18px;">
-       Claim This Offer Now
-    </a>
-  </div>
-</div>
-
-<script>
-  // Auto show the offer when the page loads
-  window.onload = function() {
-    document.getElementById('offerModal').style.display = 'block';
-  };
-</script>
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+  </script>
 
 </body>
 </html>

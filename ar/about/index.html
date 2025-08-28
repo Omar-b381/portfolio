@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>عني - عمر بدر</title>
   
-  <!-- تم تصحيح المسار هنا -->
+  <!-- المسار الصحيح لملف CSS الرئيسي -->
   <link rel="stylesheet" href="../../style.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- استدعاء مكتبة الأيقونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Q56ET619WZ');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q56ET619WZ');
   </script>
-
 </head>
 <body>
 
   <header>
     <div class="container">
-      <!-- تم تصحيح جميع الروابط هنا -->
       <nav>
         <a href="/ar/">الرئيسية</a>
         <a href="/ar/services/">الخدمات</a>
@@ -41,23 +41,49 @@
 
   <main class="container">
     <section class="about-page-section">
-      <h1 class="page-title">قصتي مع البيانات</h1>
       
-      <div class="about-layout">
-        <div class="about-text">
-          <p>
-            أهلاً بك! أنا عمر بدر، محلل بيانات متخصص في مجالي تحليل البيانات وتعلم الآلة. منذ أكثر من 4 سنوات، وأنا أعمل بشغف لمساعدة الشركات على فهم كنوز البيانات التي تمتلكها. بدأ اهتمامي عندما لاحظت كيف يمكن لقرار واحد مبني على تحليل دقيق أن يغير مسار شركة بأكملها.
-          </p>
-          <p>
-            أؤمن بأن البيانات ليست مجرد أرقام، بل هي قصص تنتظر من يرويها. مهمتي هي أن أكون ذلك الراوي، مستخدماً أدواتي التقنية لترجمة الأرقام المعقدة إلى رؤى واضحة واستراتيجيات قابلة للتنفيذ.
-          </p>
-        </div>
-        <div class="about-image">
-          <!-- تم تصحيح مسار الصورة هنا -->
+      <!-- HERO SECTION -->
+      <div class="about-hero-layout">
+        <div class="about-hero-image">
           <img src="../assets/images/omar.jpg" alt="صورة شخصية لـ عمر بدر">
+        </div>
+        <div class="about-hero-text">
+          <p class="about-tagline">محلل بيانات وخبير تعلم آلة</p>
+          <h1 class="page-title" style="text-align: right; --page-title-after-margin: 0;">أهلاً بك، أنا عمر بدر</h1>
+          <p>
+            شغفي الحقيقي يكمن في تحويل البيانات الخام إلى قصص ذات معنى وقرارات استراتيجية. أؤمن بأن كل مجموعة بيانات هي فرصة لاكتشاف رؤى جديدة يمكنها أن تقود النمو وتصنع الفارق.
+          </p>
+          <p>
+            من خلال خبرتي الممتدة لأكثر من 4 سنوات، أساعد الشركات على استغلال أصولها البيانية لتحقيق ميزة تنافسية مستدامة.
+          </p>
+          <div class="about-social-links">
+            <a href="https://www.linkedin.com/in/omarbadrdata/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Omar-b381" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+          </div>
         </div>
       </div>
 
+      <!-- MISSION SECTION -->
+      <h2 class="section-title">فلسفتي في العمل</h2>
+      <div class="mission-grid">
+        <div class="mission-card">
+          <i class="fas fa-lightbulb"></i>
+          <h3>الوضوح قبل التعقيد</h3>
+          <p>هدفي الأول هو تقديم رؤى واضحة وقابلة للتنفيذ، وليس مجرد نماذج معقدة. الأهمية تكمن في التأثير الذي تحدثه البيانات على قراراتك.</p>
+        </div>
+        <div class="mission-card">
+          <i class="fas fa-handshake"></i>
+          <h3>شراكة حقيقية</h3>
+          <p>أعتبر نفسي جزءًا من فريقك. أعمل معك عن كثب لفهم تحدياتك الفريدة وتصميم حلول مخصصة تلبي أهدافك بدقة.</p>
+        </div>
+        <div class="mission-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>النمو المستمر</h3>
+          <p>عالم البيانات يتطور بسرعة، وأنا ملتزم بالتعلم المستمر وتطبيق أحدث التقنيات لضمان حصولك دائمًا على أفضل الحلول الممكنة.</p>
+        </div>
+      </div>
+
+      <!-- SKILLS SECTION -->
       <h2 class="section-title">المهارات والأدوات</h2>
       <div class="skills-grid">
         <div class="skill-item">Power BI</div>
@@ -68,8 +94,57 @@
         <div class="skill-item">Data Analysis</div>
         <div class="skill-item">Dashboard Design</div>
         <div class="skill-item">Data Cleaning</div>
+        <div class="skill-item">Web Scraping</div>
+        <div class="skill-item">Pandas</div>
+        <div class="skill-item">Scikit-learn</div>
+        <div class="skill-item">DAX</div>
       </div>
     </section>
+
+    <!-- JOURNEY/TIMELINE SECTION -->
+    <section>
+        <h2 class="section-title">رحلتي المهنية</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">2021 - البداية</h3>
+                    <p>بدأت رحلتي في عالم البيانات بشغف كبير، حيث ركزت على تعلم أساسيات التحليل ولغات مثل SQL و Python.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">2022 - إتقان الأدوات</h3>
+                    <p>تخصصت في أدوات عرض البيانات، وعلى رأسها Power BI، وقمت بتنفيذ أولى مشاريعي في بناء لوحات البيانات التفاعلية.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">2023 - دخول عالم تعلم الآلة</h3>
+                    <p>وسعت خبراتي لتشمل تعلم الآلة، حيث قمت ببناء نماذج تنبؤية وتصنيفية باستخدام مكتبات مثل Scikit-learn.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">2024 وما بعده - التأثير</h3>
+                    <p>أركز الآن على تقديم حلول بيانات متكاملة تساعد الشركات على تحقيق أهدافها، من جمع البيانات إلى تطبيق نماذج الذكاء الاصطناعي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+          <h2>هل أنت مستعد لتحويل بياناتك إلى أصول قيمة؟</h2>
+          <p>لنتحدث عن مشروعك وكيف يمكنني مساعدتك في تحقيق أهدافك.</p>
+          <a href="/ar/contact/" class="cta-button">تواصل معي الآن</a>
+        </div>
+    </section>
+
   </main>
 
   <footer>

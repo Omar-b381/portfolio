@@ -5,41 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Omar Badr - Data Analyst & Machine Learning Expert</title>
   
-  <!-- Path to the main CSS file -->
   <link rel="stylesheet" href="../style.css">
-  
-  <!-- Google Fonts -->
+  <link rel="stylesheet" href="../homepage.css">
+  <!-- CSS for LTR adjustments -->
+  <link rel="stylesheet" href="homepage-en.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- Using Poppins for English version for a modern feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Google tag (gtag.js ) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag( ){dataLayer.push(arguments);}
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-Q56ET619WZ');
   </script>
 </head>
-<body>
+<body class="en-version">
 
-
-  <!-- ======================= -->
-  <!-- ======== Header ========= -->
-  <!-- ======================= -->
   <header>
     <div class="container">
       <nav>
         <a href="/en/" class="active">Home</a>
         <a href="/en/services/">Services</a>
-        <a href="/en/portfolio/">Projects</a>
+        <a href="/en/portfolio/">Portfolio</a>
         <a href="/en/blog/">Blog</a>
-        <a href="/en/about/">About Me</a>
-        <a href="/en/contact/">Contact Me</a>
+        <a href="/en/about/">About</a>
+        <a href="/en/contact/">Contact</a>
         <a href="/ar/" class="language-switcher">العربية</a>
       </nav>
     </div>
@@ -47,102 +44,137 @@
 
   <main>
     <!-- ======================= -->
-    <!-- ====== Hero Section ====== -->
+    <!-- ====== Innovative Hero Section ====== -->
     <!-- ======================= -->
-    <section class="new-hero-section">
-      <div class="hero-overlay"></div> <!-- Overlay for better text readability -->
-      <div class="container hero-content-wrapper">
-          <div class="new-hero-content">
-              <h1 class="new-hero-title">Transforming Your Data into Smart Decisions that Drive Growth</h1>
-              <p class="new-hero-subtitle">I'm Omar Badr, helping companies unlock their data treasures through advanced analysis and effective machine learning models.</p>
-              <div class="new-hero-buttons">
-                  <a href="/en/portfolio/" class="cta-button">View My Work</a>
-                  <a href="/en/contact/" class="cta-button secondary">Contact Me</a>
-              </div>
-              <div class="hero-expertise-cards">
-                  <div class="expertise-card"><span><i class="fas fa-chart-pie"></i> Data Analysis</span></div>
-                  <div class="expertise-card"><span><i class="fas fa-brain"></i> Machine Learning</span></div>
-                  <div class="expertise-card"><span><i class="fas fa-tachometer-alt"></i> Power BI Dashboards</span></div>
-              </div>
+    <section class="hero-reimagined">
+      <div class="container hero-grid">
+        <div class="hero-text-content">
+          <h1 class="hero-title">Turn Your Data Into Your Strongest Asset</h1>
+          <p class="hero-subtitle">I help companies grow by transforming complex numbers into clear, strategic insights using the latest data analysis and AI technologies.</p>
+          <div class="hero-buttons">
+            <a href="/en/portfolio/" class="cta-button">Explore My Work</a>
+            <a href="/en/contact/" class="cta-button secondary">Discuss Your Project</a>
           </div>
+        </div>
+        <div class="hero-visual-placeholder">
+          <div class="data-sphere"></div>
+          <div class="data-sphere"></div>
+          <div class="data-sphere"></div>
+        </div>
       </div>
     </section>
 
     <!-- ======================= -->
-    <!-- "Why We Can Succeed" Section -->
+    <!-- ====== Trust & Stats Bar ====== -->
     <!-- ======================= -->
-    <section class="why-me-section container">
-        <h2 class="section-title">Why We Can Succeed Together?</h2>
-        <div class="why-me-grid">
-            <div class="why-me-card">
-                <div class="why-me-icon"><i class="fas fa-lightbulb"></i></div>
-                <h3 class="why-me-title">Actionable Insights</h3>
-                <p>I don't just give you complex numbers; I translate them into clear recommendations and practical strategies you can apply directly to improve your business performance.</p>
-            </div>
-            <div class="why-me-card">
-                <div class="why-me-icon"><i class="fas fa-cogs"></i></div>
-                <h3 class="why-me-title">Custom Solutions</h3>
-                <p>Every business has its unique challenges. I work with you to understand your goals and design custom analytical solutions that meet your specific needs.</p>
-            </div>
-            <div class="why-me-card">
-                <div class="why-me-icon"><i class="fas fa-handshake"></i></div>
-                <h3 class="why-me-title">A Partner in Your Success</h3>
-                <p>I consider myself part of your team. I am committed to providing ongoing support and transparent communication to ensure we achieve the best possible results.</p>
+    <section class="social-proof-bar">
+        <div class="container proof-content">
+            <div class="proof-stats">
+                <div class="stat-item"><strong>4+</strong> Years of Experience</div>
+                <div class="stat-item"><strong>50+</strong> Projects Completed</div>
+                <div class="stat-item"><strong>98%</strong> Client Satisfaction</div>
             </div>
         </div>
     </section>
 
     <!-- ======================= -->
-    <!-- Featured Projects Section -->
+    <!-- ====== Services with Bento Grid ====== -->
     <!-- ======================= -->
-    <section class="featured-projects container">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="portfolio-grid" id="featured-projects-grid">
-        <p>Loading projects...</p>
-      </div>
-    </section>
-
-    <!-- ======================= -->
-    <!-- Testimonials Section -->
-    <!-- ======================= -->
-    <section class="testimonials">
-      <div class="container">
-        <h2 class="section-title">What My Clients Say</h2>
-        <div class="testimonials-grid">
-          <div class="testimonial-card">
-            <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="testimonial-text">"Mr. Omar is appreciated, and I am grateful for his very smooth cooperation and high professionalism in data management and analysis."</p>
-            <div class="testimonial-author"><h4 class="author-name">Client from Mostaql</h4><p class="author-project">Project: Monthly Data Statistical Report</p></div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="testimonial-text">"Truly respectable and outstanding... I was late in delivering to him, yet he was extremely respectful and cooperative. Thank you, Mr. Omar."</p>
-            <div class="testimonial-author"><h4 class="author-name">Client from Mostaql</h4><p class="author-project">Project: Google Sheets and Dashboard Setup</p></div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="testimonial-text">"Omar is a professional, fast in his work, and very cooperative. I recommend working with him. Thank you, Omar."</p>
-            <div class="testimonial-author"><h4 class="author-name">Client from Mostaql</h4><p class="author-project">Project: Power BI Specialist for Dashboard Design</p></div>
-          </div>
+    <section class="bento-grid-section container">
+        <h2 class="section-title">How I Can Help You</h2>
+        <div class="bento-grid">
+            <div class="bento-card card-large">
+                <i class="fas fa-brain"></i>
+                <h3>Strategic Data Analysis</h3>
+                <p>I dive deep into your data to uncover hidden opportunities, identify patterns, and deliver recommendations that drive your business forward.</p>
+            </div>
+            <div class="bento-card">
+                <i class="fas fa-chart-pie"></i>
+                <h3>Interactive Dashboards</h3>
+                <p>I design intelligent dashboards using Power BI to transform your data into an easy-to-understand visual story.</p>
+            </div>
+            <div class="bento-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Machine Learning Models</h3>
+                <p>I build custom predictive models to help you forecast customer behavior, sales, or any vital business metrics.</p>
+            </div>
+            <div class="bento-card card-cta">
+                <h3>Have a Project Idea?</h3>
+                <p>Let's turn your idea into a tangible reality.</p>
+                <a href="/en/contact/" class="cta-button">Get Started</a>
+            </div>
         </div>
-      </div>
     </section>
     
     <!-- ======================= -->
-    <!-- Call to Action Section -->
+    <!-- ==== Featured Projects (Carousel) ==== -->
+    <!-- ======================= -->
+    <section class="projects-carousel-section">
+      <div class="container">
+        <h2 class="section-title">Data-Driven Success Stories</h2>
+        <div class="projects-carousel" id="featured-projects-carousel">
+          <p>Loading projects...</p>
+        </div>
+        <div class="view-all-link">
+            <a href="/en/portfolio/">View All Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+</section>
+
+<!-- ======================= -->
+<!-- ====== Testimonials ====== -->
+<!-- ======================= -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title">What My Clients Say?</h2>
+    <div class="testimonials-grid">
+      
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Truly respectful and professional.  
+I was late in delivering my part, yet he remained very cooperative and polite.  
+Thank you, Mr. Omar. Hopefully, this won’t be our last collaboration."</p>
+        <div class="testimonial-author">
+          <h4 class="author-name">Abdulmalik</h4>
+          <p class="author-project">Client from Mostaql</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Omar is a professional, fast, and very cooperative.  
+I highly recommend working with him.  
+Thank you, Omar."</p>
+        <div class="testimonial-author">
+          <h4 class="author-name">Emad</h4>
+          <p class="author-project">Client from Mostaql</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Mr. Omar, I truly appreciate working with you.  
+The process was very smooth, and your professionalism in data management and analysis is outstanding."</p>
+        <div class="testimonial-author">
+          <h4 class="author-name">Hisham</h4>
+          <p class="author-project">Client from Mostaql</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    
+    <!-- ======================= -->
+    <!-- ==== Call to Action ==== -->
     <!-- ======================= -->
     <section class="cta-section">
         <div class="container">
-          <h2>Ready to turn your data into valuable assets?</h2>
+          <h2>Ready to Turn Your Data into a Valuable Asset?</h2>
           <p>Let's talk about your project and how I can help you achieve your goals.</p>
           <a href="/en/contact/" class="cta-button">Contact Me Now</a>
         </div>
     </section>
   </main>
 
-  <!-- ======================= -->
-  <!-- ======== Footer ========= -->
-  <!-- ======================= -->
   <footer>
     <div class="container">
       <p>© 2025 Omar Badr | All Rights Reserved</p>
@@ -150,44 +182,89 @@
   </footer>
 
   <!-- ======================= -->
-  <!-- ======== Scripts ======== -->
+  <!-- ====== Scripts ====== -->
   <!-- ======================= -->
   <script>
-    // Function to load featured projects from a JSON file
-    async function loadFeaturedProjects() {
-        const container = document.getElementById("featured-projects-grid");
-        try {
-            // Path to the English JSON file from within the /en/ directory
-            const response = await fetch("portfolio-projects.json"); 
-            if (!response.ok) throw new Error("Failed to load projects");
-            
-            const allProjects = await response.json();
-            const featured = allProjects.slice(0, 3); // Display only the first 3 projects
-            
-            let projectsHTML = "";
-            featured.forEach(project => {
-                const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join("");
-                projectsHTML += `
-                    <div class="project-card">
-                        <img src="${project.image}" alt="${project.title}" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">${project.title}</h3>
-                            <p class="project-description">${project.description}</p>
-                            <div class="project-tags">${tagsHTML}</div>
-                            <a href="/en/${project.link}" class="project-button">View Project Details</a>
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = projectsHTML;
-        } catch (error) {
-            container.innerHTML = `<p style="text-align: center;">Error loading projects. ${error.message}</p>`;
+    // --- Data is embedded here to avoid fetch errors on local files ---
+    const featuredProjectsData = [
+      {
+        "id": "heart-disease-prediction",
+        "title": "Heart Disease Prediction (ML)",
+        "description": "An end-to-end machine learning project to predict the probability of heart disease with high accuracy.",
+        "image": "assets/images/heart-disease.jpg",
+        "tags": ["Machine Learning", "Python", "Scikit-learn"],
+        "link": "portfolio/project-heart-disease/"
+      },
+      {
+        "id": "rfm-analysis",
+        "title": "E-commerce Customer Analysis (RFM)",
+        "description": "Segmenting e-commerce customers into strategic groups based on their purchasing behavior.",
+        "image": "assets/images/Dashboard_page-0001.jpg",
+        "tags": ["Power BI", "RFM Analysis", "Segmentation"],
+        "link": "portfolio/project-rfm/"
+      },
+      {
+        "id": "adidas-sales",
+        "title": "Adidas Sales Analysis",
+        "description": "A comprehensive analysis of sales data to provide integrated reports for outstanding sales success.",
+        "image": "assets/images/adidas.jpg",
+        "tags": ["Power BI", "EDA", "Sales Analysis"],
+        "link": "portfolio/project-adidas/"
+      },
+      {
+        "id": "hendawe-analysis",
+        "title": "Hindawi Library Data Analysis",
+        "description": "Scraping and analyzing data from over 3,444 free and legal books using Python.",
+        "image": "assets/images/hendawe.jpg",
+        "tags": ["Python", "Web Scraping", "Data Analysis"],
+        "link": "portfolio/project-hendawe/"
+      },
+      {
+        "id": "cancer-prediction",
+        "title": "Breast Cancer Prediction (ML)",
+        "description": "Building a model to classify breast tumors (malignant or benign) with 98% accuracy.",
+        "image": "assets/images/breast.jpg",
+        "tags": ["Machine Learning", "Python", "SVM"],
+        "link": "portfolio/Cancer-Prediction-with-Python/"
+      }
+    ];
+    // --- End of embedded data ---
+
+    function displayFeaturedProjects(projects) {
+        const container = document.getElementById("featured-projects-carousel");
+        if (!container) {
+            console.error("Carousel container not found!");
+            return;
         }
+        
+        const featured = projects.slice(0, 5);
+        
+        if (featured.length === 0) {
+            container.innerHTML = `<p style="text-align: center; color: var(--color-text-light);">No featured projects to display at the moment.</p>`;
+            return;
+        }
+
+        let projectsHTML = "";
+        featured.forEach(project => {
+            const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join("");
+            // Path from /en/index.html to the root, then to the image
+            const imagePath = `../${project.image}`; 
+            projectsHTML += `
+                <div class="project-card">
+                    <img src="${imagePath}" alt="${project.title}" class="project-image">
+                    <div class="project-content">
+                        <div class="project-tags">${tagsHTML}</div>
+                        <h3 class="project-title">${project.title}</h3>
+                        <a href="/en/${project.link}" class="project-button">View Details</a>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = projectsHTML;
     }
 
-    // Call the function when the page is fully loaded
     document.addEventListener("DOMContentLoaded", () => {
-        loadFeaturedProjects();
+        displayFeaturedProjects(featuredProjectsData);
     });
   </script>
 

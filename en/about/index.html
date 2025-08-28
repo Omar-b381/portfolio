@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me - Omar Badr</title>
+  <title>About - Omar Badr</title>
   
-  <!-- Corrected CSS Path (two steps back to root) -->
+  <!-- Correct CSS Path -->
   <link rel="stylesheet" href="../../style.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
   <script>
@@ -19,20 +22,18 @@
     gtag('js', new Date());
     gtag('config', 'G-Q56ET619WZ');
   </script>
-
 </head>
 <body>
 
   <header>
     <div class="container">
-      <!-- Corrected all navigation links -->
       <nav>
         <a href="/en/">Home</a>
         <a href="/en/services/">Services</a>
-        <a href="/en/portfolio/">Projects</a>
+        <a href="/en/portfolio/">Portfolio</a>
         <a href="/en/blog/">Blog</a>
         <a href="/en/about/" class="active">About</a>
-        <a href="/en/contact/">Contact Me</a>
+        <a href="/en/contact/">Contact</a>
         <a href="/ar/about/" class="language-switcher">العربية</a>
       </nav>
     </div>
@@ -40,23 +41,49 @@
 
   <main class="container">
     <section class="about-page-section">
-      <h1 class="page-title">My Data Story</h1>
       
-      <div class="about-layout">
-        <div class="about-text">
-          <p>
-            Welcome! I'm Omar Badr, a data analyst specializing in data analysis and machine learning. For over 4 years, I have passionately worked to help companies understand the treasures hidden within their data. My interest sparked when I realized how a single decision, based on accurate analysis, could change the entire course of a company.
-          </p>
-          <p>
-            I believe that data is not just numbers; it's stories waiting to be told. My mission is to be that storyteller, using my technical tools to translate complex numbers into clear insights and actionable strategies.
-          </p>
+      <!-- HERO SECTION -->
+      <div class="about-hero-layout">
+        <div class="about-hero-image">
+          <img src="../assets/images/omar.jpg" alt="Profile picture of Omar Badr">
         </div>
-        <div class="about-image">
-          <!-- Corrected Image Path (one step back to /en/ folder) -->
-          <img src="../assets/images/omar.jpg" alt="Personal photo of Omar Badr">
+        <div class="about-hero-text">
+          <p class="about-tagline">Data Analyst & Machine Learning Engineer</p>
+          <h1 class="page-title" style="text-align: left; --page-title-after-margin: 0;">Welcome, I’m Omar Badr</h1>
+          <p>
+            My true passion lies in transforming raw data into meaningful stories and strategic decisions. I believe every dataset is an opportunity to uncover insights that drive growth and create impact.
+          </p>
+          <p>
+            With over 4 years of hands-on experience, I help businesses leverage their data assets to achieve sustainable competitive advantages.
+          </p>
+          <div class="about-social-links">
+            <a href="https://www.linkedin.com/in/omarbadrdata/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Omar-b381" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+          </div>
         </div>
       </div>
 
+      <!-- MISSION SECTION -->
+      <h2 class="section-title">My Work Philosophy</h2>
+      <div class="mission-grid">
+        <div class="mission-card">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Clarity Before Complexity</h3>
+          <p>My priority is delivering clear, actionable insights—not just complex models. The true value lies in the impact data has on your decisions.</p>
+        </div>
+        <div class="mission-card">
+          <i class="fas fa-handshake"></i>
+          <h3>True Partnership</h3>
+          <p>I consider myself part of your team. I work closely with you to understand your unique challenges and design tailored solutions that meet your goals.</p>
+        </div>
+        <div class="mission-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Continuous Growth</h3>
+          <p>The data world evolves rapidly, and I am committed to continuous learning and applying the latest technologies to ensure you always get the best solutions.</p>
+        </div>
+      </div>
+
+      <!-- SKILLS SECTION -->
       <h2 class="section-title">Skills & Tools</h2>
       <div class="skills-grid">
         <div class="skill-item">Power BI</div>
@@ -67,8 +94,57 @@
         <div class="skill-item">Data Analysis</div>
         <div class="skill-item">Dashboard Design</div>
         <div class="skill-item">Data Cleaning</div>
+        <div class="skill-item">Web Scraping</div>
+        <div class="skill-item">Pandas</div>
+        <div class="skill-item">Scikit-learn</div>
+        <div class="skill-item">DAX</div>
       </div>
     </section>
+
+    <!-- JOURNEY/TIMELINE SECTION -->
+    <section>
+        <h2 class="section-title">My Career Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">2021 - The Beginning</h3>
+                    <p>I started my journey in the world of data with great passion, focusing on learning the fundamentals of analysis and languages like SQL and Python.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">2022 - Mastering Tools</h3>
+                    <p>I specialized in data visualization tools, especially Power BI, and implemented my first projects building interactive dashboards.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">2023 - Entering Machine Learning</h3>
+                    <p>I expanded my expertise to include machine learning, building predictive and classification models using libraries like Scikit-learn.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">2024 & Beyond - Impact</h3>
+                    <p>Now, I focus on delivering end-to-end data solutions that help businesses achieve their goals—from data collection to AI-driven models.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+          <h2>Ready to Turn Your Data Into Valuable Assets?</h2>
+          <p>Let’s talk about your project and how I can help you achieve your goals.</p>
+          <a href="/en/contact/" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
   </main>
 
   <footer>
