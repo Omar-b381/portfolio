@@ -1,156 +1,92 @@
-// Contact Form Enhancement Script
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.contact-form');
-    const submitButton = form.querySelector('.cta-button');
+    if (!form) return; // Exit if no form is found
+
+    const submitButton = form.querySelector('button[type="submit"]');
     const buttonText = submitButton.querySelector('.button-text');
     const buttonLoading = submitButton.querySelector('.button-loading');
     const submitStatus = document.getElementById('submit-status');
-    const messageTextarea = document.getElementById('message');
-    const characterCount = document.querySelector('.character-count');
-
-    // Form validation patterns
-    const patterns = {
-        name: /^[\u0600-\u06FFa-zA-Z\s]{2,50}$/,
-        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        message: /^.{10,1000}$/s
-    };
-
-    // Error messages
-    const errorMessages = {
-        name: {
-            required: 'الاسم مطلوب',
-            invalid: 'يرجى إدخال اسم صحيح (2-50 حرف)'
-        },
-        email: {
-            required: 'البريد الإلكتروني مطلوب',
-            invalid: 'يرجى إدخال بريد إلكتروني صحيح'
-        },
-        message: {
-            required: 'الرسالة مطلوبة',
-            invalid: 'يجب أن تكون الرسالة بين 10-1000 حرف'
-        }
-    };
-
-    // Character counter for message
-    if (messageTextarea && characterCount) {
-        messageTextarea.addEventListener('input', function() {
-            const length = this.value.length;
-            characterCount.textContent = `${length}/1000 حرف`;
-            
-            if (length > 1000) {
-                characterCount.classList.add('over-limit');
-            } else {
-                characterCount.classList.remove('over-limit');
-            }
-        });
-    }
-
-    // Real-time validation
-    function validateField(field) {
-        const fieldName = field.name;
-        const value = field.value.trim();
-        const errorElement = document.getElementById(`${fieldName}-error`);
-        
-        if (!errorElement) return true;
-
-        // Clear previous error
-        errorElement.textContent = '';
-        field.classList.remove('error');
-
-        // Check if required field is empty
-        if (field.hasAttribute('required') && !value) {
-            showError(field, errorElement, errorMessages[fieldName]?.required || 'هذا الحقل مطلوب');
-            return false;
-        }
-
-        // Validate pattern if value exists
-        if (value && patterns[fieldName] && !patterns[fieldName].test(value)) {
-            showError(field, errorElement, errorMessages[fieldName]?.invalid || 'قيمة غير صحيحة');
-            return false;
-        }
-
-        // Field is valid
-        field.classList.add('valid');
-        return true;
-    }
-
-    function showError(field, errorElement, message) {
-        field.classList.add('error');
-        field.classList.remove('valid');
-        errorElement.textContent = message;
-    }
-
-    // Add event listeners for real-time validation
     const formFields = form.querySelectorAll('input[required], textarea[required]');
+
+    // --- Basic real-time validation (optional but good to have) ---
     formFields.forEach(field => {
-        field.addEventListener('blur', () => validateField(field));
-        field.addEventListener('input', () => {
-            if (field.classList.contains('error')) {
-                validateField(field);
+        field.addEventListener('blur', function() {
+            if (!this.checkValidity()) {
+                this.classList.add('error');
+            } else {
+                this.classList.remove('error');
             }
         });
     });
 
-    // Form submission
-    form.addEventListener('submit', async function(e) {
+    // --- Form Submission Logic ---
+    form.addEventListener('submit', function(e) {
+        // 1. Prevent the form from submitting immediately
         e.preventDefault();
 
-        // Validate all fields
-        let isValid = true;
+        // 2. Validate all fields one last time
+        let isFormValid = true;
         formFields.forEach(field => {
-            if (!validateField(field)) {
-                isValid = false;
+            if (!field.checkValidity()) {
+                field.classList.add('error');
+                isFormValid = false;
+            } else {
+                field.classList.remove('error');
             }
         });
 
-        if (!isValid) {
-            showStatus('يرجى تصحيح الأخطاء أعلاه', 'error');
+        if (!isFormValid) {
+            showStatus('يرجى ملء جميع الحقول المطلوبة بشكل صحيح.', 'error');
             return;
         }
 
-        // Show loading state
+        // 3. Show loading state to the user
         setLoadingState(true);
         showStatus('جاري إرسال الرسالة...', 'loading');
 
-        try {
-            const formData = new FormData(form);
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
+        // 4. Create FormData object
+        const formData = new FormData(form);
 
+        // 5. Use fetch to send the data
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json' // This tells Formspree to reply with JSON
+            }
+        }).then(response => {
             if (response.ok) {
+                // SUCCESS!
                 showStatus('تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.', 'success');
                 form.reset();
-                characterCount.textContent = '0/1000 حرف';
-                
-                // Remove validation classes
-                formFields.forEach(field => {
-                    field.classList.remove('valid', 'error');
-                });
+                formFields.forEach(field => field.classList.remove('error', 'valid'));
             } else {
-                throw new Error('فشل في إرسال الرسالة');
+                // Handle server-side errors from Formspree
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        const errorMsg = data["errors"].map(error => error["message"]).join(", ");
+                        showStatus(`حدث خطأ: ${errorMsg}`, 'error');
+                    } else {
+                        showStatus('حدث خطأ غير متوقع من الخادم. يرجى المحاولة مرة أخرى.', 'error');
+                    }
+                })
             }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showStatus('حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى أو التواصل مباشرة.', 'error');
-        } finally {
+        }).catch(error => {
+            // Handle network errors (e.g., no internet connection)
+            showStatus('لا يمكن الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت.', 'error');
+        }).finally(() => {
+            // ALWAYS turn off the loading state
             setLoadingState(false);
-        }
+        });
     });
 
     function setLoadingState(loading) {
         if (loading) {
             submitButton.disabled = true;
-            submitButton.classList.add('loading');
             buttonText.style.display = 'none';
             buttonLoading.style.display = 'inline-flex';
         } else {
             submitButton.disabled = false;
-            submitButton.classList.remove('loading');
             buttonText.style.display = 'inline';
             buttonLoading.style.display = 'none';
         }
@@ -158,24 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showStatus(message, type) {
         submitStatus.textContent = message;
-        submitStatus.className = `submit-status ${type}`;
+        submitStatus.className = `submit-status ${type}`; // Use classes for styling
         
-        // Auto-hide success/error messages after 5 seconds
-        if (type === 'success' || type === 'error') {
-            setTimeout(() => {
+        setTimeout(() => {
+            if (submitStatus.textContent === message) {
                 submitStatus.textContent = '';
                 submitStatus.className = 'submit-status';
-            }, 5000);
-        }
-    }
-
-    // Smooth scroll to form on page load if there's a hash
-    if (window.location.hash === '#contact-form') {
-        setTimeout(() => {
-            document.querySelector('.contact-form-wrapper').scrollIntoView({
-                behavior: 'smooth'
-            });
-        }, 100);
+            }
+        }, 6000); // Message disappears after 6 seconds
     }
 });
-

@@ -1,157 +1,110 @@
-// Contact Form Enhancement Script
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.contact-form');
-    const submitButton = form.querySelector('.cta-button');
+    if (!form) return; // Exit if no form is found on the page
+
+    const submitButton = form.querySelector('button[type="submit"]');
     const buttonText = submitButton.querySelector('.button-text');
     const buttonLoading = submitButton.querySelector('.button-loading');
     const submitStatus = document.getElementById('submit-status');
-    const messageTextarea = document.getElementById('message');
-    const characterCount = document.querySelector('.character-count');
-
-    // Form validation patterns
-    const patterns = {
-        name: /^[a-zA-Z\s]{2,50}$/,
-        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        message: /^.{10,1000}$/s
-    };
-
-    // Error messages
-    const errorMessages = {
-        name: {
-            required: 'Name is required',
-            invalid: 'Please enter a valid name (2-50 characters)'
-        },
-        email: {
-            required: 'Email is required',
-            invalid: 'Please enter a valid email address'
-        },
-        message: {
-            required: 'Message is required',
-            invalid: 'The message must be between 10-1000 characters'
-        }
-    };
-
-    // Character counter for message
-    if (messageTextarea && characterCount) {
-        messageTextarea.addEventListener('input', function() {
-            const length = this.value.length;
-            characterCount.textContent = `${length}/1000 characters`;
-            
-            if (length > 1000) {
-                characterCount.classList.add('over-limit');
-            } else {
-                characterCount.classList.remove('over-limit');
-            }
-        });
-    }
-
-    // Real-time validation
-    function validateField(field) {
-        const fieldName = field.name;
-        const value = field.value.trim();
-        const errorElement = document.getElementById(`${fieldName}-error`);
-        
-        if (!errorElement) return true;
-
-        errorElement.textContent = '';
-        field.classList.remove('error');
-
-        if (field.hasAttribute('required') && !value) {
-            showError(field, errorElement, errorMessages[fieldName]?.required || 'This field is required');
-            return false;
-        }
-
-        if (value && patterns[fieldName] && !patterns[fieldName].test(value)) {
-            showError(field, errorElement, errorMessages[fieldName]?.invalid || 'Invalid value');
-            return false;
-        }
-
-        field.classList.add('valid');
-        return true;
-    }
-
-    function showError(field, errorElement, message) {
-        field.classList.add('error');
-        field.classList.remove('valid');
-        errorElement.textContent = message;
-    }
-
     const formFields = form.querySelectorAll('input[required], textarea[required]');
+
+    // --- Basic real-time validation (optional but good to have) ---
     formFields.forEach(field => {
-        field.addEventListener('blur', () => validateField(field));
-        field.addEventListener('input', () => {
-            if (field.classList.contains('error')) {
-                validateField(field);
+        field.addEventListener('blur', function() {
+            // Use the browser's built-in validation check
+            if (!this.checkValidity()) {
+                this.classList.add('error');
+            } else {
+                this.classList.remove('error');
             }
         });
     });
 
-    // Form submission
-    form.addEventListener('submit', async function(e) {
+    // --- Form Submission Logic ---
+    form.addEventListener('submit', function(e) {
+        // 1. Prevent the form from submitting the traditional way
         e.preventDefault();
 
-        let isValid = true;
+        // 2. Validate all fields one last time before sending
+        let isFormValid = true;
         formFields.forEach(field => {
-            if (!validateField(field)) {
-                isValid = false;
+            if (!field.checkValidity()) {
+                field.classList.add('error');
+                isFormValid = false;
+            } else {
+                field.classList.remove('error');
             }
         });
 
-        if (!isValid) {
-            showStatus('Please correct the errors above', 'error');
+        if (!isFormValid) {
+            showStatus('Please fill out all required fields correctly.', 'error');
             return;
         }
 
+        // 3. Show loading state to the user
         setLoadingState(true);
-        showStatus('Sending message...', 'loading');
+        showStatus('Sending your message...', 'loading');
 
-        try {
-            const formData = new FormData(form);
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
+        // 4. Create a FormData object from the form
+        const formData = new FormData(form);
 
-            if (response.ok) {
-                showStatus('Your message has been sent successfully! I will contact you soon.', 'success');
-                form.reset();
-                if(characterCount) characterCount.textContent = '0/1000 characters';
-                formFields.forEach(field => field.classList.remove('valid', 'error'));
-            } else {
-                throw new Error('Failed to send message');
+        // 5. Use fetch to send the data via AJAX
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json' // Crucial for Formspree to reply with JSON
             }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showStatus('An error occurred while sending the message. Please try again or contact me directly.', 'error');
-        } finally {
+        }).then(response => {
+            if (response.ok) {
+                // SUCCESS! The form was submitted correctly.
+                showStatus('Your message has been sent successfully! I will get back to you soon.', 'success');
+                form.reset(); // Clear the form fields
+                formFields.forEach(field => field.classList.remove('error', 'valid')); // Clear validation styles
+            } else {
+                // Handle server-side errors from Formspree (e.g., validation errors)
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        const errorMsg = data["errors"].map(error => error["message"]).join(", ");
+                        showStatus(`An error occurred: ${errorMsg}`, 'error');
+                    } else {
+                        showStatus('An unexpected server error occurred. Please try again.', 'error');
+                    }
+                })
+            }
+        }).catch(error => {
+            // Handle network errors (e.g., no internet connection)
+            showStatus('Could not connect to the server. Please check your internet connection.', 'error');
+        }).finally(() => {
+            // ALWAYS turn off the loading state, whether it succeeded or failed
             setLoadingState(false);
-        }
+        });
     });
 
     function setLoadingState(loading) {
         if (loading) {
             submitButton.disabled = true;
-            submitButton.classList.add('loading');
             if (buttonText) buttonText.style.display = 'none';
             if (buttonLoading) buttonLoading.style.display = 'inline-flex';
         } else {
             submitButton.disabled = false;
-            submitButton.classList.remove('loading');
             if (buttonText) buttonText.style.display = 'inline';
             if (buttonLoading) buttonLoading.style.display = 'none';
         }
     }
 
     function showStatus(message, type) {
+        if (!submitStatus) return;
         submitStatus.textContent = message;
-        submitStatus.className = `submit-status ${type}`;
+        submitStatus.className = `submit-status ${type}`; // Use classes for styling
         
-        if (type === 'success' || type === 'error') {
-            setTimeout(() => {
+        // Auto-hide the message after a few seconds
+        setTimeout(() => {
+            // Only clear the message if it hasn't been replaced by a new one
+            if (submitStatus.textContent === message) {
                 submitStatus.textContent = '';
                 submitStatus.className = 'submit-status';
-            }, 5000);
-        }
+            }
+        }, 6000); // Message disappears after 6 seconds
     }
 });
