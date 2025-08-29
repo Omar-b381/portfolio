@@ -2489,3 +2489,33 @@ body.en-version h6 {
 }
 
 /* === MODIFICATION END === */
+/*
+  ========================================
+  In file: ar/services/services-page.css
+  ========================================
+*/
+
+/* --- MODIFICATION START: Responsive Fix for Sticky Panel --- */
+
+/* 
+ * By default (on mobile), the sidebar should behave like a normal element.
+ * We remove the sticky behavior and add some spacing.
+*/
+.services-nav-panel {
+    position: static; /* Cancel the 'sticky' position */
+    top: auto;        /* Reset the top position */
+    margin-bottom: var(--spacing-lg); /* Add space below it before the content starts */
+}
+
+/* 
+ * We re-apply the sticky behavior ONLY on larger screens (tablets and desktops)
+ * where there is enough space for a sidebar.
+*/
+@media (min-width: 992px) {
+    .services-nav-panel {
+        position: sticky;
+        top: 100px;
+    }
+}
+
+/* --- MODIFICATION END --- */
