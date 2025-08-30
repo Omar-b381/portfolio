@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ابدأ مشروعك - عمر بدر</title>
+  
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="project-planner.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/ar/">الرئيسية</a><a href="/ar/services/">الخدمات</a><a href="/ar/portfolio/">المشاريع</a><a href="/ar/blog/">المدونة</a><a href="/ar/about/">لماذا أنا؟</a><a href="/ar/contact/" class="active">ابدأ مشروعك</a><a href="/en/start-project/" class="language-switcher">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="planner-hero">
+      <h1 class="page-title">لنبدأ في بناء قصة نجاحك</h1>
+      <p class="page-subtitle">هذا النموذج التفاعلي سيساعدنا على فهم احتياجاتك بشكل أفضل. يستغرق إكماله دقيقتين فقط.</p>
+    </section>
+    
+    <div class="planner-container">
+        <!-- شريط التقدم -->
+        <div class="planner-progress">
+            <div class="progress-step active" data-step="1"><span>1</span><p>الهدف</p></div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="2"><span>2</span><p>الخدمة</p></div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="3"><span>3</span><p>الميزانية</p></div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="4"><span>4</span><p>التفاصيل</p></div>
+        </div>
+
+        <!-- النموذج -->
+        <form id="project-planner-form" action="https://formspree.io/f/mblkpegv" method="POST">
+            
+            <!-- الخطوة 1: الهدف -->
+            <div class="form-step active-step">
+                <h3 class="step-title">ما هو هدفك الرئيسي من المشروع؟</h3>
+                <div class="choices-grid">
+                    <label class="choice-card"><input type="radio" name="project_goal" value="زيادة الأرباح" checked><i class="fas fa-dollar-sign"></i><span>زيادة الأرباح</span></label>
+                    <label class="choice-card"><input type="radio" name="project_goal" value="فهم سلوك العملاء"><i class="fas fa-users"></i><span>فهم العملاء</span></label>
+                    <label class="choice-card"><input type="radio" name="project_goal" value="تحسين العمليات الداخلية"><i class="fas fa-cogs"></i><span>تحسين العمليات</span></label>
+                    <label class="choice-card"><input type="radio" name="project_goal" value="هدف آخر"><i class="fas fa-question-circle"></i><span>هدف آخر</span></label>
+                </div>
+            </div>
+
+            <!-- الخطوة 2: الخدمة -->
+            <div class="form-step">
+                <h3 class="step-title">ما هي الخدمة الأقرب لاحتياجك؟</h3>
+                <div class="choices-grid">
+                    <label class="choice-card"><input type="radio" name="service_package" value="باقة الانطلاق" checked><i class="fas fa-rocket"></i><span>باقة الانطلاق</span></label>
+                    <label class="choice-card"><input type="radio" name="service_package" value="باقة النمو"><i class="fas fa-chart-line"></i><span>باقة النمو</span></label>
+                    <label class="choice-card"><input type="radio" name="service_package" value="حل مخصص"><i class="fas fa-tools"></i><span>حل مخصص</span></label>
+                </div>
+            </div>
+
+            <!-- الخطوة 3: الميزانية -->
+            <div class="form-step">
+                <h3 class="step-title">ما هي ميزانيتك التقريبية للمشروع؟</h3>
+                <div class="choices-grid">
+                    <label class="choice-card"><input type="radio" name="budget" value="أقل من 1000 جنيه" checked><span>أقل من 1000 جنيه</span></label>
+                    <label class="choice-card"><input type="radio" name="budget" value="1000 - 3000 جنيه"><span>1000 - 3000 جنيه</span></label>
+                    <label class="choice-card"><input type="radio" name="budget" value="أكثر من 3000 جنيه"><span>أكثر من 3000 جنيه</span></label>
+                    <label class="choice-card"><input type="radio" name="budget" value="لم أحدد بعد"><span>لم أحدد بعد</span></label>
+                </div>
+            </div>
+
+            <!-- الخطوة 4: التفاصيل -->
+            <div class="form-step">
+                <h3 class="step-title">أخبرنا بالمزيد عنك وعن مشروعك</h3>
+                <div class="contact-details-grid">
+                    <div class="form-group"><label for="name">الاسم*</label><input type="text" id="name" name="name" required></div>
+                    <div class="form-group"><label for="email">البريد الإلكتروني*</label><input type="email" id="email" name="email" required></div>
+                </div>
+                <div class="form-group"><label for="project_details">نبذة سريعة عن المشروع</label><textarea id="project_details" name="project_details" rows="4"></textarea></div>
+                <!-- حقل مخفي لتجميع ملخص الإجابات -->
+                <textarea name="summary_for_email" id="summary-for-email" style="display:none;"></textarea>
+            </div>
+            
+            <!-- أزرار التنقل -->
+            <div class="planner-navigation">
+                <button type="button" class="cta-button secondary" id="prev-btn" style="display: none;">السابق</button>
+                <button type="button" class="cta-button" id="next-btn">التالي</button>
+            </div>
+        </form>
+        
+        <!-- رسالة النجاح -->
+        <div id="success-message" style="display:none;" class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <h3>تم استلام طلبك بنجاح!</h3>
+            <p>شكرًا لاهتمامك. سأقوم بمراجعة تفاصيل مشروعك والتواصل معك خلال 24 ساعة.</p>
+        </div>
+
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container"><p>© 2025 عمر بدر | جميع الحقوق محفوظة</p></div>
+  </footer>
+  
+  <script src="project-planner.js"></script>
+</body>
+</html>

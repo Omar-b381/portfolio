@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start a Project - Omar Badr</title>
+  
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../ar/start-project/project-planner.css"> <!-- Main Styles from Arabic version -->
+  <link rel="stylesheet" href="project-planner-en.css"> <!-- English LTR Overrides -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="en-version">
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/en/">Home</a><a href="/en/services/">Services</a><a href="/en/portfolio/">Portfolio</a><a href="/en/blog/">Blog</a><a href="/en/about/">Why Me?</a><a href="/en/contact/" class="active">Start a Project</a><a href="/ar/start-project/" class="language-switcher">العربية</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="planner-hero">
+      <h1 class="page-title">Let's Build Your Success Story</h1>
+      <p class="page-subtitle">This interactive form will help us better understand your needs. It only takes a couple of minutes to complete.</p>
+    </section>
+    
+    <div class="planner-container">
+        <!-- Progress Bar -->
+        <div class="planner-progress">
+            <div class="progress-step active" data-step="1"><span>1</span><p>Goal</p></div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="2"><span>2</span><p>Service</p></div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="3"><span>3</span><p>Budget</p></div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="4"><span>4</span><p>Details</p></div>
+        </div>
+
+        <!-- The Form -->
+        <form id="project-planner-form" action="https://formspree.io/f/mblkpegv" method="POST">
+            
+            <!-- Step 1: Goal -->
+            <div class="form-step active-step">
+                <h3 class="step-title">What is your main goal for this project?</h3>
+                <div class="choices-grid">
+                    <label class="choice-card"><input type="radio" name="project_goal" value="Increase Profits" checked><i class="fas fa-dollar-sign"></i><span>Increase Profits</span></label>
+                    <label class="choice-card"><input type="radio" name="project_goal" value="Understand Customers"><i class="fas fa-users"></i><span>Understand Customers</span></label>
+                    <label class="choice-card"><input type="radio" name="project_goal" value="Optimize Operations"><i class="fas fa-cogs"></i><span>Optimize Operations</span></label>
+                    <label class="choice-card"><input type="radio" name="project_goal" value="Other Goal"><i class="fas fa-question-circle"></i><span>Something Else</span></label>
+                </div>
+            </div>
+
+            <!-- Step 2: Service -->
+            <div class="form-step">
+                <h3 class="step-title">Which service best fits your needs?</h3>
+                <div class="choices-grid">
+                    <label class="choice-card"><input type="radio" name="service_package" value="Starter Package" checked><i class="fas fa-rocket"></i><span>Starter Package</span></label>
+                    <label class="choice-card"><input type="radio" name="service_package" value="Growth Package"><i class="fas fa-chart-line"></i><span>Growth Package</span></label>
+                    <label class="choice-card"><input type="radio" name="service_package" value="Custom Solution"><i class="fas fa-tools"></i><span>Custom Solution</span></label>
+                </div>
+            </div>
+
+            <!-- Step 3: Budget -->
+            <div class="form-step">
+                <h3 class="step-title">What is your approximate budget for this project?</h3>
+                <div class="choices-grid">
+                    <label class="choice-card"><input type="radio" name="budget" value="Under $100" checked><span>Under $100</span></label>
+                    <label class="choice-card"><input type="radio" name="budget" value="$100 - $300"><span>$100 - $300</span></label>
+                    <label class="choice-card"><input type="radio" name="budget" value="Over $300"><span>Over $300</span></label>
+                    <label class="choice-card"><input type="radio" name="budget" value="Not sure yet"><span>Not sure yet</span></label>
+                </div>
+            </div>
+
+            <!-- Step 4: Details -->
+            <div class="form-step">
+                <h3 class="step-title">Tell us a bit more about you and your project</h3>
+                <div class="contact-details-grid">
+                    <div class="form-group"><label for="name">Name*</label><input type="text" id="name" name="name" required></div>
+                    <div class="form-group"><label for="email">Email*</label><input type="email" id="email" name="email" required></div>
+                </div>
+                <div class="form-group"><label for="project_details">Briefly describe your project</label><textarea id="project_details" name="project_details" rows="4"></textarea></div>
+                <!-- Hidden field to collect a summary of the answers -->
+                <textarea name="summary_for_email" id="summary-for-email" style="display:none;"></textarea>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <div class="planner-navigation">
+                <button type="button" class="cta-button secondary" id="prev-btn" style="display: none;">Previous</button>
+                <button type="button" class="cta-button" id="next-btn">Next</button>
+            </div>
+        </form>
+        
+        <!-- Success Message -->
+        <div id="success-message" style="display:none;" class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <h3>Your request has been received!</h3>
+            <p>Thank you for your interest. I will review your project details and get in touch with you within 24 hours.</p>
+        </div>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container"><p>© 2025 Omar Badr | All Rights Reserved</p></div>
+  </footer>
+  
+  <script src="project-planner.js"></script>
+</body>
+</html>

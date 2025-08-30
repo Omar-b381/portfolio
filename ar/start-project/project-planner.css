@@ -1,0 +1,92 @@
+/* --- Hero --- */
+.planner-hero { text-align: center; padding-bottom: var(--spacing-xl); }
+
+/* --- Main Planner Container --- */
+.planner-container { background-color: var(--color-card-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: var(--spacing-lg); max-width: 800px; margin: 0 auto; }
+
+/* --- Progress Bar --- */
+.planner-progress { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--spacing-xl); }
+.progress-step { text-align: center; color: var(--color-text-light); }
+.progress-step span { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background-color: var(--color-bg); border: 2px solid var(--color-border); margin: 0 auto 0.5rem; font-weight: 700; transition: all 0.3s ease; }
+.progress-step p { margin: 0; font-size: 0.8rem; font-weight: 600; }
+.progress-step.active span { background-color: var(--color-secondary); color: white; border-color: var(--color-secondary); }
+.progress-step.active p { color: var(--color-primary); }
+.progress-line { flex-grow: 1; height: 2px; background-color: var(--color-border); }
+
+/* --- Form Steps --- */
+.form-step { display: none; animation: fadeIn 0.5s; }
+.form-step.active-step { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.step-title { text-align: center; margin-bottom: var(--spacing-lg); }
+
+/* --- Choice Cards --- */
+.choices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); }
+.choice-card { background-color: var(--color-bg); border: 2px solid var(--color-border); border-radius: var(--radius-md); padding: var(--spacing-md); text-align: center; cursor: pointer; transition: all 0.3s ease; position: relative; }
+.choice-card:hover { border-color: var(--color-secondary); transform: translateY(-5px); }
+.choice-card input[type="radio"] { position: absolute; opacity: 0; }
+.choice-card i { font-size: 2rem; color: var(--color-secondary); margin-bottom: var(--spacing-sm); display: block; }
+.choice-card span { font-weight: 700; }
+/* Style for selected card */
+.choice-card input[type="radio"]:checked + i + span { color: var(--color-secondary); }
+.choice-card input[type="radio"]:checked ~ * { color: var(--color-secondary); }
+.choices-grid label.choice-card:has(input:checked) { border-color: var(--color-secondary); background-color: #eaf2fd; }
+
+/* --- Final Step Details --- */
+.contact-details-grid { display: grid; grid-template-columns: 1fr; gap: var(--spacing-md); margin-bottom: var(--spacing-md); }
+@media (min-width: 768px) { .contact-details-grid { grid-template-columns: 1fr 1fr; } }
+
+/* --- Navigation Buttons --- */
+.planner-navigation { display: flex; justify-content: space-between; margin-top: var(--spacing-xl); border-top: 1px solid var(--color-border); padding-top: var(--spacing-md); }
+
+/* --- Success Message --- */
+.success-message { text-align: center; }
+.success-message i { font-size: 4rem; color: var(--color-success); margin-bottom: var(--spacing-md); }
+.success-message h3 { color: var(--color-success); }
+/*
+  ========================================
+  In file: ar/start-project/project-planner.css
+  ========================================
+*/
+
+/* --- Final Step Form Fields Styling --- */
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+    text-align: right; /* Ensure labels are right-aligned in RTL */
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-primary);
+}
+
+/* Common styles for both input and textarea */
+.form-step input[type="text"],
+.form-step input[type="email"],
+.form-step textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    background-color: var(--color-bg);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus styles for a modern look */
+.form-step input[type="text"]:focus,
+.form-step input[type="email"]:focus,
+.form-step textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px hsla(210, 80%, 55%, 0.15); /* Adds a soft glow on focus */
+}
+
+/* Specific style for the textarea */
+.form-step textarea {
+    resize: vertical; /* Allow user to resize vertically only */
+    min-height: 120px;
+}
