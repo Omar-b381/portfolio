@@ -2854,3 +2854,43 @@ body.en-version h6 {
     margin-inline-end: 0; /* Remove right margin from RTL */
     margin-inline-start: var(--spacing-xs); /* Add left margin for LTR */
 }
+/* --- Brevo Iframe Wrapper --- */
+.brevo-iframe-wrapper {
+    max-width: 540px; /* يتناسب مع عرض النموذج الأصلي */
+    margin: var(--spacing-md) auto 0;
+    background-color: white; /* يضيف خلفية بيضاء إذا كان النموذج شفافًا */
+    border-radius: var(--radius-md);
+    overflow: hidden; /* يضمن أن النموذج لا يتجاوز الحواف الدائرية */
+    box-shadow: var(--shadow-sm);
+}
+
+.brevo-iframe-wrapper iframe {
+    display: block;
+    width: 100%; /* يجعل النموذج متجاوبًا مع الشاشات الصغيرة */
+    max-width: 100%;
+    margin: 0 auto;
+}
+/* --- Newsletter Status Messages --- */
+.newsletter-status {
+    margin-top: 1rem;
+    font-weight: 600;
+    display: none; /* Hidden by default */
+}
+.newsletter-status.success {
+    color: var(--color-success);
+}
+.newsletter-status.error {
+    color: var(--color-error);
+}
+/* --- Newsletter Status Messages --- */
+.newsletter-status {
+    margin-top: 1rem;
+    font-weight: 600;
+    display: none; /* Hidden by default */
+}
+.newsletter-status.success {
+    color: var(--color-success);
+}
+.newsletter-status.error {
+    color: var(--color-error);
+}

@@ -67,17 +67,40 @@
         <div class="blog-grid" id="other-posts-container"></div>
     </section>
 
-    <!-- ===== Newsletter ===== -->
-    <section class="newsletter-cta">
-        <div class="newsletter-content">
-            <h3>Stay Updated</h3>
-            <p>Subscribe to the monthly newsletter to get the latest articles and insights delivered straight to your inbox.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit" class="cta-button">Subscribe Now</button>
+<!-- ===== Newsletter Section (Connected to Brevo) ===== -->
+<section id="newsletter-cta" class="newsletter-cta">
+    <div class="newsletter-content">
+        <h3>Stay Updated</h3>
+        <p>Subscribe to the monthly newsletter to get the latest articles and insights delivered directly to your inbox.</p>
+        
+        <!-- This is YOUR form that the user sees -->
+        <form id="custom-newsletter-form" class="newsletter-form">
+            <input 
+                id="custom-email-input"
+                type="email" 
+                placeholder="Enter your email address" 
+                required
+            >
+            <button type="submit" class="cta-button">Subscribe Now</button>
+        </form>
+        <p id="newsletter-status" class="newsletter-status"></p>
+
+        <!-- This is the REAL Brevo form, hidden from the user -->
+        <div style="display:none;">
+            <iframe id="hidden-brevo-iframe" name="hidden-brevo-iframe"></iframe>
+            <form 
+                id="real-brevo-form"
+                method="POST" 
+                action="https://490e2f14.sibforms.com/serve/MUIFACe1fTJui8C7Tjdf74_j4K_C7phYKEuGkAocy0lKQSxzB5bE5OwOL4NVULS4DPVs1LnfPaDhTsvO-zi0134kziKvF9w1H2jz5Aqk47vPkQMFz1ZUG2R07yg0EqEivRhMwLxDLyvr3rZ5Qhif_zIuiYLOxX2sKqWG9mA3gw79bSMt9uyw5L7JWdGDSH0PyzbNE4MKjw7KsuvM"
+                target="hidden-brevo-iframe"
+            >
+                <input type="email" id="brevo-email-input" name="EMAIL" />
+                <!-- Add any hidden input fields from Brevo here if they exist -->
+                <input type="hidden" name="locale" value="en">
             </form>
         </div>
-    </section>
+    </div>
+</section>
 
   </main>
 
@@ -88,7 +111,54 @@
   </footer>
 
   <script>
+    
     document.addEventListener('DOMContentLoaded', async () => {
+        // Add this code inside your main DOMContentLoaded event listener
+
+const customForm = document.getElementById('custom-newsletter-form');
+const realForm = document.getElementById('real-brevo-form');
+const customEmailInput = document.getElementById('custom-email-input');
+const brevoEmailInput = document.getElementById('brevo-email-input');
+const newsletterStatus = document.getElementById('newsletter-status');
+const submitButton = customForm.querySelector('button');
+
+if (customForm) {
+    customForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Stop the custom form from submitting normally
+
+        // 1. Check if the email is valid
+        if (!customEmailInput.checkValidity() || customEmailInput.value === '') {
+            newsletterStatus.textContent = 'Please enter a valid email address.';
+            newsletterStatus.className = 'newsletter-status error';
+            newsletterStatus.style.display = 'block';
+            return;
+        }
+
+        // 2. Copy the email from your form to the hidden Brevo form
+        brevoEmailInput.value = customEmailInput.value;
+
+        // 3. Submit the hidden Brevo form in the background
+        realForm.submit();
+
+        // 4. Show a success message to the user immediately
+        // We assume success because the submission happens in the background
+        newsletterStatus.textContent = 'Thank you for subscribing! Your submission was successful.';
+        newsletterStatus.className = 'newsletter-status success';
+        newsletterStatus.style.display = 'block';
+        
+        // 5. Disable the button and clear the input to prevent double submission
+        submitButton.disabled = true;
+        submitButton.textContent = 'Subscribed!';
+        customEmailInput.value = '';
+
+        // Optional: Re-enable the button and hide the message after a few seconds
+        setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Subscribe Now';
+            newsletterStatus.style.display = 'none';
+        }, 5000);
+    });
+}
         const featuredContainer = document.getElementById('featured-post-container');
         const othersContainer = document.getElementById('other-posts-container');
         const tagsContainer = document.getElementById('tags-filter-container');
@@ -212,6 +282,8 @@
             othersContainer.innerHTML = filteredPosts.map(post => createPostHTML(post, false)).join('');
         });
     });
+    
+
   </script>
 </body>
 </html>

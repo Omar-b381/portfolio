@@ -71,19 +71,40 @@
             <!-- سيتم إنشاء بطاقات المقالات هنا -->
         </div>
     </section>
+<!-- ===== Newsletter Section (Connected to Brevo) ===== -->
+<section id="newsletter-cta" class="newsletter-cta">
+    <div class="newsletter-content">
+        <h3>ابق على اطلاع</h3>
+        <p>اشترك في النشرة الإخبارية الشهرية للحصول على أحدث المقالات والرؤى مباشرة في بريدك الإلكتروني.</p>
+        
+        <!-- This is YOUR form that the user sees -->
+        <form id="custom-newsletter-form" class="newsletter-form">
+            <input 
+                id="custom-email-input"
+                type="email" 
+                placeholder="أدخل بريدك الإلكتروني" 
+                required
+            >
+            <button type="submit" class="cta-button">اشترك الآن</button>
+        </form>
+        <p id="newsletter-status" class="newsletter-status"></p>
 
-    <!-- ===== النشرة الإخبارية ===== -->
-    <section class="newsletter-cta">
-        <div class="newsletter-content">
-            <h3>ابق على اطلاع</h3>
-            <p>اشترك في النشرة الإخبارية الشهرية للحصول على أحدث المقالات والرؤى مباشرة في بريدك الإلكتروني.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
-                <button type="submit" class="cta-button">اشترك الآن</button>
+        <!-- This is the REAL Brevo form, hidden from the user -->
+        <div style="display:none;">
+            <iframe id="hidden-brevo-iframe" name="hidden-brevo-iframe"></iframe>
+            <form 
+                id="real-brevo-form"
+                method="POST" 
+                action="https://490e2f14.sibforms.com/serve/MUIFACe1fTJui8C7Tjdf74_j4K_C7phYKEuGkAocy0lKQSxzB5bE5OwOL4NVULS4DPVs1LnfPaDhTsvO-zi0134kziKvF9w1H2jz5Aqk47vPkQMFz1ZUG2R07yg0EqEivRhMwLxDLyvr3rZ5Qhif_zIuiYLOxX2sKqWG9mA3gw79bSMt9uyw5L7JWdGDSH0PyzbNE4MKjw7KsuvM"
+                target="hidden-brevo-iframe"
+            >
+                <input type="email" id="brevo-email-input" name="EMAIL" />
+                <!-- Add any hidden input fields from Brevo here if they exist -->
+                <input type="hidden" name="locale" value="en">
             </form>
         </div>
-    </section>
-
+    </div>
+</section>
   </main>
 
   <footer>
@@ -94,6 +115,52 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
+        // Add this code inside your main DOMContentLoaded event listener
+
+const customForm = document.getElementById('custom-newsletter-form');
+const realForm = document.getElementById('real-brevo-form');
+const customEmailInput = document.getElementById('custom-email-input');
+const brevoEmailInput = document.getElementById('brevo-email-input');
+const newsletterStatus = document.getElementById('newsletter-status');
+const submitButton = customForm.querySelector('button');
+
+if (customForm) {
+    customForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Stop the custom form from submitting
+
+        // 1. Check if the email is valid
+        if (!customEmailInput.checkValidity() || customEmailInput.value === '') {
+            newsletterStatus.textContent = 'الرجاء إدخال بريد إلكتروني صحيح.';
+            newsletterStatus.className = 'newsletter-status error';
+            newsletterStatus.style.display = 'block';
+            return;
+        }
+
+        // 2. Copy the email from your form to the hidden Brevo form
+        brevoEmailInput.value = customEmailInput.value;
+
+        // 3. Submit the hidden Brevo form
+        realForm.submit();
+
+        // 4. Show a success message to the user immediately
+        // We assume success because the submission happens in the background
+        newsletterStatus.textContent = 'شكرًا لاشتراكك! لقد تم تسجيلك بنجاح.';
+        newsletterStatus.className = 'newsletter-status success';
+        newsletterStatus.style.display = 'block';
+        
+        // 5. Disable the button and clear the input
+        submitButton.disabled = true;
+        submitButton.textContent = 'تم الاشتراك!';
+        customEmailInput.value = '';
+
+        // Optional: Re-enable the button after a few seconds
+        setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'اشترك الآن';
+            newsletterStatus.style.display = 'none';
+        }, 5000);
+    });
+}
         const featuredContainer = document.getElementById('featured-post-container');
         const othersContainer = document.getElementById('other-posts-container');
         const tagsContainer = document.getElementById('tags-filter-container');
@@ -231,6 +298,7 @@
             othersContainer.innerHTML = filteredPosts.map(post => createPostHTML(post, false)).join('');
         });
     });
+    
   </script>
 </body>
 </html>
