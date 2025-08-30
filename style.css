@@ -2705,3 +2705,152 @@ body.en-version h6 {
     text-align: left; /* Align feature text to the left */
 }
 
+/*
+  ========================================
+  ABOUT-PAGE.CSS
+  Styles for the new "Why Me?" page.
+  ========================================
+*/
+
+/* --- Hero Section --- */
+.about-hero {
+    text-align: center;
+    background-color: var(--color-bg);
+    padding: var(--spacing-xl) var(--spacing-md);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* --- Problem/Solution Section --- */
+.problem-solution-section {
+    background-color: var(--color-primary);
+    padding: var(--spacing-xl) 0;
+}
+.problem-solution-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+.problem-solution-grid .card {
+    padding: var(--spacing-lg) var(--spacing-md);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+.problem-solution-grid .card i {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+.problem-solution-grid .problem-card {
+    background-color: hsla(0, 59%, 94%, 0.1); /* Light red transparent */
+    border: 1px solid var(--color-error);
+    color: white;
+}
+.problem-solution-grid .problem-card i { color: var(--color-error); }
+.problem-solution-grid .problem-card h3 { color: white; }
+
+.problem-solution-grid .solution-card {
+    background-color: hsla(145, 63%, 94%, 0.1); /* Light green transparent */
+    border: 1px solid var(--color-success);
+    color: white;
+}
+.problem-solution-grid .solution-card i { color: var(--color-success); }
+.problem-solution-grid .solution-card h3 { color: white; }
+
+
+/* --- Comparison Section --- */
+.comparison-section {
+    padding-top: var(--spacing-xl);
+}
+.comparison-table {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+.comparison-header, .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    align-items: center;
+}
+.comparison-header {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 700;
+}
+.comparison-header > div {
+    padding: var(--spacing-md);
+    text-align: center;
+}
+.comparison-row {
+    border-bottom: 1px solid var(--color-border);
+}
+.comparison-row:last-child {
+    border-bottom: none;
+}
+.comparison-row > div {
+    padding: var(--spacing-md);
+}
+.feature-name {
+    font-weight: 700;
+}
+.comparison-row > div:not(:first-child) {
+    text-align: center;
+    color: var(--color-text-light);
+}
+.comparison-row > div.main-option {
+    color: var(--color-text);
+}
+.check-mark, .cross-mark {
+    font-weight: 900;
+    margin-inline-end: var(--spacing-xs);
+}
+.check-mark { color: var(--color-success); }
+.cross-mark { color: var(--color-error); }
+
+
+/* --- Testimonials Section (Overrides) --- */
+.testimonials {
+    background-color: var(--color-bg);
+    margin: var(--spacing-xl) calc(var(--container-padding) * -1);
+    padding: var(--spacing-xl) var(--container-padding);
+    border-top: 1px solid var(--color-border);
+}
+
+/* --- Responsive Design --- */
+@media (min-width: 768px) {
+    .problem-solution-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .comparison-header, .comparison-row {
+        font-size: 1rem;
+    }
+}
+/*
+  ========================================
+  ABOUT-PAGE-EN.CSS
+  LTR Overrides for the "Why Me?" Page.
+  ========================================
+*/
+
+/* Use Poppins font for the English version */
+body.en-version {
+  font-family: 'Poppins', sans-serif;
+}
+
+body.en-version h1,
+body.en-version h2,
+body.en-version h3,
+body.en-version h4,
+body.en-version h5,
+body.en-version h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- LTR Adjustments --- */
+
+.comparison-row .check-mark, 
+.comparison-row .cross-mark {
+    margin-inline-end: 0; /* Remove right margin from RTL */
+    margin-inline-start: var(--spacing-xs); /* Add left margin for LTR */
+}

@@ -3,157 +3,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Omar Badr</title>
+  <title>Why Me? - Omar Badr</title>
   
-  <!-- Correct CSS Path -->
   <link rel="stylesheet" href="../../style.css">
-  
+  <!-- Path to the main (Arabic) about page CSS -->
+  <link rel="stylesheet" href="../../ar/about/about-page.css">
+  <!-- Path to the new English LTR override CSS -->
+  <link rel="stylesheet" href="about-page-en.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-  <!-- Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Q56ET619WZ');
-  </script>
 </head>
-<body>
+<body class="en-version">
 
   <header>
     <div class="container">
       <nav>
-        <a href="/en/">Home</a>
-        <a href="/en/services/">Services</a>
-        <a href="/en/portfolio/">Portfolio</a>
-        <a href="/en/blog/">Blog</a>
-        <a href="/en/about/" class="active">About</a>
-        <a href="/en/contact/">Contact</a>
-        <a href="/ar/about/" class="language-switcher">العربية</a>
+        <a href="/en/">Home</a><a href="/en/services/">Services</a><a href="/en/portfolio/">Portfolio</a><a href="/en/blog/">Blog</a><a href="/en/about/" class="active">Why Me?</a><a href="/en/contact/">Contact</a><a href="/ar/about/" class="language-switcher">العربية</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="about-page-section">
-      
-      <!-- HERO SECTION -->
-      <div class="about-hero-layout">
-          <div class="about-hero-image">
-          <div class="image-card-wrapper">
-          <img src="../assets/images/omar.jpg" alt="Profile picture of Omar Badr">
-          </div>
-        </div>
-        <div class="about-hero-text">
-          <p class="about-tagline">Data Analyst & Machine Learning Engineer</p>
-          <h1 class="page-title" style="text-align: left; --page-title-after-margin: 0;">Welcome, I’m Omar Badr</h1>
-          <p>
-            My true passion lies in transforming raw data into meaningful stories and strategic decisions. I believe every dataset is an opportunity to uncover insights that drive growth and create impact.
-          </p>
-          <p>
-            With over 4 years of hands-on experience, I help businesses leverage their data assets to achieve sustainable competitive advantages.
-          </p>
-          <div class="about-social-links">
-            <a href="https://www.linkedin.com/in/omarbadrdata/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Omar-b381" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- MISSION SECTION -->
-      <h2 class="section-title">My Work Philosophy</h2>
-      <div class="mission-grid">
-        <div class="mission-card">
-          <i class="fas fa-lightbulb"></i>
-          <h3>Clarity Before Complexity</h3>
-          <p>My priority is delivering clear, actionable insights—not just complex models. The true value lies in the impact data has on your decisions.</p>
-        </div>
-        <div class="mission-card">
-          <i class="fas fa-handshake"></i>
-          <h3>True Partnership</h3>
-          <p>I consider myself part of your team. I work closely with you to understand your unique challenges and design tailored solutions that meet your goals.</p>
-        </div>
-        <div class="mission-card">
-          <i class="fas fa-chart-line"></i>
-          <h3>Continuous Growth</h3>
-          <p>The data world evolves rapidly, and I am committed to continuous learning and applying the latest technologies to ensure you always get the best solutions.</p>
-        </div>
-      </div>
-
-      <!-- SKILLS SECTION -->
-      <h2 class="section-title">Skills & Tools</h2>
-      <div class="skills-grid">
-        <div class="skill-item">Power BI</div>
-        <div class="skill-item">SQL</div>
-        <div class="skill-item">Python</div>
-        <div class="skill-item">Excel</div>
-        <div class="skill-item">Machine Learning</div>
-        <div class="skill-item">Data Analysis</div>
-        <div class="skill-item">Dashboard Design</div>
-        <div class="skill-item">Data Cleaning</div>
-        <div class="skill-item">Web Scraping</div>
-        <div class="skill-item">Pandas</div>
-        <div class="skill-item">Scikit-learn</div>
-        <div class="skill-item">DAX</div>
+  <main>
+    <!-- ===== Hero Section ===== -->
+    <section class="about-hero container">
+      <div class="about-hero-content">
+        <h1 class="page-title">More Than a Data Analyst, I'm Your Growth Partner</h1>
+        <p class="page-subtitle">In today's business world, data isn't just numbers; it's the compass that guides your decisions. The problem is, most companies own this compass but don't know how to read it.</p>
       </div>
     </section>
 
-    <!-- JOURNEY/TIMELINE SECTION -->
-    <section>
-        <h2 class="section-title">My Career Journey</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">2021 - The Beginning</h3>
-                    <p>I started my journey in the world of data with great passion, focusing on learning the fundamentals of analysis and languages like SQL and Python.</p>
+    <!-- ===== Problem & Solution Section ===== -->
+    <section class="problem-solution-section">
+        <div class="container">
+            <div class="problem-solution-grid">
+                <div class="card problem-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>The Common Problem</h3>
+                    <p>Scattered data everywhere, decisions based on guesswork, and missed growth opportunities. Sound familiar? You're not alone.</p>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">2022 - Mastering Tools</h3>
-                    <p>I specialized in data visualization tools, especially Power BI, and implemented my first projects building interactive dashboards.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">2023 - Entering Machine Learning</h3>
-                    <p>I expanded my expertise to include machine learning, building predictive and classification models using libraries like Scikit-learn.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">2024 & Beyond - Impact</h3>
-                    <p>Now, I focus on delivering end-to-end data solutions that help businesses achieve their goals—from data collection to AI-driven models.</p>
+                <div class="card solution-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>The Solution I Provide</h3>
+                    <p>I translate data chaos into strategic clarity. My approach focuses on connecting every number to a real business goal, turning insights into actions that boost your bottom line.</p>
                 </div>
             </div>
         </div>
     </section>
 
-     <!-- CTA Section -->
+    <!-- ===== Process Section (How We Work) ===== -->
+    <section class="how-it-works container">
+        <h2 class="section-title">Our Process for Success</h2>
+        <div class="steps-container">
+            <div class="step"><div class="step-number">1</div><h4 class="step-title">Discovery & Understanding</h4><p>We start with a strategy session to understand your goals, challenges, and the key questions you need answered.</p></div>
+            <div class="step"><div class="step-number">2</div><h4 class="step-title">Deep Dive Analysis</h4><p>I dive into your data, clean it, and use the right tools to uncover hidden patterns and insights.</p></div>
+            <div class="step"><div class="step-number">3</div><h4 class="step-title">Delivery & Activation</h4><p>I deliver the results as clear reports or an interactive dashboard, with an action plan to implement the insights.</p></div>
+        </div>
+    </section>
+
+    <!-- ===== Comparison Section ===== -->
+    <section class="comparison-section container">
+        <h2 class="section-title">Why Choose to Work With Me?</h2>
+        <div class="comparison-table">
+            <div class="comparison-header">
+                <div>Feature</div>
+                <div class="option-title main-option">Working With Me (Your Data Partner)</div>
+                <div class="option-title">Hiring Full-Time</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature-name">Cost</div>
+                <div><span class="check-mark">✓</span> Flexible and cost-effective (pay-per-project)</div>
+                <div><span class="cross-mark">✗</span> Fixed salary and long-term commitments</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature-name">Expertise</div>
+                <div><span class="check-mark">✓</span> Diverse experience from various projects and industries</div>
+                <div><span class="cross-mark">✗</span> Experience limited to the current company</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature-name">Speed</div>
+                <div><span class="check-mark">✓</span> Full focus on your project for rapid results</div>
+                <div><span class="cross-mark">✗</span> May be distracted by multiple internal tasks</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature-name">Tools</div>
+                <div><span class="check-mark">✓</span> Access to the latest premium tools and technologies</div>
+                <div><span class="cross-mark">✗</span> Limited to the tools provided by the company</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Social Proof (Testimonials) ===== -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title">Proof in Their Words: Client Testimonials</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <p class="testimonial-text">"Omar is very practical, quick to respond, and highly professional. Thank you, Omar."</p>
+              <div class="testimonial-author"><h4 class="author-name">Ahmed Thabet</h4><p class="author-project">Stationery Shop Owner</p></div>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">"Truly respectable and outstanding... I was late on my delivery, yet he was extremely respectful and cooperative. Thank you, Omar, and God willing, this won't be our last collaboration."</p>
+              <div class="testimonial-author"><h4 class="author-name">Abdulmalik Al Faryan</h4><p class="author-project">Head of Donor Services, Sulaiman Al Rajhi Foundation</p></div>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">"Omar is a professional, fast-working, and very cooperative person. I highly recommend working with him. Thank you, Omar."</p>
+              <div class="testimonial-author"><h4 class="author-name">Emad</h4><p class="author-project">Client from Mustaqel</p></div>
+            </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ===== Call to Action Section ===== -->
     <section class="cta-section">
         <div class="container">
-          <h2>Ready to Turn Your Data Into Valuable Assets?</h2>
-          <p>Let’s talk about your project and how I can help you achieve your goals.</p>
-          <a href="/en/contact/" class="cta-button">Get in Touch</a>
+          <h2>Ready to Make Better Decisions?</h2>
+          <p>Let's chat in a free 30-minute consultation to see how I can help you.</p>
+          <a href="/en/contact/" class="cta-button">Book Your Free Consultation</a>
         </div>
     </section>
 
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="container">
       <p>© 2025 Omar Badr | All Rights Reserved</p>
     </div>
   </footer>
-
+  
 </body>
 </html>
