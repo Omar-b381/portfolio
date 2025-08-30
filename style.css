@@ -2519,3 +2519,189 @@ body.en-version h6 {
 }
 
 /* --- MODIFICATION END --- */
+/*
+  ========================================
+  SERVICES-PAGE.CSS
+  Styles for the new Packages layout.
+  ========================================
+*/
+
+/* --- Page Hero Section --- */
+.services-hero {
+  text-align: center;
+  padding-bottom: var(--spacing-xl);
+}
+
+/* --- Packages Section --- */
+.packages-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    align-items: center; /* Align cards vertically */
+}
+
+.package-card {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg) var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Featured Package Style */
+.package-card.featured {
+    border-color: var(--color-secondary);
+    transform: scale(1.05); /* Make it stand out */
+    position: relative;
+    overflow: hidden;
+}
+.featured-badge {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 5px 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transform: rotate(45deg);
+}
+
+.package-header {
+    margin-bottom: var(--spacing-md);
+}
+
+.package-icon {
+    font-size: 2.5rem;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+.package-title {
+    font-size: 1.5rem;
+}
+.package-description {
+    color: var(--color-text-light);
+    min-height: 50px; /* Ensure equal height */
+}
+
+.package-price {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+.package-price .price {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-primary);
+}
+.package-price .duration {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.package-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--spacing-lg);
+    flex-grow: 1; /* Make sure the list takes available space */
+    text-align: right;
+}
+.package-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+}
+.package-features li i {
+    color: var(--color-success);
+}
+
+.package-card .cta-button {
+    width: 100%;
+}
+
+/* --- FAQ Section --- */
+.faq-section {
+    margin-top: var(--spacing-xl);
+}
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+.faq-item {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+}
+.faq-question {
+    padding: var(--spacing-md);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+.faq-question::after {
+    content: '\f067'; /* Font Awesome plus icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    transition: transform 0.3s ease;
+}
+.faq-item[open] > .faq-question::after {
+    transform: rotate(45deg);
+}
+.faq-answer {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+    color: var(--color-text-light);
+}
+
+/* --- Responsive Design --- */
+@media (min-width: 992px) {
+    .packages-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+body.en-version {
+  font-family: 'Poppins', sans-serif;
+}
+
+body.en-version h1,
+body.en-version h2,
+body.en-version h3,
+body.en-version h4,
+body.en-version h5,
+body.en-version h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- LTR Adjustments --- */
+
+.featured-badge {
+    right: auto;
+    left: -30px;
+    transform: rotate(-45deg);
+}
+
+.package-features {
+    text-align: left; /* Align feature text to the left */
+}
+

@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-agtf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Services - Omar Badr</title>
+  <title>Service Packages - Omar Badr</title>
   
   <link rel="stylesheet" href="../../style.css">
-  <!-- Path to the original Arabic styles -->
+  <!-- Path to the main (Arabic) services page CSS -->
   <link rel="stylesheet" href="../../ar/services/services-page.css">
-  <!-- Path to the NEW English override styles -->
+  <!-- Path to the new English LTR override CSS -->
   <link rel="stylesheet" href="services-page-en.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Added Poppins font for English text -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Q56ET619WZ');
-  </script>
 </head>
-<body class="en-version"> <!-- Added a class for easier font targeting -->
+<body class="en-version">
 
   <header>
     <div class="container">
@@ -44,122 +34,96 @@
 
   <main class="container">
     <section class="services-hero">
-      <h1 class="page-title">From Raw Data to Winning Decisions</h1>
-      <p class="page-subtitle">I offer a suite of specialized solutions designed to help you harness the power of your data, transforming it from mere numbers into a core driver of your business growth.</p>
+      <h1 class="page-title">Packages Designed for Your Business Growth</h1>
+      <p class="page-subtitle">Choose the package that best fits your current needs and goals. Each package is designed to deliver real, measurable value to your business.</p>
     </section>
     
-    <div class="services-layout-grid">
-      <!-- ===== Services Navigation Panel ===== -->
-      <aside class="services-nav-panel">
-        <h3>Services at a Glance</h3>
-        <nav>
-          <a href="#service-analysis" class="nav-link active"><i class="fas fa-search-plus"></i> Strategic Data Analysis</a>
-          <a href="#service-dashboard" class="nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard Design</a>
-          <a href="#service-scraping" class="nav-link"><i class="fas fa-cloud-download-alt"></i> Web Scraping</a>
-          <a href="#service-ml" class="nav-link"><i class="fas fa-brain"></i> Machine Learning Models</a>
-          <a href="#offer-package" class="nav-link offer-link"><i class="fas fa-star"></i> Starter Package</a>
-        </nav>
-      </aside>
-
-      <!-- ===== Services Content Details ===== -->
-      <div class="services-content-panel">
-        
-        <article id="service-analysis" class="service-detail-card">
-          <div class="service-header">
-            <i class="service-icon fas fa-search-plus"></i>
-            <h2>Strategic Data Analysis</h2>
-          </div>
-          <p>This service is the foundation for discovering the "why" behind your numbers. I dive deep into your data to uncover hidden patterns, identify strengths and weaknesses, and provide actionable insights that help you understand your business performance and pinpoint future growth opportunities.</p>
-          <div class="service-deliverables">
-            <h4>What you'll get:</h4>
-            <ul>
-              <li><i class="fas fa-check-circle"></i> A comprehensive analytical report highlighting key findings.</li>
-              <li><i class="fas fa-check-circle"></i> Identification of the most critical KPIs for your business.</li>
-              <li><i class="fas fa-check-circle"></i> Clear, data-driven strategic recommendations.</li>
-              <li><i class="fas fa-check-circle"></i> A one-hour presentation and discussion of the results.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article id="service-dashboard" class="service-detail-card">
-          <div class="service-header">
-            <i class="service-icon fas fa-tachometer-alt"></i>
-            <h2>Interactive Dashboard Design</h2>
-          </div>
-          <p>I transform your complex datasets into an easy-to-understand visual story. Using Power BI, I design and build interactive dashboards that allow you to monitor Key Performance Indicators (KPIs) in real-time, enabling you to make fast, evidence-based decisions.</p>
-           <div class="service-deliverables">
-            <h4>What you'll get:</h4>
-            <ul>
-              <li><i class="fas fa-check-circle"></i> A custom, interactive dashboard on Power BI.</li>
-              <li><i class="fas fa-check-circle"></i> Connection to your data sources (up to 3).</li>
-              <li><i class="fas fa-check-circle"></i> A responsive design for both desktop and mobile.</li>
-              <li><i class="fas fa-check-circle"></i> Basic training on how to use and interpret the dashboard.</li>
-            </ul>
-          </div>
-        </article>
-        
-        <article id="service-scraping" class="service-detail-card">
-           <div class="service-header">
-            <i class="service-icon fas fa-cloud-download-alt"></i>
-            <h2>Web Scraping Solutions</h2>
-          </div>
-          <p>Need data from competitor websites, e-commerce marketplaces, or any other online source? I build custom scrapers using Python to automatically collect the data you need, organizing it into structured, analysis-ready files.</p>
-           <div class="service-deliverables">
-            <h4>What you'll get:</h4>
-            <ul>
-              <li><i class="fas fa-check-circle"></i> A custom Python script tailored to your needs.</li>
-              <li><i class="fas fa-check-circle"></i> Extracted data in a structured format (CSV, Excel, JSON).</li>
-              <li><i class="fas fa-check-circle"></i> Clear documentation on how to run the tool.</li>
-              <li><i class="fas fa-check-circle"></i> A 99% accuracy guarantee for the extracted data.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article id="service-ml" class="service-detail-card">
-          <div class="service-header">
-            <i class="service-icon fas fa-brain"></i>
-            <h2>Machine Learning Models (Coming Soon)</h2>
-          </div>
-          <p>I take your data to the next level by building custom predictive and classification models. Whether you want to predict customer churn, forecast future sales, or automate data classification, I can build the right solution for you.</p>
-           <div class="service-deliverables">
-            <h4>What you'll get:</h4>
-            <ul>
-              <li><i class="fas fa-check-circle"></i> A trained and ready-to-use machine learning model.</li>
-              <li><i class="fas fa-check-circle"></i> A detailed report on the model's performance and accuracy.</li>
-              <li><i class="fas fa-check-circle"></i> The complete source code for the model.</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- ===== Starter Package (Special Offer) ===== -->
-        <div id="offer-package" class="offer-package-card">
-            <div class="offer-tag">Special Offer</div>
-            <h2>Starter Package</h2>
-            <p>Ideal for small businesses and startups looking for quick insights at an affordable cost. Includes basic data analysis and a mini-dashboard.</p>
-            <div class="offer-price">
-                <span class="current-price">600 EGP </span>
-                <span class="original-price">1000 EGP</span>
+    <!-- ===== Packages Section ===== -->
+    <section class="packages-section">
+        <div class="packages-grid">
+            
+            <!-- Starter Package -->
+            <div class="package-card">
+                <div class="package-header">
+                    <i class="fas fa-rocket package-icon"></i>
+                    <h3 class="package-title">Starter Package</h3>
+                    <p class="package-description">Perfect for startups and small businesses needing initial insights from their data.</p>
+                </div>
+                <div class="package-price">
+                    <span class="price">Starting at $55</span>
+                    <span class="duration">One-time project</span>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check-circle"></i> Exploratory analysis of one dataset</li>
+                    <li><i class="fas fa-check-circle"></i> Mini-dashboard build (up to 5 KPIs)</li>
+                    <li><i class="fas fa-check-circle"></i> Summary report with findings & recommendations</li>
+                    <li><i class="fas fa-check-circle"></i> One-hour results walkthrough session</li>
+                </ul>
+                <a href="/en/contact/?subject=Inquiry%20about%20the%20Starter%20Package" class="cta-button secondary">Request Package</a>
             </div>
-            <a href="/en/contact/?subject=Starter%20Package%20Inquiry" class="cta-button">Claim This Offer</a>
+
+            <!-- Growth Package (Featured) -->
+            <div class="package-card featured">
+                <div class="featured-badge">Most Popular</div>
+                <div class="package-header">
+                    <i class="fas fa-chart-line package-icon"></i>
+                    <h3 class="package-title">Growth Package</h3>
+                    <p class="package-description">For businesses seeking continuous, data-driven decision-making.</p>
+                </div>
+                <div class="package-price">
+                    <span class="price">Starting at $155</span>
+                    <span class="duration">per month</span>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check-circle"></i> <strong>Everything in Starter, plus:</strong></li>
+                    <li><i class="fas fa-check-circle"></i> Ongoing monthly performance analysis</li>
+                    <li><i class="fas fa-check-circle"></i> Full interactive dashboard (up to 15 KPIs)</li>
+                    <li><i class="fas fa-check-circle"></i> Connection of up to 3 data sources</li>
+                    <li><i class="fas fa-check-circle"></i> Priority email support</li>
+                    <li><i class="fas fa-check-circle"></i> Monthly performance reports</li>
+                </ul>
+                <a href="/en/contact/?subject=Inquiry%20about%20the%20Growth%20Package" class="cta-button">Choose This Package</a>
+            </div>
+
+            <!-- Custom Package -->
+            <div class="package-card">
+                <div class="package-header">
+                    <i class="fas fa-cogs package-icon"></i>
+                    <h3 class="package-title">Custom Solution</h3>
+                    <p class="package-description">For businesses with advanced needs like machine learning or web scraping.</p>
+                </div>
+                <div class="package-price">
+                    <span class="price">Contact Us</span>
+                    <span class="duration">for a custom quote</span>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check-circle"></i> <strong>Everything in Growth, plus:</strong></li>
+                    <li><i class="fas fa-check-circle"></i> Custom machine learning model building</li>
+                    <li><i class="fas fa-check-circle"></i> Web scraping and data collection solutions</li>
+                    <li><i class="fas fa-check-circle"></i> In-depth strategic consulting</li>
+                    <li><i class="fas fa-check-circle"></i> Unlimited data source connections</li>
+                </ul>
+                <a href="/en/contact/?subject=Inquiry%20about%20a%20Custom%20Solution" class="cta-button secondary">Discuss Your Project</a>
+            </div>
+
         </div>
-      </div>
-    </div>
+    </section>
 
     <!-- ===== FAQ Section ===== -->
     <section class="faq-section">
       <h2 class="section-title">Frequently Asked Questions</h2>
       <div class="faq-accordion">
         <details class="faq-item">
-          <summary class="faq-question">What kind of data can you analyze?</summary>
-          <p class="faq-answer">I can work with various types of data, including sales data, customer data (CRM), website user behavior, financial data, and more. As long as the data is available digitally, it can be analyzed.</p>
+          <summary class="faq-question">What's the difference between a mini and a full dashboard?</summary>
+          <p class="faq-answer">A mini-dashboard focuses on the top 5 most important Key Performance Indicators (KPIs) to give you a quick overview. The full dashboard dives deeper, connects multiple data sources, and includes various analytical pages (e.g., customer analysis, product analysis, etc.).</p>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">How long does a project take?</summary>
-          <p class="faq-answer">The timeline depends on the project's scope and complexity. A small dashboard project might take a few days, while an in-depth strategic analysis could take a week or more. I will provide a clear timeline after discussing your project details.</p>
+          <summary class="faq-question">Can I upgrade my package later?</summary>
+          <p class="faq-answer">Absolutely! You can start with the Starter Package, and if you find you need ongoing analysis and greater support, you can upgrade to the Growth Package at any time.</p>
         </details>
         <details class="faq-item">
           <summary class="faq-question">Is my data confidential?</summary>
-          <p class="faq-answer">Absolutely. Your data's confidentiality is my top priority. I am fully prepared to sign a Non-Disclosure Agreement (NDA) before starting any project to ensure your data is completely protected.</p>
+          <p class="faq-answer">Yes, the confidentiality of your data is my utmost priority. I am always prepared to sign a Non-Disclosure Agreement (NDA) before starting any project to ensure your data is fully protected.</p>
         </details>
       </div>
     </section>
@@ -172,30 +136,49 @@
     </div>
   </footer>
   
-  <script>
-    // JavaScript for active state on scroll (works for both LTR/RTL)
-    document.addEventListener('DOMContentLoaded', () => {
-        const sections = document.querySelectorAll('.service-detail-card, .offer-package-card');
-        const navLinks = document.querySelectorAll('.services-nav-panel .nav-link');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href').substring(1) === entry.target.id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, { threshold: 0.5 });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    });
-  </script>
-
 </body>
-</html>
+</html>```
+
+---
+
+### Step 2: CSS for the English Version (`en/services/services-page-en.css`)
+
+Create a new file named `services-page-en.css` inside your `/en/services/` directory and paste this small CSS code into it.
+
+```css
+/*
+  ========================================
+  SERVICES-PAGE-EN.CSS
+  LTR Overrides for the Packages Page.
+  ========================================
+*/
+
+/* Use Poppins font for the English version */
+body.en-version {
+  font-family: 'Poppins', sans-serif;
+}
+
+body.en-version h1,
+body.en-version h2,
+body.en-version h3,
+body.en-version h4,
+body.en-version h5,
+body.en-version h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- LTR Adjustments --- */
+
+.featured-badge {
+    right: auto;
+    left: -30px;
+    transform: rotate(-45deg);
+}
+
+.package-features {
+    text-align: left; /* Align feature text to the left */
+}
+
+.faq-question::after {
+    /* No change needed, flexbox handles it */
+}
