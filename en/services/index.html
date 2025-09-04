@@ -138,48 +138,5 @@
   </footer>
   
 </body>
-</html>```
+</html>
 
----
-
-### Step 2: CSS for the English Version (`en/services/services-page-en.css`)
-
-Create a new file named `services-page-en.css` inside your `/en/services/` directory and paste this small CSS code into it.
-
-```css
-/*
-  ========================================
-  SERVICES-PAGE-EN.CSS
-  LTR Overrides for the Packages Page.
-  ========================================
-*/
-
-/* Use Poppins font for the English version */
-body.en-version {
-  font-family: 'Poppins', sans-serif;
-}
-
-body.en-version h1,
-body.en-version h2,
-body.en-version h3,
-body.en-version h4,
-body.en-version h5,
-body.en-version h6 {
-    font-family: 'Poppins', sans-serif;
-}
-
-/* --- LTR Adjustments --- */
-
-.featured-badge {
-    right: auto;
-    left: -30px;
-    transform: rotate(-45deg);
-}
-
-.package-features {
-    text-align: left; /* Align feature text to the left */
-}
-
-.faq-question::after {
-    /* No change needed, flexbox handles it */
-}
