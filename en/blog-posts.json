@@ -102,7 +102,7 @@
   "date": "August 28, 2025",
   "readTime": "15 min read",
   "tags": ["SQL", "Databases", "Technical Guides"],
-  "image": "assets/images/sql_subquery_cover.jpg",
+  "image": "assets/images/sql_subquery_cover.png",
   "excerpt": "A complete guide detailing everything you need to know about SQL subqueries, from different types and use cases to best practices for performance optimization.",
   "author": {
     "name": "Omar Badr",

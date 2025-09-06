@@ -102,7 +102,7 @@
   "date": "28 أغسطس 2025",
   "readTime": "15 دقيقة",
   "tags": ["SQL", "قواعد البيانات", "شروحات تقنية"],
-  "image": "assets/images/sql_subquery_cover.jpg",
+  "image": "assets/images/sql_subquery_cover.png",
   "excerpt": "دليل متكامل يفصل كل ما تحتاج لمعرفته عن الاستعلامات الفرعية في SQL، من الأنواع المختلفة وأماكن الاستخدام إلى أفضل الممارسات لتحسين الأداء.",
   "author": {
     "name": "عمر بدر",
