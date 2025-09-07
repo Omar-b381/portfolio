@@ -102,7 +102,7 @@
   "date": "August 28, 2025",
   "readTime": "15 min read",
   "tags": ["SQL", "Databases", "Technical Guides"],
-  "image": "assets/images/sql_subquery_cover.png",
+  "image": "assets/images/sql_subquery_cover.jpg",
   "excerpt": "A complete guide detailing everything you need to know about SQL subqueries, from different types and use cases to best practices for performance optimization.",
   "author": {
     "name": "Omar Badr",
@@ -118,7 +118,7 @@
   "date": "August 30, 2025",
   "readTime": "18 min read",
   "tags": ["SQL", "Databases", "Technical Guides", "Database Design"],
-  "image": "assets/images/sql_views_cover.png",
+  "image": "assets/images/sql_views_cover.jpg",
   "excerpt": "A complete guide detailing everything you need to know about SQL Views, from simplifying complex queries and managing security to comparing them with CTEs and performance best practices.",
   "author": {
     "name": "Omar Badr",

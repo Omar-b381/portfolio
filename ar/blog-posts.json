@@ -102,7 +102,7 @@
   "date": "28 أغسطس 2025",
   "readTime": "15 دقيقة",
   "tags": ["SQL", "قواعد البيانات", "شروحات تقنية"],
-  "image": "assets/images/sql_subquery_cover.png",
+  "image": "assets/images/sql_subquery_cover.jpg",
   "excerpt": "دليل متكامل يفصل كل ما تحتاج لمعرفته عن الاستعلامات الفرعية في SQL، من الأنواع المختلفة وأماكن الاستخدام إلى أفضل الممارسات لتحسين الأداء.",
   "author": {
     "name": "عمر بدر",
@@ -118,7 +118,7 @@
   "date": "30 أغسطس 2025",
   "readTime": "18 دقيقة",
   "tags": ["SQL", "قواعد البيانات", "شروحات تقنية", "Database Design"],
-  "image": "assets/images/sql_views_cover.png",
+  "image": "assets/images/sql_views_cover.jpg",
   "excerpt": "دليل متكامل يفصل كل ما تحتاج لمعرفته عن العروض (Views) في SQL، من تبسيط الاستعلامات المعقدة وإدارة الأمان، إلى مقارنتها مع CTEs وأفضل ممارسات الأداء.",
   "author": {
     "name": "عمر بدر",
