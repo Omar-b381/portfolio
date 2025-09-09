@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Article - Omar Badr</title>
+  
+  <link rel="stylesheet" href="../../../style.css">
+  <!-- Path to the main post page styles -->
+  <link rel="stylesheet" href="../../post-page.css">
+  <!-- Path to the new English LTR override styles -->
+  <link rel="stylesheet" href="post-page-en.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q56ET619WZ');
+  </script>
+</head>
+<body class="en-version">
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/en/">Home</a>
+        <a href="/en/services/">Services</a>
+        <a href="/en/portfolio/">Portfolio</a>
+        <a href="/en/blog/" class="active">Blog</a>
+        <a href="/en/about/">About</a>
+        <a href="/en/contact/">Contact</a>
+        <a id="language-switcher-link" href="/ar/" class="language-switcher">العربية</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="container">
+    <div class="post-layout-grid">
+      <!-- ===== Smart Sidebar ===== -->
+      <aside class="post-sidebar">
+        <div class="sidebar-sticky-content">
+          <h4>In This Article</h4>
+          <nav id="toc-container" class="table-of-contents"></nav>
+          
+          <h4>Share This Article</h4>
+          <div class="share-buttons">
+            <a href="#" id="share-twitter" target="_blank" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" id="share-linkedin" target="_blank" aria-label="Share on LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" id="share-whatsapp" target="_blank" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" id="share-copy" aria-label="Copy Link"><i class="fas fa-copy"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ===== Main Post Content ===== -->
+      <article class="blog-post" id="post-container">
+        <p>Loading article...</p>
+      </article>
+    </div>
+
+    <!-- ===== Related Posts ===== -->
+    <section class="related-posts-section">
+        <h2 class="section-title">You Might Also Like</h2>
+        <div class="blog-grid" id="related-posts-container"></div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>© 2025 Omar Badr | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- The script path is relative to this file's location -->
+  <script src="../post-page.js"></script>
+</body>
+</html>
