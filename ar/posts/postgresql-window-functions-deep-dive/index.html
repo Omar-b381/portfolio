@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قراءة مقال - عمر بدر</title>
+  
+  <link rel="stylesheet" href="../../../style.css">
+  <!-- المسار الصحيح لملف الصفحة الجديد -->
+  <link rel="stylesheet" href="../../post-page.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q56ET619WZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q56ET619WZ');
+  </script>
+</head>
+<body>
+  <!-- شريط التقدم -->
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/ar/">الرئيسية</a>
+        <a href="/ar/services/">الخدمات</a>
+        <a href="/ar/portfolio/">المشاريع</a>
+        <a href="/ar/blog/" class="active">المدونة</a>
+        <a href="/ar/about/">عني</a>
+        <a href="/ar/contact/">تواصل معي</a>
+        <a id="language-switcher-link" href="/en/" class="language-switcher">English</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="container">
+    <div class="post-layout-grid">
+      <!-- ===== الشريط الجانبي الذكي ===== -->
+      <aside class="post-sidebar">
+        <div class="sidebar-sticky-content">
+          <h4>في هذا المقال</h4>
+          <nav id="toc-container" class="table-of-contents"></nav>
+          
+          <h4>شارك المقال</h4>
+          <div class="share-buttons">
+            <a href="#" id="share-twitter" target="_blank" aria-label="شارك على تويتر"><i class="fab fa-twitter"></i></a>
+            <a href="#" id="share-linkedin" target="_blank" aria-label="شارك على لينكدإن"><i class="fab fa-linkedin"></i></a>
+            <a href="#" id="share-whatsapp" target="_blank" aria-label="شارك على واتساب"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" id="share-copy" aria-label="نسخ الرابط"><i class="fas fa-copy"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ===== محتوى المقال الرئيسي ===== -->
+      <article class="blog-post" id="post-container">
+        <p>جاري تحميل المقال...</p>
+      </article>
+    </div>
+
+    <!-- ===== المقالات ذات الصلة ===== -->
+    <section class="related-posts-section">
+        <h2 class="section-title">مقالات أخرى قد تعجبك</h2>
+        <div class="blog-grid" id="related-posts-container"></div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>© 2025 عمر بدر | جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+  <script src="../post-page.js"></script>
+</body>
+</html>
