@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>جاري تحويلك... | Redirecting...</title>
+  <script type="text/javascript">
+    // Intelligent 404 Routing for GitHub Pages & legacy backlinks
+    (function() {
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      
+      // Clean path, remove trailing slash if any
+      var cleanPath = path.replace(/\/$/, "");
+      var targetUrl = window.location.origin + "/";
+      
+      // Matches /ar/... or /en/...
+      var arMatch = path.match(/^\/ar(\/.*)?$/);
+      var enMatch = path.match(/^\/en(\/.*)?$/);
+      
+      if (arMatch) {
+        var sub = arMatch[1] ? arMatch[1].replace(/^\//, "") : "";
+        targetUrl += "#/ar/" + sub + search;
+      } else if (enMatch) {
+        var sub = enMatch[1] ? enMatch[1].replace(/^\//, "") : "";
+        targetUrl += "#/en/" + sub + search;
+      } else {
+        // Default fallback: parse user browser language
+        var userLang = navigator.language || navigator.userLanguage;
+        var lang = (userLang && userLang.toLowerCase().indexOf("ar") !== -1) ? "ar" : "en";
+        targetUrl += "#/" + lang + "/" + search;
+      }
+      
+      // Redirect immediately to the clean SPA hash route
+      window.location.replace(targetUrl);
+    })();
+  </script>
+</head>
+<body>
+  <div style="font-family: sans-serif; text-align: center; margin-top: 20%; color: #333;">
+    <h2>جاري تحويلك إلى النسخة الجديدة من الموقع...</h2>
+    <p>Redirecting you to the new version of the website...</p>
+  </div>
+</body>
+</html>
